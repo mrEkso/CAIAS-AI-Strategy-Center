@@ -1,67 +1,82 @@
-import { Button } from "./ui/button.js";
-import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext.js";
 
 export function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* About Section */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-4 mb-6">
-              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                <svg viewBox="0 0 24 24" className="w-8 h-8 text-white fill-current">
-                  <path d="M12 2L13.09 8.26L19 7L17.74 13.26L22 15L15.74 16.09L17 22L10.74 20.74L9 24L7.91 17.74L2 19L3.26 12.74L0 11L6.26 9.91L5 4L11.26 5.26L12 2Z" />
-                </svg>
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-white group-hover:bg-gray-100 transition-colors shadow-lg">
+                <img
+                  src="/images/L-100x100.png"
+                  alt="Logo"
+                  className="w-8 h-8 object-contain"
+                />
               </div>
               <div>
-                <h3 className="text-lg font-medium">
-                  Центр стратегій застосування штучного інтелекту
-                </h3>
-                <p className="text-gray-400">КПІ ім. Ігоря Сікорського</p>
+                <h3 className="text-lg font-medium">{t('footer.about')}</h3>
               </div>
             </div>
-            <p className="text-gray-300 leading-relaxed mb-6">
-              Провідний науково-дослідний центр України у сфері стратегічного застосування 
-              штучного інтелекту в економіці та суспільстві.
+
+            <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
+              {t('footer.aboutDescription')}
             </p>
-            <Button className="bg-blue-600 hover:bg-blue-700">
-              Зв'язатися з нами
-              <ExternalLink className="w-4 h-4 ml-2" />
-            </Button>
+
+            <div className="space-y-3">
+              <div className="flex items-center text-gray-300">
+                <MapPin className="w-4 h-4 mr-3" />
+                <span className="text-sm">{t('footer.address')}</span>
+              </div>
+              <div className="flex items-center text-gray-300">
+                <Phone className="w-4 h-4 mr-3" />
+                <span className="text-sm">{t('footer.phone')}</span>
+              </div>
+              <div className="flex items-center text-gray-300">
+                <Mail className="w-4 h-4 mr-3" />
+                <span className="text-sm">{t('footer.email')}</span>
+              </div>
+            </div>
           </div>
           
+          {/* Quick Links */}
           <div>
-            <h4 className="font-medium mb-4">Швидкі посилання</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-white transition-colors">Про центр</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Дослідження</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Публікації</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Події</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Партнери</a></li>
+            <h4 className="text-lg font-medium mb-4">{t('footer.quickLinks')}</h4>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm">{t('header.nav.home')}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm">{t('header.nav.experts')}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm">{t('header.nav.news')}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm">{t('header.nav.research')}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm">{t('header.nav.publications')}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm">{t('header.nav.contacts')}</a></li>
             </ul>
           </div>
           
+          {/* Social Media */}
           <div>
-            <h4 className="font-medium mb-4">Контакти</h4>
-            <div className="space-y-3 text-gray-300">
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-blue-400" />
-                <span className="text-sm">Київ, Україна</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-blue-400" />
-                <span className="text-sm">info@ai-center.kpi.ua</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-blue-400" />
-                <span className="text-sm">+380 44 123 45 67</span>
-              </div>
+            <h4 className="text-lg font-medium mb-4">{t('footer.followUs')}</h4>
+            <div className="flex space-x-4">
+              <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
+                <Linkedin className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>
         
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 Центр стратегій застосування штучного інтелекту КПІ ім. Ігоря Сікорського. Всі права захищені.</p>
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+          <p className="text-gray-400 text-sm">
+            © 2025 {t('footer.title')}. {t('footer.allRightsReserved')}.
+          </p>
         </div>
       </div>
     </footer>

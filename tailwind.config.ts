@@ -6,7 +6,11 @@ const config: Config = {
     "./styles/**/*.css",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        exo2: ['"Exo 2"'],
+      },
+    },
   },
   plugins: [],
 }

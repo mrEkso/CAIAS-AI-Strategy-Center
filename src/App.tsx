@@ -1,34 +1,90 @@
 import { useState } from "react";
+import { LanguageProvider } from "./contexts/LanguageContext.js";
 import { Header } from "./components/Header.js";
+import { StickyHeader } from "./components/StickyHeader.js";
 import { HomePage } from "./components/HomePage.js";
+import { Partnership } from "./components/Partnership.js";
+import { Contacts } from "./components/Contacts.js";
+import { AboutUs } from "./components/AboutUs.js";
+import { Publications } from "./components/Publications.js";
+import { Datasets } from "./components/Datasets.js";
+import { Events } from "./components/Events.js";
 import { ExpertsPage } from "./components/ExpertsPage.js";
+import { ExpertDetailPage } from "./components/ExpertDetailPage.js";
 import { Footer } from "./components/Footer.js";
 
-export default function App() {
+function AppContent() {
   const [currentPage, setCurrentPage] = useState("home");
+  const [selectedExpert, setSelectedExpert] = useState<string | null>(null);
 
   const handleNavigation = (page: string) => {
     setCurrentPage(page);
+    setSelectedExpert(null);
+  };
+
+  const handleExpertClick = (expertId: string) => {
+    setSelectedExpert(expertId);
+    setCurrentPage("expert-detail");
+  };
+
+  const handleBackToExperts = () => {
+    setSelectedExpert(null);
+    setCurrentPage("experts");
   };
 
   const renderCurrentPage = () => {
     switch (currentPage) {
       case "experts":
-        return <ExpertsPage />;
+        return <ExpertsPage onExpertClick={handleExpertClick} />;
+      case "expert-detail":
+        return selectedExpert ? (
+          <ExpertDetailPage
+            expertId={selectedExpert}
+            onBack={handleBackToExperts}
+          />
+        ) : (
+          <ExpertsPage onExpertClick={handleExpertClick} />
+        );
+      case "publications":
+        return <Publications />;
+      case "events":
+        return <Events />;
+      case "datasets":
+        return <Datasets />;
+      case "partnership":
+        return <Partnership />;
+      case "contacts":
+        return <Contacts />;
+      case "about":
+        return <AboutUs />;
       case "home":
       default:
         return <HomePage />;
     }
   };
 
+  const showFooter = currentPage !== "expert-detail";
+
   return (
     <div className="min-h-screen bg-white">
       <Header
-        currentPage={currentPage}
+        currentPage={currentPage === "expert-detail" ? "experts" : currentPage}
+        onNavigate={handleNavigation}
+      />
+      <StickyHeader
+        currentPage={currentPage === "expert-detail" ? "experts" : currentPage}
         onNavigate={handleNavigation}
       />
       {renderCurrentPage()}
-      <Footer />
+      {showFooter && <Footer />}
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
