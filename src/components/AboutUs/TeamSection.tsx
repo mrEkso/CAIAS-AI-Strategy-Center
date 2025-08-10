@@ -1,19 +1,20 @@
 import { TeamCard } from "./TeamCard.js";
 import { Users, Mail, Calendar } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext.js";
 
 const teamData = [
   {
-    name: "Олена Коваленко",
+    name: "Ольга Іляш",
     position: "Директорка центру",
-    photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=center",
+    photo: "/images/TeamPhotos/Olga_Ilyash.jpg",
     description: "Доктор технічних наук, експертка у сфері штучного інтелекту та цифрової трансформації. Має більше 15 років досвіду в галузі ІТ та управлінні технологічними проектами. Очолює стратегічний розвиток центру та координує міжнародну співпрацю з провідними think tanks.",
     email: "o.kovalenko@kpi.ua",
     linkedin: "https://linkedin.com/in/olena-kovalenko",
     expertise: ["Стратегії ШІ", "Цифрова трансформація", "Технологічне лідерство", "Міжнародна співпраця"]
   },
   {
-    name: "Андрій Петренко",
-    position: "Старший розробник ШІ",
+    name: "Давид Окаянченко",
+    position: "Розробник",
     photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=center",
     description: "Магістр комп'ютерних наук КПІ, спеціалізується на розробці алгоритмів машинного навчання та deep learning. Має досвід роботи з великими даними та створення ШІ-рішень для державного сектору. Відповідає за технічну реалізацію дослідницьких проектів.",
     email: "a.petrenko@kpi.ua",
@@ -21,17 +22,17 @@ const teamData = [
     expertise: ["Machine Learning", "Deep Learning", "Python", "TensorFlow", "Big Data"]
   },
   {
-    name: "Марія Сидоренко",
-    position: "Розробниця NLP рішень",
-    photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=center",
+    name: "Катерина Кулеш",
+    position: "Розробниця",
+    photo: "/images/TeamPhotos/Kateryna_Kulesh.jpg",
     description: "Бакалавр прикладної математики, аспірантка КПІ. Спеціалізується на обробці природної мови та створенні чатботів для державних установ. Бере участь у дослідженнях мультимовних ШІ-моделей та розробці україномовних датасетів.",
     email: "m.sydorenko@kpi.ua",
     linkedin: "https://linkedin.com/in/maria-sydorenko",
     expertise: ["NLP", "Transformers", "PyTorch", "Україномовні моделі", "Чатботи"]
   },
   {
-    name: "Дмитро Іваненко",
-    position: "Розробник Computer Vision",
+    name: "Артем Пархоменко",
+    position: "Розробник",
     photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=center",
   }
 ];

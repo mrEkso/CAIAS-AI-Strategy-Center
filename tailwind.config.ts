@@ -8,7 +8,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        exo2: ['"Exo 2"'],
+        exo2: ['"Exo 2"', 'Arial'],
       },
     },
   },

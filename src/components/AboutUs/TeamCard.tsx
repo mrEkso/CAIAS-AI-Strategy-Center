@@ -6,6 +6,7 @@ interface TeamCardProps {
   name: string;
   position: string;
   photo: string;
+  onTeamClick?: (teamId: string) => void;
 }
 
 export function TeamCard({ name, position, photo }: TeamCardProps) {

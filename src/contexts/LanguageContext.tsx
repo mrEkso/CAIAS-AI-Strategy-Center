@@ -87,6 +87,28 @@ const ukrainianTranslations = {
       publications: "Публікації",
       contacts: "Контакти",
       menu: "Меню"
+    },
+    bottomText1: {
+      home: "Штучний інтелект як інструмент майбутнього",
+      partnership: "Партнерство",
+      contacts: "Наші контакти",
+      about: "Про наш центр",
+      researchTopics: "Теми досліджень",
+      publications: "Публікації та дослідження",
+      datasets: "Набори даних",
+      events: "Події та конференції",
+      experts: "Наші експерти"
+    },
+    bottomText2: {
+      home: "Ми працюємо над розвитком штучного інтелекту для науки та суспільства",
+      partnership: "Разом ми будуємо майбутнє технологій",
+      contacts: "Зв'яжіться з нами для співпраці, консультацій та партнерських ініціатив",
+      about: "Історія, місія та цінності",
+      researchTopics: "Знаходьте наші дописи за темами",
+      publications: "Знайомтеся із результатами нашої роботи",
+      datasets: "Користуйтеся нашими відкритими даними",
+      events: "Долучайтеся до наших заходів",
+      experts: "Дізнайтеся більше про наших спеціалістів"
     }
   },
   stickyHeader: {
@@ -172,6 +194,13 @@ const ukrainianTranslations = {
       description: "Реалізовано програм підвищення кваліфікації"
     }
   },
+  announcements: {
+    title: "Анонси подій",
+    subtitle: "Майбутні заходи, воркшопи та можливості для професійного розвитку у сфері штучного інтелекту",
+    learnMore: "Дізнатися більше",
+    viewAll: "Переглянути всі анонси",
+    registerNow: "Зареєструватись зараз"
+  },
   experts: {
     title: "Наші експерти",
     subtitle: "Команда провідних вчених та дослідників, які формують майбутнє штучного інтелекту в Україні",
@@ -223,9 +252,11 @@ const ukrainianTranslations = {
     phoneLabel: "Телефон:",
     emailLabel: "Email:",
     workingHours: "Години роботи:",
-    workingTime: "Понеділок - П'ятниця: 9:00 - 18:00",
+    workingDays: "Понеділок - П'ятниця",
+    workingTime: "9:00 - 18:00",
     getInTouch: "Як з нами зв'язатися",
-    visitUs: "Відвідайте нас",
+    findUs: "Як нас знайти",
+    findUsDetails: "Ми розташовані в головному корпусі КПІ ім. Ігоря Сікорського",
     contactForm: "Форма зворотного зв'язку"
   },
   footer: {
@@ -319,7 +350,7 @@ const englishTranslations = {
       about: "About us"
     },
     bottomNav: {
-      researchTopics: "Topics",
+      researchTopics: "Research topics",
       publications: "Publications",
       datasets: "Datasets",
       events: "Events",
@@ -334,8 +365,28 @@ const englishTranslations = {
       contacts: "Контакти",
       menu: "Menu"
     },
-    bottomText1: "CORE concerns: why a turnover-based levy is wrong for the EU budget",
-    bottomText2: "Read the First Glance by Zsolt Darvas, Roel Dom and Marie-Sophie Lappe"
+    bottomText1: {
+      home: "Штучний інтелект як інструмент майбутнього",
+      partnership: "Партнерство",
+      contacts: "Наші контакти",
+      about: "Про наш центр",
+      researchTopics: "Теми досліджень",
+      publications: "Публікації та дослідження",
+      datasets: "Набори даних",
+      events: "Події та конференції",
+      experts: "Наші експерти"
+    },
+    bottomText2: {
+      home: "Ми працюємо над розвитком штучного інтелекту для науки та суспільства",
+      partnership: "Разом ми будуємо майбутнє технологій",
+      contacts: "Зв'яжіться з нами для співпраці, консультацій та партнерських ініціатив",
+      about: "Історія, місія та цінності",
+      researchTopics: "Знаходьте наші дописи за темами",
+      publications: "Знайомтеся із результатами нашої роботи",
+      datasets: "Користуйтеся нашими відкритими даними",
+      events: "Долучайтеся до наших заходів",
+      experts: "Дізнайтеся більше про наших спеціалістів"
+    }
   },
   stickyHeader: {
     title: "Center for Artificial Intelligence Application Strategies",
@@ -420,6 +471,13 @@ const englishTranslations = {
       description: "Professional development programs implemented"
     }
   },
+  announcements: {
+    title: "Announcements",
+    subtitle: "Upcoming events, workshops, and professional development opportunities in artificial intelligence",
+    learnMore: "Learn More",
+    viewAll: "View All Announcements",
+    registerNow: "Register Now"
+  },
   experts: {
     title: "Our Experts",
     subtitle: "A team of leading scientists and researchers shaping the future of artificial intelligence in Ukraine",
@@ -471,9 +529,11 @@ const englishTranslations = {
     phoneLabel: "Phone:",
     emailLabel: "Email:",
     workingHours: "Working Hours:",
-    workingTime: "Monday - Friday: 9:00 AM - 6:00 PM",
+    workingDays: "Monday - Friday",
+    workingTime: "9:00 AM - 6:00 PM",
     getInTouch: "Get In Touch",
-    visitUs: "Visit Us",
+    findUs: "How to find us",
+    findUsDetails: "We are located in the main building of Igor Sikorsky Kyiv Polytechnic Institute",
     contactForm: "Contact Form"
   },
   footer: {

@@ -1,7 +1,7 @@
 import { Button } from "./ui/button.js";
 import { Globe, Search, Menu } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext.js";
-const aiBackgroundImage = "/images/ai_background.jpg";
+import { HeaderContent } from "./data/HeaderContent.js";
 
 interface HeaderProps {
   currentPage?: string;
@@ -10,6 +10,12 @@ interface HeaderProps {
 
 export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
   const { language, setLanguage, t } = useLanguage();
+
+  const pageData = HeaderContent[currentPage] ?? HeaderContent.home ?? {
+    background: "",
+    bottomText1: "",
+    bottomText2: ""
+  };
 
   const handleNavigation = (page: string) => {
     if (onNavigate) {
@@ -26,8 +32,8 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src={aiBackgroundImage}
-          alt="AI Technology Background"
+          src={pageData.background}
+          alt="Background"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/40"></div>
@@ -71,20 +77,20 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
             <div className="flex items-center space-x-8">
               <button
                 onClick={() => handleNavigation("partnership")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-lg ${
+                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
                   currentPage === "partnership"
-                    ? "text-white font-medium bg-white/20 shadow-lg"
+                    ? "text-white font-medium bg-white/20 shadow-full"
                     : "text-white/90 hover:text-white hover:bg-white/10"
                 }`}
               >
                 {t("header.topNav.partnership")}
               </button>
-              <button className="text-white/90 hover:text-white text-[1.05rem] transition-colors hover:bg-white/10 px-3 py-2 rounded-lg">
+              <button className="text-white/90 hover:text-white text-[1.05rem] transition-colors hover:bg-white/10 px-3 py-2 rounded-full">
                 {t("header.topNav.announcements")}
               </button>
               <button
                 onClick={() => handleNavigation("contacts")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-lg ${
+                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
                   currentPage === "contacts"
                     ? "text-white font-medium bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
@@ -94,7 +100,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               </button>
               <button
                 onClick={() => handleNavigation("about")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-lg ${
+                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
                   currentPage === "about"
                     ? "text-white font-medium bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
@@ -109,7 +115,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
                   onClick={toggleLanguage}
                   variant="ghost"
                   size="sm"
-                  className="text-white/90 hover:text-white hover:bg-white/10 text-[1.05rem] h-10 px-4"
+                  className="text-white/90 hover:text-white hover:bg-white/10 text-[1.05rem] h-10 px-4 rounded-full"
                 >
                   <Globe className="w-5 h-5 mr-2" />
                   {language === "uk" ? "EN" : "УК"}
@@ -117,7 +123,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-white/90 hover:text-white hover:bg-white/10 h-10 w-10 p-0"
+                  className="text-white/90 hover:text-white hover:bg-white/10 h-10 w-10 p-0 rounded-full"
                 >
                   <Search className="w-5 h-5" />
                 </Button>
@@ -126,12 +132,19 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
 
             {/* Bottom Navigation Row */}
             <div className="flex items-center space-x-8">
-              <button className="text-white/90 hover:text-white text-[1.05rem] transition-colors hover:bg-white/10 px-3 py-2 rounded-lg">
+              <button
+                onClick={() => handleNavigation("researchTopics")}
+                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
+                  currentPage === "researchTopics"
+                    ? "text-white font-medium bg-white/20 shadow-lg"
+                    : "text-white/90 hover:text-white hover:bg-white/10"
+                }`}
+              >
                 {t("header.bottomNav.researchTopics")}
               </button>
               <button
                 onClick={() => handleNavigation("publications")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-lg ${
+                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
                   currentPage === "publications"
                     ? "text-white font-medium bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
@@ -141,7 +154,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               </button>
               <button
                 onClick={() => handleNavigation("datasets")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-lg ${
+                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
                   currentPage === "datasets"
                     ? "text-white font-medium bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
@@ -151,7 +164,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               </button>
               <button
                 onClick={() => handleNavigation("events")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-lg ${
+                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
                   currentPage === "events"
                     ? "text-white font-medium bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
@@ -161,7 +174,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               </button>
               <button
                 onClick={() => handleNavigation("experts")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-lg ${
+                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
                   currentPage === "experts"
                     ? "text-white font-medium bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
@@ -177,7 +190,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
             <Button
               variant="ghost"
               size="sm"
-              className="text-white hover:bg-white/10 p-3"
+              className="text-white hover:bg-white/10 p-3 rounded-full"
             >
               <Menu className="w-7 h-7" />
             </Button>
@@ -185,14 +198,12 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
         </div>
 
           {/* Bottom text section */}
-          <div className="absolute bottom-12 left-6 text-left px-4 space-y-4">
-            <p className="font-bold text-white text-[36px] max-w-xl">
-              {t("header.bottomText1") || 
-                "Штучний інтелект як інструмент майбутнього"}
+          <div className="absolute bottom-12 left-8 text-left px-4 space-y-4">
+            <p className="font-bold text-white text-5xl max-w-xl leading-tight">
+              {t(`header.bottomText1.${currentPage}`) || pageData.bottomText1}
             </p>
-            <p className="text-white text-lg font-medium max-w-xl">
-              {t("header.bottomText2") || 
-                "Ми працюємо над розвитком штучного інтелекту для науки та суспільства"}
+            <p className="text-white text-2xl font-medium max-w-xl leading-snug">
+              {t(`header.bottomText2.${currentPage}`) || pageData.bottomText2}
             </p>
           </div>
         </div>
@@ -210,7 +221,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
 
           {/* Top navigation items */}
           <div className="space-y-3 mb-6">
-            <button className="block w-full text-left text-white/90 hover:text-white text-base py-3 px-4 rounded-lg hover:bg-white/10 transition-colors">
+            <button className="block w-full text-left text-white/90 hover:text-white text-base py-3 px-10 rounded-full hover:bg-white/10 transition-colors">
               {t("header.topNav.partnership")}
             </button>
             <button className="block w-full text-left text-white/90 hover:text-white text-base py-3 px-4 rounded-lg hover:bg-white/10 transition-colors">
@@ -280,7 +291,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               onClick={toggleLanguage}
               variant="ghost"
               size="sm"
-              className="text-white/90 hover:text-white hover:bg-white/10 text-base py-3 px-4"
+              className="text-white/90 hover:text-white hover:bg-white/10 text-base py-3 px-4 rounded-full"
             >
               <Globe className="w-5 h-5 mr-3" />
               {language === "uk"

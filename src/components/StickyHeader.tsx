@@ -118,7 +118,7 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
                 onClick={toggleLanguage} 
                 variant="ghost" 
                 size="sm" 
-                className="text-white/90 hover:text-gray-900 hover:bg-gray-100 text-sm h-9 px-3"
+                className="text-white/90 hover:text-gray-900 hover:bg-gray-100 text-sm h-9 px-3 rounded-full"
               >
                 <Globe className="w-4 h-4 mr-1" />
                 {language === 'uk' ? 'EN' : 'УК'}
@@ -132,14 +132,14 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
                   <Button 
                     variant="ghost" 
                     size="sm" 
-                    className="text-white/90 hover:text-gray-900 hover:bg-gray-100 h-9 w-9 p-0"
+                    className="text-white/90 hover:text-gray-900 hover:bg-gray-100 h-9 w-9 p-0 rounded-full"
                   >
                     <Menu className="w-5 h-5" />
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-80 sm:w-96 bg-gray-900 text-white">
                   <SheetHeader className="pb-4">
-                    <SheetTitle className="text-left text-xl font-medium">
+                    <SheetTitle className="text-left text-xl font-medium text-white/90">
                       {t('header.nav.menu')}
                     </SheetTitle>
                     <SheetDescription className="text-left text-sm text-white/80">
@@ -155,8 +155,8 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
                         variant="ghost"
                         className={`w-full justify-start text-left h-11 px-4 ${
                           currentPage === "home" 
-                            ? "bg-blue-100 text-blue-700 font-medium" 
-                            : "text-white hover:text-gray-900 hover:bg-gray-100"
+                            ? "bg-white text-gray-900 font-medium rounded-full" 
+                            : "text-white/80 hover:text-gray-900 hover:bg-gray-100 rounded-full"
                         }`}
                         onClick={() => handleNavigation("home")}
                       >

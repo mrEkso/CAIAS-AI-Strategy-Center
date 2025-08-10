@@ -85,19 +85,6 @@ export function ExpertsPage({ onExpertClick }: ExpertsPageProps) {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-5xl font-medium mb-6">
-              {t('experts.title')}
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              {t('experts.subtitle')}
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Experts Grid */}
       <section className="py-16 bg-gray-50">
@@ -136,7 +123,7 @@ export function ExpertsPage({ onExpertClick }: ExpertsPageProps) {
             <div className="text-center mb-12">
               <h2 className="mb-6 text-foreground">Приєднуйтесь до нашої команди</h2>
               <p className="text-muted-foreground mb-8 text-lg max-w-3xl mx-auto">
-                Ми завжди шукаємо талановитих дослідників, аналітиків та розробників, 
+                Ми завжди шукаємо талановитих дослідників та аналітиків, 
                 які прагнуть впливати на майбутнє штучного інтелекту в Україні.
               </p>
             </div>

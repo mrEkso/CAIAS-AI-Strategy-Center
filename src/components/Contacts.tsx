@@ -7,19 +7,6 @@ export function Contacts() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-100 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-medium text-gray-900 mb-4">
-              {t('contacts.title')}
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              {t('contacts.subtitle')}
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Main Content */}
       <section className="py-16">
@@ -69,6 +56,9 @@ export function Contacts() {
                     {t('contacts.workingHours')}
                   </h3>
                   <p className="text-gray-600">
+                    {t('contacts.workingDays')}
+                  </p>
+                  <p className="text-gray-600">
                     {t('contacts.workingTime')}
                   </p>
                 </div>
@@ -111,10 +101,10 @@ export function Contacts() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-medium text-gray-900 mb-4">
-              Як нас знайти
+              {t('contacts.findUs')}
             </h2>
             <p className="text-gray-600">
-              Ми розташовані в головному кампусі КПІ ім. Ігоря Сікорського
+              {t('contacts.findUsDetails')}
             </p>
           </div>
           

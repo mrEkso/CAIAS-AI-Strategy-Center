@@ -6,7 +6,7 @@ export function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative font-exo2 text-white overflow-hidden">
+    <section className="relative text-white overflow-hidden">
       {/* Campus Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

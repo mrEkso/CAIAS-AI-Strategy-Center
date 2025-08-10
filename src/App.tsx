@@ -6,6 +6,7 @@ import { HomePage } from "./components/HomePage.js";
 import { Partnership } from "./components/Partnership.js";
 import { Contacts } from "./components/Contacts.js";
 import { AboutUs } from "./components/AboutUs.js";
+import { ResearchTopics } from "./components/ResearchTopics.js";
 import { Publications } from "./components/Publications.js";
 import { Datasets } from "./components/Datasets.js";
 import { Events } from "./components/Events.js";
@@ -34,6 +35,20 @@ function AppContent() {
 
   const renderCurrentPage = () => {
     switch (currentPage) {
+      case "partnership":
+        return <Partnership />;
+      case "contacts":
+        return <Contacts />;
+      case "about":
+        return <AboutUs />;
+      case "researchTopics":
+        return <ResearchTopics />;
+      case "publications":
+        return <Publications />;
+      case "datasets":
+        return <Datasets />;
+      case "events":
+        return <Events />;
       case "experts":
         return <ExpertsPage onExpertClick={handleExpertClick} />;
       case "expert-detail":
@@ -45,18 +60,6 @@ function AppContent() {
         ) : (
           <ExpertsPage onExpertClick={handleExpertClick} />
         );
-      case "publications":
-        return <Publications />;
-      case "events":
-        return <Events />;
-      case "datasets":
-        return <Datasets />;
-      case "partnership":
-        return <Partnership />;
-      case "contacts":
-        return <Contacts />;
-      case "about":
-        return <AboutUs />;
       case "home":
       default:
         return <HomePage />;
