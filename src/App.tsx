@@ -103,9 +103,14 @@ function AppContent() {
         onNavigate={handleNavigation}
       />
       {renderCurrentPage()}
-      {showFooter && <Footer />}
-    </div>
-  );
+      {showFooter && (
+      <Footer 
+        currentPage={currentPage === "expert-detail" ? "experts" : currentPage}
+        onNavigate={handleNavigation} 
+      />
+    )}
+  </div>
+);
 }
 
 export default function App() {

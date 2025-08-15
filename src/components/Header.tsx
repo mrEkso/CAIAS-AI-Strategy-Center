@@ -210,10 +210,10 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
 
           {/* Bottom text section */}
           <div className="absolute bottom-12 left-8 text-left px-4 space-y-4">
-            <p className="font-bold text-white text-5xl max-w-xl leading-tight">
+            <p className="text-white text-4.75xl font-bold max-w-xl leading-snug">
               {t(`header.bottomText1.${currentPage}`) || pageData.bottomText1}
             </p>
-            <p className="text-white text-2xl font-medium max-w-xl leading-snug">
+            <p className="text-white text-xl font-medium max-w-xl leading-normal">
               {t(`header.bottomText2.${currentPage}`) || pageData.bottomText2}
             </p>
           </div>

@@ -36,7 +36,7 @@ export const HeaderContent: Record<string, {
   },
   publications: {
     background: "/images/2.jpg",
-    bottomText1: "Публікації та дослідження",
+    bottomText1: "Публікації",
     bottomText2: "Знайомтеся із результатами нашої роботи",
     height: "400px",
   },

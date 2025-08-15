@@ -1,5 +1,6 @@
 import { PartnerCard } from "./PartnerCard.js";
 import { Building2 } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext.js";
 
 const partnersData = [
   {
@@ -47,14 +48,17 @@ const partnersData = [
 ];
 
 export function PartnersSection() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-16 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="mb-4 text-foreground">Наші стратегічні партнери</h2>
-          <p className="text-muted-foreground max-w-3xl mx-auto">
-            Ми співпрацюємо з провідними організаціями України та світу для створення 
-            інноваційних рішень у сфері штучного інтелекту та цифрової трансформації.
+          <h2 className="text-3xl font-medium text-gray-900 mb-4">
+            {t('partnerships.section.title')}
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            {t('partnerships.section.subtitle')}
           </p>
         </div>
 

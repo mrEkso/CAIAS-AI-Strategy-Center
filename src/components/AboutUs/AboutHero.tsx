@@ -8,7 +8,7 @@ export function AboutHero() {
 
       <div className="relative z-10 max-w-6xl mx-auto text-center mb-24">
         <div className="max-w-5xl mx-auto">
-          <p className="text-xl leading-relaxed mb-10 text-foreground font-light">
+          <p className="text-xl leading-relaxed mt-10 mb-10 text-foreground font-light">
             Аналітичний центр нового покоління, що розробляє стратегії ШІ та цифрової трансформації 
             для відбудови та розвитку України.
           </p>

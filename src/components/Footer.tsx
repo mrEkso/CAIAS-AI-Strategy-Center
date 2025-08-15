@@ -1,7 +1,12 @@
 import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext.js";
 
-export function Footer() {
+interface FooterProps {
+  currentPage?: string;
+  onNavigate?: (page: string) => void;
+}
+
+export function Footer({ currentPage = "home", onNavigate }: FooterProps) {
   const { t } = useLanguage();
 
   return (
@@ -10,7 +15,15 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Section */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
+            <div 
+            className="flex items-center space-x-3 mb-4 cursor-pointer group" 
+            onClick={() => {
+             if (onNavigate) {
+              onNavigate("home");
+              window.scrollTo({ top: 0, behavior: "auto" });
+            }
+          }}
+        >
               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-white group-hover:bg-gray-100 transition-colors shadow-lg">
                 <img
                   src="/images/L-100x100.png"

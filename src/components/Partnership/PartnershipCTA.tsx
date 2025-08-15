@@ -1,16 +1,20 @@
 import { Button } from "../ui/button.js";
 import { Card, CardContent } from "../ui/card.js";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext.js";
 
 export function PartnershipCTA() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-16 px-4 bg-gradient-to-t from-primary/5 to-transparent">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="mb-6 text-foreground">Станьте нашим партнером</h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto mb-8">
-            Ми завжди відкриті до нових стратегічних партнерств з організаціями, 
-            які поділяють наше бачення розвитку штучного інтелекту в Україні та світі.
+          <h2 className="text-3xl font-medium text-gray-900 mb-4">
+            {t('partnerships.cta.title')}
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            {t('partnerships.cta.subtitle')}
           </p>
         </div>
 

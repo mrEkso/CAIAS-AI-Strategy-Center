@@ -12,7 +12,7 @@ export function AnnouncementsSection({ onArticleClick }: AnnouncementsSectionPro
 
   const announcements = [
     {
-      id: "featured",
+      id: "featured-article",
       title: t('announcements.title').includes('Announcements') 
         ? "Transforming European AI Policy: A New Framework for Innovation and Ethics"
         : "Трансформація європейської політики ШІ: нова рамка для інновацій та етики",

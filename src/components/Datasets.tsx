@@ -13,6 +13,7 @@ export function Datasets({ onArticleClick }: DatasetsProps) {
   const { t } = useLanguage();
 
   const featuredArticle = {
+    id: "featured-article",
     title: t('datasets.title').includes('Dataset') 
       ? "Annual AI Conference | November 15-16, 2024"
       : "Щорічна конференція з ШІ | 15-16 листопада 2024",
@@ -30,6 +31,7 @@ export function Datasets({ onArticleClick }: DatasetsProps) {
 
   const DatasetArticles = [
     {
+      id: "article-1",
       title: t('datasets.title').includes('Dataset')
         ? "New AI Research Center Opens in Kyiv"
         : "Новий центр досліджень ШІ відкривається в Києві",
@@ -43,6 +45,7 @@ export function Datasets({ onArticleClick }: DatasetsProps) {
       author: t('datasets.title').includes('Dataset') ? "Dr. Marina Kovalenko" : "Д-р Марина Коваленко"
     },
     {
+      id: "article-2",
       title: t('datasets.title').includes('Dataset')
         ? "Ukraine Joins Global AI Ethics Initiative"
         : "Україна приєднується до глобальної ініціативи з етики ШІ",
@@ -56,6 +59,7 @@ export function Datasets({ onArticleClick }: DatasetsProps) {
       author: t('datasets.title').includes('Dataset') ? "Kateryna Shevchenko" : "Катерина Шевченко"
     },
     {
+      id: "article-3",
       title: t('datasets.title').includes('Dataset')
         ? "Breakthrough in Quantum AI Computing"
         : "Прорив у квантових обчисленнях ШІ",

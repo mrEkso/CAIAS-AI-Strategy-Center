@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from "./ui/button.js";
 import { Input } from "./ui/input.js";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet.js";
-import { Globe, Search, Menu, X, Home, Users, Newspaper, BookOpen, Database, Calendar, MessageCircle, Phone, FileText, Handshake, Info } from "lucide-react";
+import { Globe, Search, Menu, X, Home, Users, Newspaper, BookOpen, Database, Calendar, MessageCircle, Phone, FileText, Handshake, Info, Mic, Mic2, Mic2Icon, MicIcon, MicVocal, MicOff } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext.js";
 
 interface StickyHeaderProps {
@@ -28,10 +28,11 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
   }, []);
 
   const handleNavigation = (page: string) => {
+    setIsMenuOpen(false);
     if (onNavigate) {
       onNavigate(page);
     }
-    setIsMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const toggleLanguage = () => {
@@ -139,11 +140,11 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
                 </SheetTrigger>
                 <SheetContent side="right" className="w-80 sm:w-96 bg-gray-900 text-white">
                   <SheetHeader className="pb-4">
-                    <SheetTitle className="text-left text-xl font-medium text-white/90">
+                    <SheetTitle className="text-left text-2xl font-medium text-white/90">
                       {t('header.nav.menu')}
                     </SheetTitle>
-                    <SheetDescription className="text-left text-sm text-white/80">
-                      {language === 'uk' ? 'Навігація по всіх розділах сайту' : 'Navigate through all website sections'}
+                    <SheetDescription className="text-left text-base text-white/80">
+                      {t('header.nav.menuDescription')}
                     </SheetDescription>
                   </SheetHeader>
                   
@@ -156,7 +157,7 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
                         className={`w-full justify-start text-left h-11 px-4 ${
                           currentPage === "home" 
                             ? "bg-white text-gray-900 font-medium rounded-full" 
-                            : "text-white/80 hover:text-gray-900 hover:bg-gray-100 rounded-full"
+                            : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
                         }`}
                         onClick={() => handleNavigation("home")}
                       >
@@ -168,42 +169,55 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
                         variant="ghost"
                         className={`w-full justify-start text-left h-11 px-4 ${
                           currentPage === "experts" 
-                            ? "bg-blue-100 text-blue-700 font-medium" 
-                            : "text-white hover:text-gray-900 hover:bg-gray-100"
+                            ? "bg-white text-gray-900 font-medium rounded-full" 
+                            : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
                         }`}
                         onClick={() => handleNavigation("experts")}
                       >
                         <Users className="w-4 h-4 mr-3" />
                         {t('header.bottomNav.experts')}
                       </Button>
-                    </div>
 
-                    {/* Divider */}
-                    <div className="border-t border-gray-200 my-4"></div>
-
-                    {/* Additional Navigation */}
-                    <div className="space-y-1">
                       <Button
                         variant="ghost"
-                        className="w-full justify-start text-left h-11 px-4 text-white hover:text-gray-900 hover:bg-gray-100"
-                        onClick={() => {/* Add navigation for research topics */}}
+                        className={`w-full justify-start text-left h-11 px-4 ${
+                          currentPage === "researchTopics" 
+                            ? "bg-white text-gray-900 font-medium rounded-full" 
+                            : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+                        }`}
+                        onClick={() => handleNavigation("researchTopics")}
                       >
                         <BookOpen className="w-4 h-4 mr-3" />
                         {t('header.bottomNav.researchTopics')}
                       </Button>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="border-t border-gray-300 my-4"></div>
+
+                    {/* Additional Navigation */}
+                    <div className="space-y-1">
 
                       <Button
                         variant="ghost"
-                        className="w-full justify-start text-left h-11 px-4 text-white hover:text-gray-900 hover:bg-gray-100"
+                        className={`w-full justify-start text-left h-11 px-4 ${
+                          currentPage === "publications" 
+                            ? "bg-white text-gray-900 font-medium rounded-full" 
+                            : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+                        }`}
                         onClick={() => handleNavigation("publications")}
                       >
                         <FileText className="w-4 h-4 mr-3" />
                         {t('header.bottomNav.publications')}
                       </Button>
-
+                      
                       <Button
                         variant="ghost"
-                        className="w-full justify-start text-left h-11 px-4 text-white hover:text-gray-900 hover:bg-gray-100"
+                        className={`w-full justify-start text-left h-11 px-4 ${
+                          currentPage === "datasets" 
+                            ? "bg-white text-gray-900 font-medium rounded-full" 
+                            : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+                        }`}
                         onClick={() => handleNavigation("datasets")}
                       >
                         <Database className="w-4 h-4 mr-3" />
@@ -212,7 +226,24 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
 
                       <Button
                         variant="ghost"
-                        className="w-full justify-start text-left h-11 px-4 text-white hover:text-gray-900 hover:bg-gray-100"
+                        className={`w-full justify-start text-left h-11 px-4 ${
+                          currentPage === "podcasts" 
+                            ? "bg-white text-gray-900 font-medium rounded-full" 
+                            : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+                        }`}
+                        onClick={() => handleNavigation("podcasts")}
+                      >
+                        <Mic className="w-4 h-4 mr-3" />
+                        {t('header.bottomNav.podcasts')}
+                      </Button>
+
+                      <Button
+                        variant="ghost"
+                        className={`w-full justify-start text-left h-11 px-4 ${
+                          currentPage === "events" 
+                            ? "bg-white text-gray-900 font-medium rounded-full" 
+                            : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+                        }`}
                         onClick={() => handleNavigation("events")}
                       >
                         <Calendar className="w-4 h-4 mr-3" />
@@ -221,13 +252,18 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
                     </div>
 
                     {/* Divider */}
-                    <div className="border-t border-gray-200 my-4"></div>
+                    <div className="border-t border-gray-300 my-4"></div>
 
-                    {/* Top Navigation */}
+                    {/* Other Navigation */}
                     <div className="space-y-1">
+                      
                       <Button
                         variant="ghost"
-                        className="w-full justify-start text-left h-11 px-4 text-white hover:text-gray-900 hover:bg-gray-100"
+                        className={`w-full justify-start text-left h-11 px-4 ${
+                          currentPage === "partnership" 
+                            ? "bg-white text-gray-900 font-medium rounded-full" 
+                            : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+                        }`}
                         onClick={() => handleNavigation("partnership")}
                       >
                         <Handshake className="w-4 h-4 mr-3" />
@@ -236,16 +272,11 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
 
                       <Button
                         variant="ghost"
-                        className="w-full justify-start text-left h-11 px-4 text-white hover:text-gray-900 hover:bg-gray-100"
-                        onClick={() => {/* Add navigation for research topics */}}
-                      >
-                        <MessageCircle className="w-4 h-4 mr-3" />
-                        {t('header.topNav.announcements')}
-                      </Button>
-
-                      <Button
-                        variant="ghost"
-                        className="w-full justify-start text-left h-11 px-4 text-white hover:text-gray-900 hover:bg-gray-100"
+                        className={`w-full justify-start text-left h-11 px-4 ${
+                          currentPage === "contacts" 
+                            ? "bg-white text-gray-900 font-medium rounded-full" 
+                            : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+                        }`}
                         onClick={() => handleNavigation("contacts")}
                       >
                         <Phone className="w-4 h-4 mr-3" />
@@ -254,12 +285,17 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
 
                       <Button
                         variant="ghost"
-                        className="w-full justify-start text-left h-11 px-4 text-white hover:text-gray-900 hover:bg-gray-100"
+                        className={`w-full justify-start text-left h-11 px-4 ${
+                          currentPage === "about" 
+                            ? "bg-white text-gray-900 font-medium rounded-full" 
+                            : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+                        }`}
                         onClick={() => handleNavigation("about")}
                       >
                         <Info className="w-4 h-4 mr-3" />
                         {t('header.topNav.about')}
                       </Button>
+
                     </div>
                   </div>
                   </div>

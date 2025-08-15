@@ -68,7 +68,6 @@ const ukrainianTranslations = {
     subtitle: "КПІ ім. Ігоря Сікорського",
     topNav: {
       partnership: "Партнерство",
-      announcements: "Анонси",
       contacts: "Контакти",
       about: "Про нас"
     },
@@ -81,13 +80,14 @@ const ukrainianTranslations = {
       experts: "Експерти"
     },
     nav: {
+      menu: "Меню",
+      menuDescription: "Навігація по всіх розділах сайту",
       home: "Головна",
       experts: "Експерти",
       news: "Новини",
       research: "Дослідження",
       publications: "Публікації",
-      contacts: "Контакти",
-      menu: "Меню"
+      contacts: "Контакти"
     },
     bottomText1: {
       home: "Штучний інтелект як інструмент майбутнього",
@@ -95,7 +95,7 @@ const ukrainianTranslations = {
       contacts: "Наші контакти",
       about: "Про наш центр",
       researchTopics: "Теми досліджень",
-      publications: "Публікації та дослідження",
+      publications: "Публікації",
       podcasts: "Подкасти",
       datasets: "Набори даних",
       events: "Події та конференції",
@@ -105,7 +105,7 @@ const ukrainianTranslations = {
       home: "Ми працюємо над розвитком штучного інтелекту для науки та суспільства",
       partnership: "Разом ми будуємо майбутнє технологій",
       contacts: "Зв'яжіться з нами для співпраці, консультацій та партнерських ініціатив",
-      about: "Історія, місія та цінності",
+      about: "Наша історія, місія та цінності",
       researchTopics: "Знаходьте наші дописи за темами",
       publications: "Знайомтеся із результатами нашої роботи",
       datasets: "Користуйтеся нашими відкритими даними",
@@ -119,6 +119,18 @@ const ukrainianTranslations = {
     search: {
       placeholder: "Що шукаємо?"
     }
+  },
+  footer: {
+    title: "Центр Стратегій Застосування Штучного Інтелекту",
+    about: "Наш Центр",
+    aboutDescription: "Центр Стратегій Застосування штучного інтелекту КПІ ім. Ігоря Сікорського",
+    quickLinks: "Швидкі посилання",
+    contact: "Контакти",
+    followUs: "Слідкуйте за нами",
+    allRightsReserved: "Всі права захищені",
+    address: "пр. Берестейський, 37, Київ, 03056, Україна",
+    phone: "+380 44 204 8000",
+    email: "info@ai-center.kpi.ua"
   },
   hero: {
     title: "Формування експертного середовища у сфері ШІ",
@@ -203,46 +215,15 @@ const ukrainianTranslations = {
     learnMore: "Дізнатися більше",
     registerNow: "Зареєструватись зараз"
   },
-  experts: {
-    title: "Наші експерти",
-    subtitle: "Команда провідних вчених та дослідників, які формують майбутнє штучного інтелекту в Україні",
-    backToList: "До списку експертів",
-    expertNotFound: "Експерта не знайдено",
-    backButton: "Повернутися до списку",
-    experience: "Досвід роботи",
-    publicationsCount: "Наукових публікацій",
-    citations: "Цитувань",
-    education: "Освіта",
-    keySkills: "Ключові навички",
-    achievements: "Досягнення",
-    recentPublications: "Останні наукові публікації",
-    contact: "Контакт",
-    view: "Переглянути",
-    citationsText: "цитувань"
-  },
-  publications: {
-    title: "Новини та дослідження",
-    subtitle: "Останні новини, дослідження та розробки у сфері штучного інтелекту від нашого центру",
-    moreNews: "Більше новин",
-    featuredPublications: "Головні новини",
-    latestPublications: "Останні новини",
-    researchUpdates: "Оновлення досліджень",
-    readMore: "Читати далі",
-    publishedOn: "Опубліковано",
-    category: "Категорія",
-    tags: "Теги"
-  },
-  events: {
-    title: "Події",
-    subtitle: "Форуми та конкурси у сфері штучного інтелекту від нашого центру",
-    moreEvents: "Більше подій",
-    featuredEvents: "Головні події",
-    latestEvents: "Останні події",
-    researchUpdates: "Оновлення досліджень",
-    readMore: "Читати далі",
-    publishedOn: "Опубліковано",
-    category: "Категорія",
-    tags: "Теги"
+  partnerships: {
+    section: {
+      title: "Наші стратегічні партнери",
+      subtitle: "Ми співпрацюємо з провідними організаціями України та світу для створення інноваційних рішень у сфері штучного інтелекту та цифрової трансформації."
+    },
+    cta: {
+      title: "Станьте нашим партнером",
+      subtitle: "Ми завжди відкриті до нових стратегічних партнерств з організаціями, які поділяють наше бачення розвитку штучного інтелекту в Україні та світі."
+    }
   },
   contacts: {
     title: "Контакти",
@@ -261,17 +242,54 @@ const ukrainianTranslations = {
     findUsDetails: "Ми розташовані в головному корпусі КПІ ім. Ігоря Сікорського",
     contactForm: "Форма зворотного зв'язку"
   },
-  footer: {
-    title: "Центр Стратегій Застосування Штучного Інтелекту",
-    about: "Про центр",
-    aboutDescription: "Центр Стратегій Застосування штучного інтелекту КПІ ім. Ігоря Сікорського",
-    quickLinks: "Швидкі посилання",
-    contact: "Контакти",
-    followUs: "Слідкуйте за нами",
-    allRightsReserved: "Всі права захищені",
-    address: "пр. Берестейський, 37, Київ, 03056, Україна",
-    phone: "+380 44 204 8000",
-    email: "info@ai-center.kpi.ua"
+  publications: {
+    morePublications: "Більше публікацій",
+    featuredPublications: "Головні публікації",
+    latestPublications: "Останні публікації",
+    researchUpdates: "Оновлення досліджень",
+    readMore: "Читати далі",
+    publishedOn: "Опубліковано",
+    category: "Категорія",
+    tags: "Теги"
+  },
+  datasets: {
+    moreDatasets: "Більше наборів даних",
+    featuredDatasets: "Головні набори даних",
+    latestDatasets: "Останні набори даних",
+    researchUpdates: "Оновлення досліджень",
+    readMore: "Читати далі",
+    publishedOn: "Опубліковано",
+    category: "Категорія",
+    tags: "Теги"
+  },
+  events: {
+    title: "Події",
+    subtitle: "Форуми та конкурси у сфері штучного інтелекту від нашого центру",
+    moreEvents: "Більше подій",
+    featuredEvents: "Головні події",
+    latestEvents: "Останні події",
+    researchUpdates: "Оновлення досліджень",
+    readMore: "Читати далі",
+    publishedOn: "Опубліковано",
+    category: "Категорія",
+    tags: "Теги"
+  },
+  experts: {
+    title: "Наші експерти",
+    subtitle: "Команда провідних вчених та дослідників, які формують майбутнє штучного інтелекту в Україні",
+    backToList: "До списку експертів",
+    expertNotFound: "Експерта не знайдено",
+    backButton: "Повернутися до списку",
+    experience: "Досвід роботи",
+    publicationsCount: "Наукових публікацій",
+    citations: "Цитувань",
+    education: "Освіта",
+    keySkills: "Ключові навички",
+    achievements: "Досягнення",
+    recentPublications: "Останні наукові публікації",
+    contact: "Контакт",
+    view: "Переглянути",
+    citationsText: "цитувань"
   },
   expertsData: {
     petrenko: {
@@ -347,7 +365,6 @@ const englishTranslations = {
     subtitle: "Igor Sikorsky Kyiv Polytechnic Institute",
     topNav: {
       partnership: "Partnerships",
-      announcements: "Announcements",
       contacts: "Contacts",
       about: "About us"
     },
@@ -360,37 +377,38 @@ const englishTranslations = {
       experts: "Experts"
     },
     nav: {
+      menu: "Menu",
+      menuDescription: "Navigate through all website sections",
       home: "Home",
       experts: "Experts",
       news: "Новини",
       research: "Дослідження",
       publications: "Публікації",
-      contacts: "Контакти",
-      menu: "Menu"
+      contacts: "Контакти"
     },
     bottomText1: {
-      home: "Штучний інтелект як інструмент майбутнього",
-      partnership: "Партнерство",
-      contacts: "Наші контакти",
-      about: "Про наш центр",
-      researchTopics: "Теми досліджень",
-      publications: "Публікації та дослідження",
-      datasets: "Набори даних",
-      podcasts: "Подкасти",
-      events: "Події та конференції",
-      experts: "Наші експерти"
+      home: "Artificial Intelligence as a Tool of the Future",
+      partnership: "Partnership",
+      contacts: "Our Contacts",
+      about: "About Our Center",
+      researchTopics: "Research Topics",
+      publications: "Publications",
+      datasets: "Datasets",
+      podcasts: "Podcasts",
+      events: "Events and Conferences",
+      experts: "Our Experts"
     },
     bottomText2: {
-      home: "Ми працюємо над розвитком штучного інтелекту для науки та суспільства",
-      partnership: "Разом ми будуємо майбутнє технологій",
-      contacts: "Зв'яжіться з нами для співпраці, консультацій та партнерських ініціатив",
-      about: "Історія, місія та цінності",
-      researchTopics: "Знаходьте наші дописи за темами",
-      publications: "Знайомтеся із результатами нашої роботи",
-      datasets: "Користуйтеся нашими відкритими даними",
-      podcasts: "Слухайте наші подкасти з запрошеними гостями",
-      events: "Долучайтеся до наших заходів",
-      experts: "Дізнайтеся більше про наших спеціалістів"
+      home: "We work on developing artificial intelligence for science and society",
+      partnership: "Together, we are building the future of technology",
+      contacts: "Contact us for collaboration, consultations, and partnership initiatives",
+      about: "Our story, mission, and values",
+      researchTopics: "Explore our posts by topics",
+      publications: "Get acquainted with the results of our work",
+      datasets: "Access our open data",
+      podcasts: "Listen to our podcasts with invited guests",
+      events: "Participate in our events",
+      experts: "Learn more about our specialists"
     }
   },
   stickyHeader: {
@@ -398,6 +416,18 @@ const englishTranslations = {
     search: {
       placeholder: "Looking for..."
     }
+  },
+  footer: {
+    title: "Center for Artificial Intelligence Application Strategies",
+    about: "Our Center",
+    aboutDescription: "Center for Strategic Applications of Artificial Intelligence at Igor Sikorsky Kyiv Polytechnic Institute",
+    quickLinks: "Quick Links",
+    contact: "Contact",
+    followUs: "Follow Us",
+    allRightsReserved: "All Rights Reserved",
+    address: "37 Beresteiskyi Ave, Kyiv, 03056, Ukraine",
+    phone: "+380 44 204 8000",
+    email: "info@ai-center.kpi.ua"
   },
   hero: {
     title: "Building Expert Environment in AI Field",
@@ -482,47 +512,6 @@ const englishTranslations = {
     learnMore: "Learn More",
     registerNow: "Register Now"
   },
-  experts: {
-    title: "Our Experts",
-    subtitle: "A team of leading scientists and researchers shaping the future of artificial intelligence in Ukraine",
-    backToList: "Back to Experts List",
-    expertNotFound: "Expert Not Found",
-    backButton: "Return to List",
-    experience: "Work Experience",
-    publicationsCount: "Scientific Publications",
-    citations: "Citations",
-    education: "Education",
-    keySkills: "Key Skills",
-    achievements: "Achievements",
-    recentPublications: "Recent Scientific Publications",
-    contact: "Contact",
-    view: "View",
-    citationsText: "citations"
-  },
-  publications: {
-    title: "News and Research",
-    subtitle: "Latest news, research, and developments in artificial intelligence from our center",
-    morePublications: "More Publications",
-    featuredPublications: "Featured Publications",
-    latestPublications: "Latest Publications",
-    researchUpdates: "Research Updates",
-    readMore: "Read More",
-    publishedOn: "Published on",
-    category: "Category",
-    tags: "Tags"
-  },
-  events: {
-    title: "Events",
-    subtitle: "Forums and competitions in artificial intelligence from our center",
-    moreEvents: "More News",
-    featuredEvents: "Featured News",
-    latestEvents: "Latest News",
-    researchUpdates: "Research Updates",
-    readMore: "Read More",
-    publishedOn: "Published on",
-    category: "Category",
-    tags: "Tags"
-  },
   contacts: {
     title: "Contacts",
     subtitle: "Contact us for collaboration, consultations, and partnership initiatives",
@@ -540,17 +529,52 @@ const englishTranslations = {
     findUsDetails: "We are located in the main building of Igor Sikorsky Kyiv Polytechnic Institute",
     contactForm: "Contact Form"
   },
-  footer: {
-    title: "Center for Artificial Intelligence Application Strategies",
-    about: "About Center",
-    aboutDescription: "Center for Strategic Applications of Artificial Intelligence at Igor Sikorsky Kyiv Polytechnic Institute",
-    quickLinks: "Quick Links",
+  publications: {
+    morePublications: "More Publications",
+    featuredPublications: "Featured Publications",
+    latestPublications: "Latest Publications",
+    researchUpdates: "Research Updates",
+    readMore: "Read More",
+    publishedOn: "Published on",
+    category: "Category",
+    tags: "Tags"
+  },
+  datasets: {
+    moreDatasets: "More Datasets",
+    featuredDatasets: "Featured Datasets",
+    latestDatasets: "Latest Datasets",
+    researchUpdates: "Research Updates",
+    readMore: "Read More",
+    publishedOn: "Published on",
+    category: "Category",
+    tags: "Tags"
+  },
+  events: {
+    moreEvents: "More News",
+    featuredEvents: "Featured News",
+    latestEvents: "Latest News",
+    researchUpdates: "Research Updates",
+    readMore: "Read More",
+    publishedOn: "Published on",
+    category: "Category",
+    tags: "Tags"
+  },
+  experts: {
+    title: "Our Experts",
+    subtitle: "A team of leading scientists and researchers shaping the future of artificial intelligence in Ukraine",
+    backToList: "Back to Experts List",
+    expertNotFound: "Expert Not Found",
+    backButton: "Return to List",
+    experience: "Work Experience",
+    publicationsCount: "Scientific Publications",
+    citations: "Citations",
+    education: "Education",
+    keySkills: "Key Skills",
+    achievements: "Achievements",
+    recentPublications: "Recent Scientific Publications",
     contact: "Contact",
-    followUs: "Follow Us",
-    allRightsReserved: "All Rights Reserved",
-    address: "37 Beresteiskyi Ave, Kyiv, 03056, Ukraine",
-    phone: "+380 44 204 8000",
-    email: "info@ai-center.kpi.ua"
+    view: "View",
+    citationsText: "citations"
   },
   expertsData: {
     petrenko: {
