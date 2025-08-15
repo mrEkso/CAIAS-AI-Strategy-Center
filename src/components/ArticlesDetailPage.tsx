@@ -1,0 +1,326 @@
+import { Button } from "./ui/button.js";
+import { Badge } from "./ui/badge.js";
+import { Card } from "./ui/card.js";
+import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen, Tag } from "lucide-react";
+import { ImageWithFallback } from "./figma/ImageWithFallback.js";
+import { useLanguage } from "../contexts/LanguageContext.js";
+
+interface ArticlesDetailPageProps {
+  articleId: string;
+  onBack: () => void;
+}
+
+export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProps) {
+  const { t } = useLanguage();
+
+  // Отримуємо дані статті на основі ID
+  const getArticleData = (id: string) => {
+    const isUkrainian = !t('articles.title').includes('Articles');
+    
+    const allArticles = {
+      "featured": {
+        id: "featured",
+        title: isUkrainian 
+          ? "Щорічна конференція з ШІ | 15-16 листопада 2024"
+          : "Annual AI Conference | November 15-16, 2024",
+        description: isUkrainian
+          ? "Цьогорічна щорічна конференція зосереджена на 25-річчі досліджень штучного інтелекту та його впливі на українську економіку"
+          : "This year's annual conference focuses on 25 years of artificial intelligence research and its impact on Ukrainian economy",
+        category: isUkrainian ? "Щорічні заходи" : "Annual Events",
+        date: "2024-11-15",
+        readTime: "8",
+        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=400&fit=crop",
+        author: isUkrainian ? "Центр стратегічного використання ШІ" : "Center for Strategic Use of AI",
+        tags: isUkrainian 
+          ? ["штучний інтелект", "конференція", "дослідження", "економіка", "Україна"]
+          : ["artificial intelligence", "conference", "research", "economy", "Ukraine"],
+        content: isUkrainian ? [
+          "Центр стратегічного використання штучного інтелекту з гордістю оголошує про проведення своєї щорічної конференції, присвяченої 25-річчю досліджень в галузі ШІ в Україні. Ця знакова подія відбудеться 15-16 листопада 2024 року і зберіт провідних експертів, дослідників та інноваторів з усього світу.",
+          "Протягом двох днів учасники матимуть можливість познайомитися з найновішими досягненнями в сфері штучного інтелекту, обговорити виклики та перспективи розвитку технологій ШІ в контексті української економіки та суспільства.",
+          "Програма конференції включатиме:",
+          "• Основні доповіді від провідних світових експертів з ШІ",
+          "• Панельні дискусії про етичні аспекти використання ШІ",
+          "• Презентації останніх досліджень українських наукових інституцій",
+          "• Воркшопи з практичного застосування ШІ в різних секторах економіки",
+          "• Нетворкінг сесії для професійного спілкування",
+          "Особлива увага буде приділена впливу штучного інтелекту на трансформацію української економіки, зокрема в контексті відновлення після війни та інтеграції з європейськими стандартами.",
+          "Конференція також стане платформою для презентації нових ініціатив Центру, включаючи програми міжнародного співробітництва та освітні проєкти, спрямовані на розвиток талантів у сфері ШІ.",
+          "Реєстрація на подію вже відкрита на офіційному веб-сайті Центру. Кількість місць обмежена, тому рекомендуємо реєструватися якомога швидше."
+        ] : [
+          "The Center for Strategic Use of Artificial Intelligence proudly announces its annual conference dedicated to 25 years of AI research in Ukraine. This landmark event will take place on November 15-16, 2024, bringing together leading experts, researchers, and innovators from around the world.",
+          "Over two days, participants will have the opportunity to explore the latest advances in artificial intelligence, discuss challenges and prospects for AI technology development in the context of the Ukrainian economy and society.",
+          "The conference program will include:",
+          "• Keynote speeches from leading global AI experts",
+          "• Panel discussions on ethical aspects of AI use",
+          "• Presentations of latest research from Ukrainian scientific institutions", 
+          "• Workshops on practical AI applications across various economic sectors",
+          "• Networking sessions for professional communication",
+          "Special attention will be paid to the impact of artificial intelligence on the transformation of the Ukrainian economy, particularly in the context of post-war reconstruction and integration with European standards.",
+          "The conference will also serve as a platform for presenting new Center initiatives, including international cooperation programs and educational projects aimed at developing AI talent.",
+          "Registration for the event is now open on the Center's official website. Space is limited, so we recommend registering as soon as possible."
+        ]
+      },
+      "article-1": {
+        id: "article-1", 
+        title: isUkrainian
+          ? "Новий центр досліджень ШІ відкривається в Києві"
+          : "New AI Research Center Opens in Kyiv",
+        description: isUkrainian
+          ? "Центр зосередиться на розробці рішень ШІ для сфер охорони здоров'я та освіти"
+          : "The center will focus on developing AI solutions for healthcare and education sectors",
+        category: isUkrainian ? "Дослідження" : "Research",
+        date: "2024-11-10",
+        readTime: "5",
+        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop",
+        author: isUkrainian ? "Д-р Марина Коваленко" : "Dr. Marina Kovalenko",
+        tags: isUkrainian 
+          ? ["дослідження", "охорона здоров'я", "освіта", "Київ", "інновації"]
+          : ["research", "healthcare", "education", "Kyiv", "innovation"],
+        content: isUkrainian ? [
+          "У Києві відкрився новий центр досліджень штучного інтелекту, який стане важливим кроком у розвитку AI-технологій в Україні. Центр розташований у сучасному науково-технологічному парку та оснащений найновішим обладнанням для проведення досліджень світового рівня.",
+          "Основні напрямки роботи центру:",
+          "• Розробка AI-рішень для діагностики та лікування захворювань",
+          "• Створення інтелектуальних освітніх платформ",
+          "• Дослідження етичних аспектів використання ШІ",
+          "• Підготовка спеціалістів у сфері штучного інтелекту",
+          "Центр планує співпрацювати з провідними медичними закладами України для впровадження AI-технологій в охороні здоров'я. Це включає розробку систем для раннього виявлення захворювань, оптимізації лікувальних процесів та покращення якості медичної допомоги.",
+          "У сфері освіти центр зосередиться на створенні персоналізованих навчальних систем, які зможуть адаптуватися до індивідуальних потреб кожного учня або студента.",
+          "Відкриття центру стало можливим завдяки підтримці Міністерства освіти і науки України та міжнародних партнерів."
+        ] : [
+          "A new artificial intelligence research center has opened in Kyiv, marking an important step in the development of AI technologies in Ukraine. The center is located in a modern science and technology park and is equipped with state-of-the-art equipment for conducting world-class research.",
+          "Main areas of the center's work:",
+          "• Development of AI solutions for disease diagnosis and treatment",
+          "• Creation of intelligent educational platforms", 
+          "• Research on ethical aspects of AI use",
+          "• Training specialists in artificial intelligence",
+          "The center plans to collaborate with leading medical institutions in Ukraine to implement AI technologies in healthcare. This includes developing systems for early disease detection, optimizing treatment processes, and improving the quality of medical care.",
+          "In education, the center will focus on creating personalized learning systems that can adapt to the individual needs of each student.",
+          "The opening of the center was made possible through support from Ukraine's Ministry of Education and Science and international partners."
+        ]
+      },
+      "article-2": {
+        id: "article-2",
+        title: isUkrainian
+          ? "Україна приєднується до глобальної ініціативи з етики ШІ"
+          : "Ukraine Joins Global AI Ethics Initiative",
+        description: isUkrainian
+          ? "Нове міжнародне партнерство має на меті встановити етичні керівні принципи для розвитку ШІ"
+          : "New international partnership aims to establish ethical guidelines for AI development",
+        category: isUkrainian ? "Етика" : "Ethics",
+        date: "2024-11-08",
+        readTime: "6",
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop",
+        author: isUkrainian ? "Катерина Шевченко" : "Kateryna Shevchenko",
+        tags: isUkrainian 
+          ? ["етика", "міжнародне співробітництво", "стандарти", "регулювання"]
+          : ["ethics", "international cooperation", "standards", "regulation"],
+        content: isUkrainian ? [
+          "Україна офіційно приєдналася до Глобальної ініціативи з етики штучного інтелекту, що стало важливим кроком у формуванні міжнародних стандартів відповідального розвитку AI-технологій.",
+          "Ця ініціатива об'єднує понад 50 країн та міжнародних організацій з метою розробки спільних принципів етичного використання штучного інтелекту.",
+          "Основні цілі ініціативи:",
+          "• Розробка універсальних етичних стандартів для AI",
+          "• Створення механізмів контролю та моніторингу",
+          "• Обмін досвідом між країнами-учасницями",
+          "• Захист прав людини в епоху штучного інтелекту",
+          "Участь України в цій ініціативі відкриває нові можливості для співпраці з провідними світовими експертами в галузі етики AI та сприяє розвитку відповідального підходу до впровадження нових технологій."
+        ] : [
+          "Ukraine has officially joined the Global AI Ethics Initiative, marking an important step in shaping international standards for responsible AI technology development.",
+          "This initiative brings together over 50 countries and international organizations to develop common principles for ethical AI use.",
+          "Main goals of the initiative:",
+          "• Development of universal ethical standards for AI",
+          "• Creation of control and monitoring mechanisms", 
+          "• Experience sharing between participating countries",
+          "• Protection of human rights in the age of artificial intelligence",
+          "Ukraine's participation in this initiative opens new opportunities for collaboration with leading global experts in AI ethics and promotes a responsible approach to implementing new technologies."
+        ]
+      }
+    };
+
+    return allArticles[id as keyof typeof allArticles] || allArticles.featured;
+  };
+
+  const article = getArticleData(articleId);
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Navigation */}
+      <div className="bg-gray-50 py-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Button 
+            variant="ghost" 
+            onClick={onBack}
+            className="mb-4 text-gray-600 hover:text-gray-900"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            {t('articles.title').includes('Articles') ? 'Back to Articles' : 'Назад до статтей'}
+          </Button>
+        </div>
+      </div>
+
+      {/* Article Header */}
+      <section className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <Badge className="mb-4 bg-blue-600 text-white">
+              {article.category}
+            </Badge>
+            
+            <h1 className="text-3xl lg:text-4xl font-medium text-gray-900 mb-6 leading-tight">
+              {article.title}
+            </h1>
+            
+            <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-6">
+              <div className="flex items-center">
+                <User className="w-4 h-4 mr-2" />
+                <span>{article.author}</span>
+              </div>
+              <div className="flex items-center">
+                <Calendar className="w-4 h-4 mr-2" />
+                <span>{article.date}</span>
+              </div>
+              <div className="flex items-center">
+                <Clock className="w-4 h-4 mr-2" />
+                <span>{article.readTime} min</span>
+              </div>
+            </div>
+
+            <p className="text-xl text-gray-600 leading-relaxed mb-8">
+              {article.description}
+            </p>
+
+            <div className="flex flex-wrap gap-2 mb-8">
+              {article.tags.map((tag, index) => (
+                <Badge key={index} variant="secondary" className="bg-gray-100 text-gray-700">
+                  <Tag className="w-3 h-3 mr-1" />
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-4">
+              <Button size="sm" variant="outline">
+                <Share2 className="w-4 h-4 mr-2" />
+                {t('articles.title').includes('Articles') ? 'Share' : 'Поділитися'}
+              </Button>
+              <Button size="sm" variant="outline">
+                <BookOpen className="w-4 h-4 mr-2" />
+                {t('articles.title').includes('Articles') ? 'Save' : 'Зберегти'}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Article Image */}
+      <section className="py-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
+            <ImageWithFallback
+              src={article.image}
+              alt={article.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Article Content */}
+      <section className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="prose prose-lg max-w-none">
+            {article.content.map((paragraph, index) => (
+              <div key={index} className="mb-6">
+                {paragraph.startsWith('•') ? (
+                  <div className="ml-4 text-gray-700 leading-relaxed">
+                    {paragraph}
+                  </div>
+                ) : (
+                  <p className="text-gray-700 leading-relaxed">
+                    {paragraph}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Related Articles */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 className="text-2xl font-medium text-gray-900 mb-8">
+            {t('articles.title').includes('Articles') ? 'Related Articles' : 'Схожі статті'}
+          </h3>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="overflow-hidden border shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="relative h-48">
+                <ImageWithFallback
+                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop"
+                  alt="Ukraine Joins Global AI Ethics Initiative"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-3 left-3">
+                  <Badge variant="secondary" className="bg-white/90 text-gray-700">
+                    {t('articles.title').includes('Articles') ? 'Ethics' : 'Етика'}
+                  </Badge>
+                </div>
+              </div>
+              <div className="p-6">
+                <h4 className="font-medium text-gray-900 mb-2 leading-tight">
+                  {t('articles.title').includes('Articles')
+                    ? "Ukraine Joins Global AI Ethics Initiative"
+                    : "Україна приєднується до глобальної ініціативи з етики ШІ"
+                  }
+                </h4>
+                <p className="text-gray-600 text-sm mb-4">
+                  {t('articles.title').includes('Articles')
+                    ? "New international partnership aims to establish ethical guidelines for AI development"
+                    : "Нове міжнародне партнерство має на меті встановити етичні керівні принципи для розвитку ШІ"
+                  }
+                </p>
+                <div className="flex items-center text-xs text-gray-500">
+                  <Calendar className="w-3 h-3 mr-1" />
+                  2024-11-08
+                </div>
+              </div>
+            </Card>
+
+            <Card className="overflow-hidden border shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="relative h-48">
+                <ImageWithFallback
+                  src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=250&fit=crop"
+                  alt="Breakthrough in Quantum AI Computing"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-3 left-3">
+                  <Badge variant="secondary" className="bg-white/90 text-gray-700">
+                    {t('articles.title').includes('Articles') ? 'Technology' : 'Технології'}
+                  </Badge>
+                </div>
+              </div>
+              <div className="p-6">
+                <h4 className="font-medium text-gray-900 mb-2 leading-tight">
+                  {t('articles.title').includes('Articles')
+                    ? "Breakthrough in Quantum AI Computing"
+                    : "Прорив у квантових обчисленнях ШІ"
+                  }
+                </h4>
+                <p className="text-gray-600 text-sm mb-4">
+                  {t('articles.title').includes('Articles')
+                    ? "Ukrainian researchers achieve significant milestone in quantum machine learning algorithms"
+                    : "Українські дослідники досягають значної віхи в алгоритмах квантового машинного навчання"
+                  }
+                </p>
+                <div className="flex items-center text-xs text-gray-500">
+                  <Calendar className="w-3 h-3 mr-1" />
+                  2024-11-05
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

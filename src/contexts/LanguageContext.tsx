@@ -73,11 +73,12 @@ const ukrainianTranslations = {
       about: "Про нас"
     },
     bottomNav: {
-      researchTopics: "Теми досліджень",
+      researchTopics: "Теми",
       publications: "Публікації",
-      datasets: "Набори даних",
+      datasets: "Дані",
+      podcasts: "Подкасти",
       events: "Події",
-      experts: "Наші експерти"
+      experts: "Експерти"
     },
     nav: {
       home: "Головна",
@@ -95,6 +96,7 @@ const ukrainianTranslations = {
       about: "Про наш центр",
       researchTopics: "Теми досліджень",
       publications: "Публікації та дослідження",
+      podcasts: "Подкасти",
       datasets: "Набори даних",
       events: "Події та конференції",
       experts: "Наші експерти"
@@ -107,6 +109,7 @@ const ukrainianTranslations = {
       researchTopics: "Знаходьте наші дописи за темами",
       publications: "Знайомтеся із результатами нашої роботи",
       datasets: "Користуйтеся нашими відкритими даними",
+      podcasts: "Слухайте наші подкасти з запрошеними гостями",
       events: "Долучайтеся до наших заходів",
       experts: "Дізнайтеся більше про наших спеціалістів"
     }
@@ -198,7 +201,6 @@ const ukrainianTranslations = {
     title: "Анонси подій",
     subtitle: "Майбутні заходи, воркшопи та можливості для професійного розвитку у сфері штучного інтелекту",
     learnMore: "Дізнатися більше",
-    viewAll: "Переглянути всі анонси",
     registerNow: "Зареєструватись зараз"
   },
   experts: {
@@ -233,9 +235,9 @@ const ukrainianTranslations = {
   events: {
     title: "Події",
     subtitle: "Форуми та конкурси у сфері штучного інтелекту від нашого центру",
-    moreNews: "Більше новин",
-    featuredEvents: "Головні новини",
-    latestEvents: "Останні новини",
+    moreEvents: "Більше подій",
+    featuredEvents: "Головні події",
+    latestEvents: "Останні події",
     researchUpdates: "Оновлення досліджень",
     readMore: "Читати далі",
     publishedOn: "Опубліковано",
@@ -350,11 +352,12 @@ const englishTranslations = {
       about: "About us"
     },
     bottomNav: {
-      researchTopics: "Research topics",
+      researchTopics: "Topics",
       publications: "Publications",
       datasets: "Datasets",
+      podcasts: "Podcasts",
       events: "Events",
-      experts: "Our experts"
+      experts: "Experts"
     },
     nav: {
       home: "Home",
@@ -373,6 +376,7 @@ const englishTranslations = {
       researchTopics: "Теми досліджень",
       publications: "Публікації та дослідження",
       datasets: "Набори даних",
+      podcasts: "Подкасти",
       events: "Події та конференції",
       experts: "Наші експерти"
     },
@@ -384,6 +388,7 @@ const englishTranslations = {
       researchTopics: "Знаходьте наші дописи за темами",
       publications: "Знайомтеся із результатами нашої роботи",
       datasets: "Користуйтеся нашими відкритими даними",
+      podcasts: "Слухайте наші подкасти з запрошеними гостями",
       events: "Долучайтеся до наших заходів",
       experts: "Дізнайтеся більше про наших спеціалістів"
     }
@@ -475,7 +480,6 @@ const englishTranslations = {
     title: "Announcements",
     subtitle: "Upcoming events, workshops, and professional development opportunities in artificial intelligence",
     learnMore: "Learn More",
-    viewAll: "View All Announcements",
     registerNow: "Register Now"
   },
   experts: {
@@ -498,9 +502,9 @@ const englishTranslations = {
   publications: {
     title: "News and Research",
     subtitle: "Latest news, research, and developments in artificial intelligence from our center",
-    morePublications: "More News",
-    featuredPublications: "Featured News",
-    latestPublications: "Latest News",
+    morePublications: "More Publications",
+    featuredPublications: "Featured Publications",
+    latestPublications: "Latest Publications",
     researchUpdates: "Research Updates",
     readMore: "Read More",
     publishedOn: "Published on",

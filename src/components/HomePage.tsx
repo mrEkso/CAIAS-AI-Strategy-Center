@@ -4,10 +4,14 @@ import { TasksSection } from "./Homepage/TasksSection.js";
 import { InitiativesSection } from "./Homepage/InitiativesSection.js";
 import { StatsSection } from "./Homepage/StatsSection.js";
 
-export function HomePage() {
+interface HomePageProps {
+  onArticleClick?: (articleId: string) => void;
+}
+
+export function HomePage({ onArticleClick }: HomePageProps) {
   return (
     <main>
-      <AnnouncementsSection />
+      <AnnouncementsSection onArticleClick={onArticleClick} />
       <TasksSection />
       <Hero />
       <InitiativesSection />

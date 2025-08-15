@@ -14,7 +14,8 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
   const pageData = HeaderContent[currentPage] ?? HeaderContent.home ?? {
     background: "",
     bottomText1: "",
-    bottomText2: ""
+    bottomText2: "",
+    height: ""
   };
 
   const handleNavigation = (page: string) => {
@@ -28,7 +29,10 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
   };
 
   return (
-    <header className="relative w-full h-[560px] overflow-hidden">
+    <header
+      className="relative w-full overflow-hidden"
+      style={{ height: pageData.height || "560px" }}
+    >
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
@@ -77,22 +81,19 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
             <div className="flex items-center space-x-8">
               <button
                 onClick={() => handleNavigation("partnership")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
+                className={`text-[1.05rem] font-regular transition-colors px-3 py-2 rounded-full ${
                   currentPage === "partnership"
-                    ? "text-white font-medium bg-white/20 shadow-full"
+                    ? "text-white bg-white/20 shadow-full"
                     : "text-white/90 hover:text-white hover:bg-white/10"
                 }`}
               >
                 {t("header.topNav.partnership")}
               </button>
-              <button className="text-white/90 hover:text-white text-[1.05rem] transition-colors hover:bg-white/10 px-3 py-2 rounded-full">
-                {t("header.topNav.announcements")}
-              </button>
               <button
                 onClick={() => handleNavigation("contacts")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
+                className={`text-[1.05rem] font-regular transition-colors px-3 py-2 rounded-full ${
                   currentPage === "contacts"
-                    ? "text-white font-medium bg-white/20 shadow-lg"
+                    ? "text-white bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
                 }`}
               >
@@ -100,9 +101,9 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               </button>
               <button
                 onClick={() => handleNavigation("about")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
+                className={`text-[1.05rem] font-regular transition-colors px-3 py-2 rounded-full ${
                   currentPage === "about"
-                    ? "text-white font-medium bg-white/20 shadow-lg"
+                    ? "text-white bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
                 }`}
               >
@@ -134,9 +135,9 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
             <div className="flex items-center space-x-8">
               <button
                 onClick={() => handleNavigation("researchTopics")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
+                className={`text-[1.05rem] font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "researchTopics"
-                    ? "text-white font-medium bg-white/20 shadow-lg"
+                    ? "text-white bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
                 }`}
               >
@@ -144,9 +145,9 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               </button>
               <button
                 onClick={() => handleNavigation("publications")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
+                className={`text-[1.05rem] font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "publications"
-                    ? "text-white font-medium bg-white/20 shadow-lg"
+                    ? "text-white bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
                 }`}
               >
@@ -154,19 +155,29 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               </button>
               <button
                 onClick={() => handleNavigation("datasets")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
+                className={`text-[1.05rem] font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "datasets"
-                    ? "text-white font-medium bg-white/20 shadow-lg"
+                    ? "text-white bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
                 }`}
               >
                 {t("header.bottomNav.datasets")}
               </button>
               <button
+                onClick={() => handleNavigation("podcasts")}
+                className={`text-[1.05rem] font-bold transition-colors px-3 py-2 rounded-full ${
+                  currentPage === "podcasts"
+                    ? "text-white bg-white/20 shadow-lg"
+                    : "text-white/90 hover:text-white hover:bg-white/10"
+                }`}
+              >
+                {t("header.bottomNav.podcasts")}
+              </button>
+              <button
                 onClick={() => handleNavigation("events")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
+                className={`text-[1.05rem] font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "events"
-                    ? "text-white font-medium bg-white/20 shadow-lg"
+                    ? "text-white bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
                 }`}
               >
@@ -174,9 +185,9 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               </button>
               <button
                 onClick={() => handleNavigation("experts")}
-                className={`text-[1.05rem] transition-colors px-3 py-2 rounded-full ${
+                className={`text-[1.05rem] font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "experts"
-                    ? "text-white font-medium bg-white/20 shadow-lg"
+                    ? "text-white bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
                 }`}
               >
@@ -225,9 +236,6 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               {t("header.topNav.partnership")}
             </button>
             <button className="block w-full text-left text-white/90 hover:text-white text-base py-3 px-4 rounded-lg hover:bg-white/10 transition-colors">
-              {t("header.topNav.announcements")}
-            </button>
-            <button className="block w-full text-left text-white/90 hover:text-white text-base py-3 px-4 rounded-lg hover:bg-white/10 transition-colors">
               {t("header.topNav.contacts")}
             </button>
             <button className="block w-full text-left text-white/90 hover:text-white text-base py-3 px-4 rounded-lg hover:bg-white/10 transition-colors">
@@ -238,7 +246,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
           {/* Divider */}
           <div className="border-t border-white/20 my-6"></div>
 
-          {/* Main navigation items */}
+          {/* Bottom navigation items */}
           <div className="space-y-3">
             <button className="block w-full text-left text-white/90 hover:text-white text-base py-3 px-4 rounded-lg hover:bg-white/10 transition-colors">
               {t("header.bottomNav.researchTopics")}
@@ -262,6 +270,16 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               }`}
             >
               {t("header.bottomNav.datasets")}
+            </button>
+            <button
+              onClick={() => handleNavigation("podcasts")}
+              className={`block w-full text-left text-base py-3 px-4 rounded-lg transition-colors ${
+                currentPage === "podcasts"
+                  ? "text-white font-medium bg-white/20"
+                  : "text-white/90 hover:text-white hover:bg-white/10"
+              }`}
+            >
+              {t("header.bottomNav.podcasts")}
             </button>
             <button
               onClick={() => handleNavigation("events")}

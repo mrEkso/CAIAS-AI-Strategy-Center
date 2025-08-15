@@ -1,6 +1,6 @@
 export function AboutHero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden">
+    <section className="relative min-h-[60vh] flex flex-col items-center justify-center px-4 overflow-hidden">
       {/* Фонові елементи */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10"></div>
       <div className="absolute top-20 left-20 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>

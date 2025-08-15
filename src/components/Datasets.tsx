@@ -5,7 +5,11 @@ import { Calendar, Clock, ArrowRight, User } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
 
-export function Datasets() {
+interface DatasetsProps {
+  onArticleClick?: (articleId: string) => void;
+}
+
+export function Datasets({ onArticleClick }: DatasetsProps) {
   const { t } = useLanguage();
 
   const featuredArticle = {
@@ -76,7 +80,10 @@ export function Datasets() {
             <h2 className="text-2xl font-medium text-gray-900 mb-2">{t('datasets.featuredDatasets')}</h2>
           </div>
           
-          <Card className="overflow-hidden border shadow-lg bg-white hover:shadow-xl transition-shadow duration-300">
+          <Card 
+            onClick={() => onArticleClick?.(featuredArticle.id)}
+            className="overflow-hidden border shadow-lg bg-white hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+          >
             <div className="grid lg:grid-cols-2 gap-0">
               <div className="relative h-64 lg:h-auto">
                 <ImageWithFallback
@@ -135,7 +142,11 @@ export function Datasets() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {DatasetArticles.map((article, index) => (
-              <Card key={index} className="overflow-hidden border shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
+              <Card 
+                key={index} 
+                onClick={() => onArticleClick?.(article.id)}
+                className="overflow-hidden border shadow-sm hover:shadow-md transition-shadow duration-300 bg-white cursor-pointer"
+              >
                 <div className="relative h-48">
                   <ImageWithFallback
                     src={article.image}

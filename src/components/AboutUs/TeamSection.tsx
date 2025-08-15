@@ -1,39 +1,25 @@
 import { TeamCard } from "./TeamCard.js";
-import { Users, Mail, Calendar } from "lucide-react";
-import { useLanguage } from "../../contexts/LanguageContext.js";
 
 const teamData = [
   {
     name: "Ольга Іляш",
     position: "Директорка центру",
     photo: "/images/TeamPhotos/Olga_Ilyash.jpg",
-    description: "Доктор технічних наук, експертка у сфері штучного інтелекту та цифрової трансформації. Має більше 15 років досвіду в галузі ІТ та управлінні технологічними проектами. Очолює стратегічний розвиток центру та координує міжнародну співпрацю з провідними think tanks.",
-    email: "o.kovalenko@kpi.ua",
-    linkedin: "https://linkedin.com/in/olena-kovalenko",
-    expertise: ["Стратегії ШІ", "Цифрова трансформація", "Технологічне лідерство", "Міжнародна співпраця"]
   },
   {
     name: "Давид Окаянченко",
     position: "Розробник",
-    photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=center",
-    description: "Магістр комп'ютерних наук КПІ, спеціалізується на розробці алгоритмів машинного навчання та deep learning. Має досвід роботи з великими даними та створення ШІ-рішень для державного сектору. Відповідає за технічну реалізацію дослідницьких проектів.",
-    email: "a.petrenko@kpi.ua",
-    linkedin: "https://linkedin.com/in/andriy-petrenko",
-    expertise: ["Machine Learning", "Deep Learning", "Python", "TensorFlow", "Big Data"]
+    photo: "/images/TeamPhotos/Davyd_Okaianchenko.jpg",
   },
   {
     name: "Катерина Кулеш",
     position: "Розробниця",
     photo: "/images/TeamPhotos/Kateryna_Kulesh.jpg",
-    description: "Бакалавр прикладної математики, аспірантка КПІ. Спеціалізується на обробці природної мови та створенні чатботів для державних установ. Бере участь у дослідженнях мультимовних ШІ-моделей та розробці україномовних датасетів.",
-    email: "m.sydorenko@kpi.ua",
-    linkedin: "https://linkedin.com/in/maria-sydorenko",
-    expertise: ["NLP", "Transformers", "PyTorch", "Україномовні моделі", "Чатботи"]
   },
   {
     name: "Артем Пархоменко",
     position: "Розробник",
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=center",
+    photo: "/images/TeamPhotos/Artem_Parkhomenko.jpg",
   }
 ];
 
@@ -47,11 +33,7 @@ export function TeamSection() {
       
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <div className="inline-flex items-center px-6 py-3 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8 border border-primary/20">
-            <Users className="w-4 h-4 mr-2" />
-            Експертна команда
-          </div>
-          <h2 className="mb-6 text-foreground">Наша команда</h2>
+          <h1 className="mb-6 text-foreground">Наша команда</h1>
           <p className="text-muted-foreground max-w-4xl mx-auto text-lg leading-relaxed">
             Команда центру складається з досвідчених експертів та молодих талантів, 
             які об'єднують наукову досконалість з практичним досвідом впровадження ШІ-технологій.

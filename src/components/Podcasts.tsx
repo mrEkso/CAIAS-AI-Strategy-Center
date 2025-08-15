@@ -1,4 +1,4 @@
-export function ResearchTopics() {
+export function Podcasts() {
   return (
     <section className="relative min-h-[40vh] flex flex-col items-center justify-center px-4 overflow-hidden">
 

@@ -4,6 +4,7 @@ import { Button } from "./ui/button.js";
 import { ArrowLeft, Mail, Linkedin, Award, BookOpen, Users, Calendar, ExternalLink } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
+import { HeaderContent } from "./data/HeaderContent.js";
 
 interface ExpertDetailPageProps {
   expertId: string;

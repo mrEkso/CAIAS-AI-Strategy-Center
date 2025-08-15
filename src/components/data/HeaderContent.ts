@@ -2,45 +2,72 @@ export const HeaderContent: Record<string, {
   background: string;
   bottomText1: string;
   bottomText2: string;
+  height: string;
 }> = {
   home: {
-    background: "/images/ai_background.jpg",
+    background: "/images/background4.jpg", //"/images/ai_background.jpg"
     bottomText1: "Штучний інтелект як інструмент майбутнього",
     bottomText2: "Ми працюємо над розвитком штучного інтелекту для науки та суспільства",
+    height: "560px",
   },
   partnership: {
-    background: "/images/1.jpg",
+    background: "/images/background17.jpg", //"/images/1.jpg"
     bottomText1: "Партнерство",
     bottomText2: "Разом ми будуємо майбутнє технологій",
+    height: "400px",
   },
   contacts: {
     background: "/images/5.jpg",
     bottomText1: "Наші контакти",
     bottomText2: "Зв'яжіться з нами для співпраці, консультацій та партнерських ініціатив",
+    height: "400px",
   },
   about: {
     background: "/images/background1.jpg",
     bottomText1: "Про наш центр",
     bottomText2: "Історія, місія та цінності",
+    height: "400px",
+  },
+  researchTopics: {
+    background: "/images/3.jpg",
+    bottomText1: "Теми досліджень",
+    bottomText2: "Знаходьте наші дописи за темами",
+    height: "400px",
   },
   publications: {
     background: "/images/2.jpg",
     bottomText1: "Публікації та дослідження",
     bottomText2: "Знайомтеся із результатами нашої роботи",
+    height: "400px",
   },
   datasets: {
     background: "/images/6.jpg",
     bottomText1: "Набори даних",
     bottomText2: "Користуйтеся нашими відкритими даними",
+    height: "400px",
+  },
+  podcasts: {
+    background: "/images/background3.png",
+    bottomText1: "Подкасти",
+    bottomText2: "Слухайте наші подкасти з запрошеними гостями",
+    height: "400px",
   },
   events: {
     background: "/images/events_background2.jpg",
     bottomText1: "Події та конференції",
     bottomText2: "Долучайтеся до наших заходів",
+    height: "400px",
   },
   experts: {
     background: "/images/background11.jpg",
     bottomText1: "Наші експерти",
     bottomText2: "Дізнайтеся більше про наших спеціалістів",
+    height: "400px",
+  },
+  expertDetail: {
+    background: "/images/background11.jpg",
+    bottomText1: "",
+    bottomText2: "",
+    height: "700px",
   }
 };

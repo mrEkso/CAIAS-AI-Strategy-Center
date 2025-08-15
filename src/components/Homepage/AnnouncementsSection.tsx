@@ -3,11 +3,16 @@ import { Button } from "../ui/button.js";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext.js";
 
-export function AnnouncementsSection() {
+interface AnnouncementsSectionProps {
+  onArticleClick?: (articleId: string) => void;
+}
+
+export function AnnouncementsSection({ onArticleClick }: AnnouncementsSectionProps) {
   const { t } = useLanguage();
 
   const announcements = [
     {
+      id: "featured",
       title: t('announcements.title').includes('Announcements') 
         ? "Transforming European AI Policy: A New Framework for Innovation and Ethics"
         : "Трансформація європейської політики ШІ: нова рамка для інновацій та етики",
@@ -21,6 +26,7 @@ export function AnnouncementsSection() {
       size: "large"
     },
     {
+      id: "article-1",
       title: t('announcements.title').includes('Announcements')
         ? "AI governance models across emerging markets"
         : "Моделі управління ШІ на ринках, що розвиваються",
@@ -34,6 +40,7 @@ export function AnnouncementsSection() {
       size: "small"
     },
     {
+      id: "article-2",
       title: t('announcements.title').includes('Announcements')
         ? "The Ukrainian AI ecosystem: building sustainable innovation networks"
         : "Українська екосистема ШІ: побудова сталих інноваційних мереж",
@@ -47,6 +54,7 @@ export function AnnouncementsSection() {
       size: "small"
     },
     {
+      id: "article-3",
       title: t('announcements.title').includes('Announcements')
         ? "Machine learning applications in sustainable development: progress and challenges"
         : "Застосування машинного навчання у сталому розвитку: прогрес та виклики",
@@ -60,6 +68,7 @@ export function AnnouncementsSection() {
       size: "small"
     },
     {
+      id: "article-4",
       title: t('announcements.title').includes('Announcements')
         ? "Digital transformation strategies for public sector AI implementation"
         : "Стратегії цифрової трансформації для впровадження ШІ в державному секторі",
@@ -91,7 +100,15 @@ export function AnnouncementsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           {/* Large featured article */}
           <div className="lg:col-span-1 lg:row-span-2">
-            <div className="relative h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group">
+            <div 
+              onClick={() => {
+                const id = announcements[0]?.id;
+                if (id) {
+                  onArticleClick?.(id);
+                }
+              }}
+              className="relative h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
+            >
               <img
                 src={announcements[0]?.image ?? placeholderImg}
                 alt={announcements[0]?.title ?? ""}
@@ -134,7 +151,11 @@ export function AnnouncementsSection() {
           <div className="lg:col-span-2 grid grid-rows-2 gap-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {announcements.slice(1, 3).map((announcement, index) => (
-                <div key={index + 1} className="relative h-[285px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group">
+                <div 
+                  key={index + 1} 
+                  onClick={() => onArticleClick?.(announcement.id)}
+                  className="relative h-[285px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                >
                   <img
                     src={announcement?.image ?? placeholderImg}
                     alt={announcement?.title ?? ""}
@@ -187,7 +208,11 @@ export function AnnouncementsSection() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {announcements.slice(3, 5).map((announcement, index) => (
-                <div key={index + 3} className="relative h-[285px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group">
+                <div 
+                  key={index + 3} 
+                  onClick={() => onArticleClick?.(announcement.id)}
+                  className="relative h-[285px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                >
                   <img
                     src={announcement?.image ?? placeholderImg}
                     alt={announcement?.title ?? ""}
@@ -241,13 +266,6 @@ export function AnnouncementsSection() {
               ))}
             </div>
           </div>
-        </div>
-
-        <div className="text-center mt-8">
-          <Button variant="outline" size="lg">
-            {t('announcements.viewAll')}
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
         </div>
       </div>
     </section>
