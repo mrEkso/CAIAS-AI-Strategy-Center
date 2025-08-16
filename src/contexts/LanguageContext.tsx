@@ -99,7 +99,8 @@ const ukrainianTranslations = {
       podcasts: "Подкасти",
       datasets: "Набори даних",
       events: "Події та конференції",
-      experts: "Наші експерти"
+      experts: "Наші експерти",
+      expertDetail: "",
     },
     bottomText2: {
       home: "Ми працюємо над розвитком штучного інтелекту для науки та суспільства",
@@ -242,6 +243,12 @@ const ukrainianTranslations = {
     findUsDetails: "Ми розташовані в головному корпусі КПІ ім. Ігоря Сікорського",
     contactForm: "Форма зворотного зв'язку"
   },
+  aboutus: {
+
+  },
+  researchTopics: {
+    title: "Скоро буде..."
+  },
   publications: {
     morePublications: "Більше публікацій",
     featuredPublications: "Головні публікації",
@@ -261,6 +268,9 @@ const ukrainianTranslations = {
     publishedOn: "Опубліковано",
     category: "Категорія",
     tags: "Теги"
+  },
+  podcasts: {
+    title: "Скоро буде..."
   },
   events: {
     title: "Події",
@@ -512,6 +522,16 @@ const englishTranslations = {
     learnMore: "Learn More",
     registerNow: "Register Now"
   },
+  partnerships: {
+    section: {
+      title: "Our Strategic Partners",
+      subtitle: "We collaborate with leading organizations in Ukraine and around the world to create innovative solutions in the field of artificial intelligence and digital transformation."
+    },
+    cta: {
+      title: "Become Our Partner",
+      subtitle: "We are always open to new strategic partnerships with organizations that share our vision for the development of artificial intelligence in Ukraine and worldwide."
+    }
+  },
   contacts: {
     title: "Contacts",
     subtitle: "Contact us for collaboration, consultations, and partnership initiatives",
@@ -528,6 +548,12 @@ const englishTranslations = {
     findUs: "How to find us",
     findUsDetails: "We are located in the main building of Igor Sikorsky Kyiv Polytechnic Institute",
     contactForm: "Contact Form"
+  },
+  aboutus: {
+
+  },
+  researchTopics: {
+    title: " Coming soon..."
   },
   publications: {
     morePublications: "More Publications",
@@ -549,10 +575,13 @@ const englishTranslations = {
     category: "Category",
     tags: "Tags"
   },
+  podcasts: {
+    title: "Coming soon..."
+  },
   events: {
-    moreEvents: "More News",
-    featuredEvents: "Featured News",
-    latestEvents: "Latest News",
+    moreEvents: "More Events",
+    featuredEvents: "Featured Events",
+    latestEvents: "Latest Events",
     researchUpdates: "Research Updates",
     readMore: "Read More",
     publishedOn: "Published on",

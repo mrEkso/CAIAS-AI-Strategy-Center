@@ -1,7 +1,7 @@
 export const HeaderContent: Record<string, {
   background: string;
-  bottomText1: string;
-  bottomText2: string;
+  bottomText1?: string;
+  bottomText2?: string;
   height: string;
 }> = {
   home: {
@@ -47,27 +47,29 @@ export const HeaderContent: Record<string, {
     height: "400px",
   },
   podcasts: {
-    background: "/images/background3.png",
+    background: "/images/m.jpg", // /images/background3.png
     bottomText1: "Подкасти",
     bottomText2: "Слухайте наші подкасти з запрошеними гостями",
     height: "400px",
   },
   events: {
-    background: "/images/events_background2.jpg",
+    background: "https://images.unsplash.com/photo-1629146719139-245c817d534f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // /images/events_background2.jpg
     bottomText1: "Події та конференції",
     bottomText2: "Долучайтеся до наших заходів",
     height: "400px",
   },
   experts: {
-    background: "/images/background11.jpg",
+    background: "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // /images/background11.jpg
     bottomText1: "Наші експерти",
     bottomText2: "Дізнайтеся більше про наших спеціалістів",
     height: "400px",
   },
   expertDetail: {
-    background: "/images/background11.jpg",
-    bottomText1: "",
-    bottomText2: "",
-    height: "700px",
+    background: "/images/background19.jpg",
+    height: "300px",
+  },
+  articleDetail: {
+    background: "/images/background19.jpg",
+    height: "300px",
   }
 };

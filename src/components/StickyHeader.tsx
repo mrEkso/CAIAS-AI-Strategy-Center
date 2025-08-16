@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from "./ui/button.js";
 import { Input } from "./ui/input.js";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet.js";
-import { Globe, Search, Menu, X, Home, Users, Newspaper, BookOpen, Database, Calendar, MessageCircle, Phone, FileText, Handshake, Info, Mic, Mic2, Mic2Icon, MicIcon, MicVocal, MicOff } from "lucide-react";
+import { Globe, Search, Menu, X, Home, Users, Newspaper, BookOpen, Database, Calendar, MessageCircle, Phone, FileText, Handshake, Info, Mic } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext.js";
 
 interface StickyHeaderProps {
@@ -68,7 +68,7 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
             </div>
 
               {/* Title - Hidden on mobile */}
-              <div className="hidden sm:block">
+              <div className="hidden lg:block">
                 <h1 className="text-white text-lg font-medium leading-tight">
                   {t('stickyHeader.title')}
                 </h1>
@@ -138,7 +138,13 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
                     <Menu className="w-5 h-5" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-80 sm:w-96 bg-gray-900 text-white">
+                <SheetContent
+                  side="right"
+                  className={`
+                    w-80 sm:w-96 bg-gray-900 text-white
+                    ${isMenuOpen ? 'slide-in' : 'slide-out'}
+                  `}
+                  >
                   <SheetHeader className="pb-4">
                     <SheetTitle className="text-left text-2xl font-medium text-white/90">
                       {t('header.nav.menu')}
@@ -157,7 +163,7 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
                         className={`w-full justify-start text-left h-11 px-4 ${
                           currentPage === "home" 
                             ? "bg-white text-gray-900 font-medium rounded-full" 
-                            : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+                            : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
                         }`}
                         onClick={() => handleNavigation("home")}
                       >

@@ -242,3 +242,25 @@ html {
   font-size: var(--font-size);
 }
 
+
+/**
+ * Side Menu Animation
+ */
+
+@keyframes slideInRight {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+.slide-in {
+  animation: slideInRight 0.5s cubic-bezier(0.25,0.8,0.25,1) forwards;
+}
+
+.slide-out {
+  animation: slideOutRight 0.5s cubic-bezier(0.25,0.8,0.25,1) forwards;
+}

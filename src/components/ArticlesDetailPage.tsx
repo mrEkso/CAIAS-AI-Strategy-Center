@@ -11,30 +11,30 @@ interface ArticlesDetailPageProps {
 }
 
 export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const isUk = language === "uk";
 
   // Отримуємо дані статті на основі ID
   const getArticleData = (id: string) => {
-    const isUkrainian = !t('articles.title').includes('Articles');
-    
+
     const allArticles = {
       "featured": {
         id: "featured",
-        title: isUkrainian 
+        title: isUk
           ? "Щорічна конференція з ШІ | 15-16 листопада 2024"
           : "Annual AI Conference | November 15-16, 2024",
-        description: isUkrainian
+        description: isUk
           ? "Цьогорічна щорічна конференція зосереджена на 25-річчі досліджень штучного інтелекту та його впливі на українську економіку"
           : "This year's annual conference focuses on 25 years of artificial intelligence research and its impact on Ukrainian economy",
-        category: isUkrainian ? "Щорічні заходи" : "Annual Events",
+        category: isUk ? "Щорічні заходи" : "Annual Events",
         date: "2024-11-15",
         readTime: "8",
         image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=400&fit=crop",
-        author: isUkrainian ? "Центр стратегічного використання ШІ" : "Center for Strategic Use of AI",
-        tags: isUkrainian 
+        author: isUk ? "Проф. Олександр Петренко" : "Center for Strategic Use of AI",
+        tags: isUk
           ? ["штучний інтелект", "конференція", "дослідження", "економіка", "Україна"]
           : ["artificial intelligence", "conference", "research", "economy", "Ukraine"],
-        content: isUkrainian ? [
+        content: isUk ? [
           "Центр стратегічного використання штучного інтелекту з гордістю оголошує про проведення своєї щорічної конференції, присвяченої 25-річчю досліджень в галузі ШІ в Україні. Ця знакова подія відбудеться 15-16 листопада 2024 року і зберіт провідних експертів, дослідників та інноваторів з усього світу.",
           "Протягом двох днів учасники матимуть можливість познайомитися з найновішими досягненнями в сфері штучного інтелекту, обговорити виклики та перспективи розвитку технологій ШІ в контексті української економіки та суспільства.",
           "Програма конференції включатиме:",
@@ -62,21 +62,21 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
       },
       "article-1": {
         id: "article-1", 
-        title: isUkrainian
+        title: isUk
           ? "Новий центр досліджень ШІ відкривається в Києві"
           : "New AI Research Center Opens in Kyiv",
-        description: isUkrainian
+        description: isUk
           ? "Центр зосередиться на розробці рішень ШІ для сфер охорони здоров'я та освіти"
           : "The center will focus on developing AI solutions for healthcare and education sectors",
-        category: isUkrainian ? "Дослідження" : "Research",
+        category: isUk ? "Дослідження" : "Research",
         date: "2024-11-10",
         readTime: "5",
         image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop",
-        author: isUkrainian ? "Д-р Марина Коваленко" : "Dr. Marina Kovalenko",
-        tags: isUkrainian 
+        author: isUk ? "Д-р Марина Коваленко" : "Dr. Marina Kovalenko",
+        tags: isUk 
           ? ["дослідження", "охорона здоров'я", "освіта", "Київ", "інновації"]
           : ["research", "healthcare", "education", "Kyiv", "innovation"],
-        content: isUkrainian ? [
+        content: isUk ? [
           "У Києві відкрився новий центр досліджень штучного інтелекту, який стане важливим кроком у розвитку AI-технологій в Україні. Центр розташований у сучасному науково-технологічному парку та оснащений найновішим обладнанням для проведення досліджень світового рівня.",
           "Основні напрямки роботи центру:",
           "• Розробка AI-рішень для діагностики та лікування захворювань",
@@ -100,21 +100,21 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
       },
       "article-2": {
         id: "article-2",
-        title: isUkrainian
+        title: isUk
           ? "Україна приєднується до глобальної ініціативи з етики ШІ"
           : "Ukraine Joins Global AI Ethics Initiative",
-        description: isUkrainian
+        description: isUk
           ? "Нове міжнародне партнерство має на меті встановити етичні керівні принципи для розвитку ШІ"
           : "New international partnership aims to establish ethical guidelines for AI development",
-        category: isUkrainian ? "Етика" : "Ethics",
+        category: isUk ? "Етика" : "Ethics",
         date: "2024-11-08",
         readTime: "6",
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop",
-        author: isUkrainian ? "Катерина Шевченко" : "Kateryna Shevchenko",
-        tags: isUkrainian 
+        author: isUk ? "Катерина Шевченко" : "Kateryna Shevchenko",
+        tags: isUk 
           ? ["етика", "міжнародне співробітництво", "стандарти", "регулювання"]
           : ["ethics", "international cooperation", "standards", "regulation"],
-        content: isUkrainian ? [
+        content: isUk ? [
           "Україна офіційно приєдналася до Глобальної ініціативи з етики штучного інтелекту, що стало важливим кроком у формуванні міжнародних стандартів відповідального розвитку AI-технологій.",
           "Ця ініціатива об'єднує понад 50 країн та міжнародних організацій з метою розробки спільних принципів етичного використання штучного інтелекту.",
           "Основні цілі ініціативи:",
@@ -152,7 +152,7 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
             className="mb-4 text-gray-600 hover:text-gray-900"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            {t('articles.title').includes('Articles') ? 'Back to Articles' : 'Назад до статтей'}
+            {isUk ? 'Назад до анонсів' : 'Back to Announcements'}
           </Button>
         </div>
       </div>
@@ -200,16 +200,27 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
             <div className="flex items-center gap-4">
               <Button size="sm" variant="outline">
                 <Share2 className="w-4 h-4 mr-2" />
-                {t('articles.title').includes('Articles') ? 'Share' : 'Поділитися'}
+                {isUk ? 'Поділитися' : 'Share'}
               </Button>
+              
+              {/*
               <Button size="sm" variant="outline">
                 <BookOpen className="w-4 h-4 mr-2" />
-                {t('articles.title').includes('Articles') ? 'Save' : 'Зберегти'}
-              </Button>
+                {isUk ? 'Зберегти' : 'Save'}
+                </Button>
+            */}
+
             </div>
           </div>
         </div>
       </section>
+
+{/*
+  <Button size="sm" variant="outline">
+    <BookOpen className="w-4 h-4 mr-2" />
+    {isUk ? 'Зберегти' : 'Save'}
+    </Button>
+*/}
 
       {/* Article Image */}
       <section className="py-8">
@@ -249,7 +260,7 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h3 className="text-2xl font-medium text-gray-900 mb-8">
-            {t('articles.title').includes('Articles') ? 'Related Articles' : 'Схожі статті'}
+            {isUk ? "Схожі статті" : "Related Articles"}
           </h3>
           
           <div className="grid md:grid-cols-2 gap-6">
@@ -262,21 +273,21 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
                 />
                 <div className="absolute top-3 left-3">
                   <Badge variant="secondary" className="bg-white/90 text-gray-700">
-                    {t('articles.title').includes('Articles') ? 'Ethics' : 'Етика'}
+                    {isUk ? 'Етика' : 'Ethics'}
                   </Badge>
                 </div>
               </div>
               <div className="p-6">
                 <h4 className="font-medium text-gray-900 mb-2 leading-tight">
-                  {t('articles.title').includes('Articles')
-                    ? "Ukraine Joins Global AI Ethics Initiative"
-                    : "Україна приєднується до глобальної ініціативи з етики ШІ"
+                  {isUk
+                    ? "Україна приєднується до глобальної ініціативи з етики ШІ"
+                    : "Ukraine Joins Global AI Ethics Initiative"
                   }
                 </h4>
                 <p className="text-gray-600 text-sm mb-4">
-                  {t('articles.title').includes('Articles')
-                    ? "New international partnership aims to establish ethical guidelines for AI development"
-                    : "Нове міжнародне партнерство має на меті встановити етичні керівні принципи для розвитку ШІ"
+                  {isUk
+                    ? "Нове міжнародне партнерство має на меті встановити етичні керівні принципи для розвитку ШІ"
+                    : "New international partnership aims to establish ethical guidelines for AI development"
                   }
                 </p>
                 <div className="flex items-center text-xs text-gray-500">
@@ -295,21 +306,21 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
                 />
                 <div className="absolute top-3 left-3">
                   <Badge variant="secondary" className="bg-white/90 text-gray-700">
-                    {t('articles.title').includes('Articles') ? 'Technology' : 'Технології'}
+                    {isUk ? 'Технології' : 'Technology'}
                   </Badge>
                 </div>
               </div>
               <div className="p-6">
                 <h4 className="font-medium text-gray-900 mb-2 leading-tight">
-                  {t('articles.title').includes('Articles')
-                    ? "Breakthrough in Quantum AI Computing"
-                    : "Прорив у квантових обчисленнях ШІ"
+                  {isUk
+                    ? "Прорив у квантових обчисленнях ШІ"
+                    : "Breakthrough in Quantum AI Computing"
                   }
                 </h4>
                 <p className="text-gray-600 text-sm mb-4">
-                  {t('articles.title').includes('Articles')
-                    ? "Ukrainian researchers achieve significant milestone in quantum machine learning algorithms"
-                    : "Українські дослідники досягають значної віхи в алгоритмах квантового машинного навчання"
+                  {isUk
+                    ? "Українські дослідники досягають значної віхи в алгоритмах квантового машинного навчання"
+                    : "Ukrainian researchers achieve significant milestone in quantum machine learning algorithms"
                   }
                 </p>
                 <div className="flex items-center text-xs text-gray-500">

@@ -1,5 +1,7 @@
+import React, { useState, useEffect } from 'react';
 import { Button } from "./ui/button.js";
 import { Globe, Search, Menu } from "lucide-react";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
 import { HeaderContent } from "./data/HeaderContent.js";
 
@@ -13,8 +15,6 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
 
   const pageData = HeaderContent[currentPage] ?? HeaderContent.home ?? {
     background: "",
-    bottomText1: "",
-    bottomText2: "",
     height: ""
   };
 
@@ -27,6 +27,8 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
   const toggleLanguage = () => {
     setLanguage(language === "uk" ? "en" : "uk");
   };
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header
@@ -44,7 +46,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
       </div>
 
       {/* Header Content */}
-      <div className="relative z-10 max-w-[76rem] mx-auto px-4 sm:px-6 lg:px-8 h-full pt-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full pt-12">
         <div className="flex items-start justify-between h-full">
           {/* Logo Section */}
           <div
@@ -61,7 +63,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
             </div>
 
             {/* Title - Hidden on mobile */}
-            <div className="hidden md:block mt-2">
+            <div className="hidden sm:block mt-2">
               <h1 className="text-white text-xl font-medium leading-tight mb-2">
                 {t("header.title.line1")}
                 <br />
@@ -76,7 +78,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
           </div>
 
           {/* Navigation Section */}
-          <div className="hidden lg:flex flex-col items-end justify-center space-y-6 flex-1 ml-8">
+          <div className="hidden xl:flex flex-col items-end justify-center space-y-6 flex-1 ml-8">
             {/* Top Navigation Row */}
             <div className="flex items-center space-x-8">
               <button
@@ -197,10 +199,10 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden">
+          <div className="xl:hidden">
             <Button
               variant="ghost"
-              size="sm"
+              size="lg"
               className="text-white hover:bg-white/10 p-3 rounded-full"
             >
               <Menu className="w-7 h-7" />
@@ -209,15 +211,35 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
         </div>
 
           {/* Bottom text section */}
-          <div className="absolute bottom-12 left-8 text-left px-4 space-y-4">
-            <p className="text-white text-4.75xl font-bold max-w-xl leading-snug">
-              {t(`header.bottomText1.${currentPage}`) || pageData.bottomText1}
-            </p>
-            <p className="text-white text-xl font-medium max-w-xl leading-normal">
-              {t(`header.bottomText2.${currentPage}`) || pageData.bottomText2}
-            </p>
+            {(() => {
+              // Отримуємо тексти: або переклад, або pageData, або undefined
+              const bottomText1 = t(`header.bottomText1.${currentPage}`) !== `header.bottomText1.${currentPage}`
+                ? t(`header.bottomText1.${currentPage}`)
+                : pageData.bottomText1;
+
+              const bottomText2 = t(`header.bottomText2.${currentPage}`) !== `header.bottomText2.${currentPage}`
+                ? t(`header.bottomText2.${currentPage}`)
+                : pageData.bottomText2;
+
+              // Якщо немає жодного тексту, нічого не рендеримо
+              if (!bottomText1 && !bottomText2) return null;
+
+              return (
+                <div className="absolute bottom-12 text-left px-4 space-y-4">
+                  {bottomText1 && (
+                    <p className="text-white text-4.75xl font-bold max-w-xl leading-snug">
+                      {bottomText1}
+                    </p>
+                  )}
+                  {bottomText2 && (
+                    <p className="text-white text-xl font-medium max-w-xl leading-normal">
+                      {bottomText2}
+                    </p>
+                  )}
+                </div>
+              );
+            })()}
           </div>
-        </div>
 
       {/* Mobile Navigation - Full width dropdown */}
       <div className="lg:hidden absolute top-full left-0 w-full bg-black/90 backdrop-blur-sm border-t border-white/20 hidden">

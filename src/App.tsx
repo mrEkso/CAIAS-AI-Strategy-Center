@@ -33,7 +33,7 @@ function AppContent() {
 
   const handleArticleClick = (articleId: string) => {
     setSelectedArticle(articleId);
-    setCurrentPage("article-detail");
+    setCurrentPage("articleDetail");
   };
 
   const handleBackToExperts = () => {
@@ -51,7 +51,7 @@ function AppContent() {
       case "home":
       default:
         return <HomePage onArticleClick={handleArticleClick} />;
-      case "article-detail":
+      case "articleDetail":
         return selectedArticle ? (
           <ArticlesDetailPage
             articleId={selectedArticle}

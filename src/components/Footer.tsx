@@ -20,7 +20,7 @@ export function Footer({ currentPage = "home", onNavigate }: FooterProps) {
             onClick={() => {
              if (onNavigate) {
               onNavigate("home");
-              window.scrollTo({ top: 0, behavior: "auto" });
+              window.scrollTo({ top: 0, behavior: "smooth" });
             }
           }}
         >
