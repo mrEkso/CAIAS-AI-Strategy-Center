@@ -2,7 +2,7 @@
 
 export const Announcements = (isUk: boolean) => [
     {
-      id: "featured-article",
+      id: "featured",
       title: isUk
         ? "Трансформація європейської політики ШІ: нова рамка для інновацій та етики"
         : "Transforming European AI Policy: A New Framework for Innovation and Ethics",

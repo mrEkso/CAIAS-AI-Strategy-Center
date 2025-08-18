@@ -225,7 +225,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               if (!bottomText1 && !bottomText2) return null;
 
               return (
-                <div className="absolute bottom-12 text-left px-4 space-y-4">
+                <div className="absolute bottom-12 text-left space-y-4">
                   {bottomText1 && (
                     <p className="text-white text-4.75xl font-bold max-w-xl leading-snug">
                       {bottomText1}

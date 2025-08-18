@@ -1,4 +1,8 @@
+import { useLanguage } from "../../contexts/LanguageContext.js";
+
 export function AboutHero() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-[60vh] flex flex-col items-center justify-center px-4 overflow-hidden">
       {/* Фонові елементи */}
@@ -31,7 +35,7 @@ export function AboutHero() {
                   <div className="w-4 h-4 bg-primary rounded-lg"></div>
                 </div>
               </div>
-              <h3 className="mb-6 text-foreground text-center">Наша місія</h3>
+              <h3 className="mb-6 text-foreground text-center text-xl">Наша місія</h3>
               <p className="text-muted-foreground leading-relaxed text-center">
                 Підвищення якості політик і стратегій у сфері ШІ та забезпечення глобального лідерства 
                 молодих талантів через відкриті й засновані на фактах дослідження, аналіз і дискусії.
@@ -50,7 +54,7 @@ export function AboutHero() {
                   <div className="w-4 h-4 bg-primary rounded-lg"></div>
                 </div>
               </div>
-              <h3 className="mb-6 text-foreground text-center">Наше бачення</h3>
+              <h3 className="mb-6 text-foreground text-center text-xl">Наше бачення</h3>
               <p className="text-muted-foreground leading-relaxed text-center">
                 Стати провідною платформою для формування стратегій штучного інтелекту в Україні 
                 та інтеграції України у глобальний технологічний ландшафт.

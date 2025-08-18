@@ -1,7 +1,10 @@
 import { Card, CardContent } from "../ui/card.js";
 import { Calendar, Users, Globe, BookOpen, Target, Lightbulb, Users2, Award } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext.js";
 
 export function AboutContent() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 px-4 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/2 to-transparent"></div>
@@ -11,7 +14,7 @@ export function AboutContent() {
           {/* Основна інформація */}
           <div className="lg:col-span-2 space-y-12">
             <div>
-              <h2 className="mb-8 text-foreground">Про центр</h2>
+              <h2 className="mb-8 text-foreground text-2xl">Про центр</h2>
               <div className="space-y-8 text-muted-foreground leading-relaxed">
                 <p className="text-lg">
                   Центр стратегій застосування штучного інтелекту КПІ ім. Ігоря Сікорського заснований у 2025 році 
@@ -43,7 +46,7 @@ export function AboutContent() {
             </div>
             
             <div className="p-8 rounded-3xl bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20">
-              <h3 className="mb-6 text-foreground">Дослідницька програма</h3>
+              <h3 className="mb-6 text-foreground text-xl">Дослідницька програма</h3>
               <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
                   Річна дослідницька програма Центру формується на основі відкритого діалогу з дослідниками, 
@@ -66,7 +69,7 @@ export function AboutContent() {
             {/* Ключові факти */}
             <Card className="bg-card/70 backdrop-blur-sm border-border hover:shadow-lg transition-all duration-300">
               <CardContent className="p-8">
-                <h3 className="mb-8 text-foreground">Ключові факти</h3>
+                <h3 className="mb-8 text-foreground text-lg">Ключові факти</h3>
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -114,7 +117,7 @@ export function AboutContent() {
             {/* Принципи роботи */}
             <Card className="bg-card/70 backdrop-blur-sm border-border hover:shadow-lg transition-all duration-300">
               <CardContent className="p-8">
-                <h3 className="mb-8 text-foreground">Принципи роботи</h3>
+                <h3 className="mb-8 text-foreground text-lg">Принципи роботи</h3>
                 <div className="space-y-4">
                   {[
                     { icon: Target, text: "Незалежність досліджень" },

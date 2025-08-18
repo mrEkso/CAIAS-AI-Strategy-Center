@@ -5,9 +5,12 @@ import { Calendar, Clock, User, ArrowRight, ArrowDown } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
 import { featuredPublicationsArticle, PublicationsArticles } from "./data/PublicationsData.js";
-import { Loader } from "lucide-react";
 
-export function Publications() {
+interface PublicationsProps {
+  onPublicationClick?: ((publicationId: string) => void) | undefined;
+}
+
+export function Publications({ onPublicationClick }: PublicationsProps) {
   const { t, language } = useLanguage();
   const isUk = language === "uk";
 
@@ -22,10 +25,10 @@ export function Publications() {
           <div className="mb-8">
             <h2 className="text-2xl font-medium text-gray-900 mb-2">{t('publications.featuredPublications')}</h2>
           </div>
-          
-          {/*  <Card className="group overflow-hidden border shadow-lg bg-white hover:shadow-xl transition-shadow duration-300">  */}
 
-          <Card className="group overflow-hidden border shadow-lg bg-white hover:shadow-xl transition-transform duration-500 transform hover:scale-[1.02] flex flex-col">
+          <Card 
+            onClick={() => onPublicationClick?.(featuredArticle.id)}
+            className="group overflow-hidden border shadow-lg bg-white hover:shadow-xl transition-transform duration-500 transform hover:scale-[1.02] flex flex-col cursor-pointer">
             <div className="grid lg:grid-cols-2 gap-0 h-full">
               <div className="relative h-64 lg:h-auto">
                 <ImageWithFallback
@@ -96,20 +99,21 @@ export function Publications() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Articles.map((article, index) => (
+            {Articles.map((publication, index) => (
               <Card
                 key={index}
-                className="group overflow-hidden border shadow-lg bg-white hover:shadow-xl hover:shadow-primary/5 transition-transform duration-500 transform hover:scale-[1.02] flex flex-col"
+                onClick={() => onPublicationClick?.(publication.id)}
+                className="group overflow-hidden border shadow-lg bg-white hover:shadow-xl hover:shadow-primary/5 transition-transform duration-500 transform hover:scale-[1.02] flex flex-col cursor-pointer"
               >
                 <div className="relative h-56">
                   <ImageWithFallback
-                    src={article.image}
-                    alt={article.title}
+                    src={publication.image}
+                    alt={publication.title}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-4 left-4">
                     <Badge variant="secondary" className="bg-white/90 text-gray-700 text-sm px-3 py-1">
-                      {article.category}
+                      {publication.category}
                     </Badge>
                   </div>
                 </div>
@@ -119,25 +123,25 @@ export function Publications() {
                   <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
                     <div className="flex items-center">
                       <Calendar className="w-4 h-4 mr-2" />
-                      {article.date}
+                      {publication.date}
                     </div>
                     <div className="flex items-center">
                       <Clock className="w-4 h-4 mr-2" />
-                      {article.readTime} min
+                      {publication.readTime} min
                     </div>
                   </div>
 
                   <CardTitle className="text-xl leading-snug line-clamp-2 mb-3">
-                    {article.title}
+                    {publication.title}
                   </CardTitle>
 
                   {/* Середина */}
                   <div className="flex-1">
                     <p className="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">
-                      {article.description}
+                      {publication.description}
                     </p>
                     <div className="flex flex-wrap gap-3">
-                      {article.tags.map((tag, idx) => (
+                      {publication.tags.map((tag, idx) => (
                         <Badge
                           key={idx}
                           variant="secondary"
@@ -153,7 +157,7 @@ export function Publications() {
                   <div className="flex items-center justify-between mt-auto pt-6">
                     <div className="flex items-center text-sm text-gray-500">
                       <User className="w-4 h-4 mr-2" />
-                      {article.author}
+                      {publication.author}
                     </div>
                     <Button
                       size="sm"

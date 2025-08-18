@@ -1,6 +1,7 @@
 // Головна публікація
 
 export const featuredPublicationsArticle = (isUk: boolean) => ({
+  id: "featured-publication",
   title: isUk
     ? "Щорічна конференція з ШІ | 15-16 листопада 2024"
     : "Annual AI Conference | November 15-16, 2024",
@@ -25,6 +26,7 @@ export const featuredPublicationsArticle = (isUk: boolean) => ({
 
 export const PublicationsArticles = (isUk: boolean) => [
   {
+    id: "publication-1",
     title: isUk
       ? "ШІ в сільському господарстві: рішення для розумного фермерства"
       : "AI in Agriculture: Smart Farming Solutions",
@@ -45,6 +47,7 @@ export const PublicationsArticles = (isUk: boolean) => [
       : ["agriculture", "artificial intelligence", "environment"]
   },
   {
+    id: "publication-2",
     title: isUk
       ? "Воркшоп з машинного навчання для студентів"
       : "Machine Learning Workshop for Students",
@@ -65,6 +68,7 @@ export const PublicationsArticles = (isUk: boolean) => [
       : ["education", "machine learning", "youth"]
   },
   {
+    id: "publication-3",
     title: isUk
       ? "Партнерство з європейськими центрами досліджень ШІ"
       : "Partnership with European AI Research Centers",

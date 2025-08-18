@@ -5,19 +5,19 @@ import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen, Tag } from "lucide-
 import { ImageWithFallback } from "./figma/ImageWithFallback.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
 
-interface PublicationsDetailPageProps {
-  publicationId: string;
+interface EventsDetailPageProps {
+  eventId: string;
   onBack: () => void;
 }
 
-export function PublicationsDetailPage({  publicationId, onBack }: PublicationsDetailPageProps) {
+export function EventsDetailPage({  eventId, onBack }: EventsDetailPageProps) {
   const { t, language } = useLanguage();
   const isUk = language === "uk";
 
   // Отримуємо дані статті на основі ID
-  const getPublicationData = (id: string) => {
+  const getEventData = (id: string) => {
 
-    const allPublications = {
+    const allEvents = {
       "featured": {
         id: "featured",
         title: isUk
@@ -60,10 +60,10 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
           "Registration for the event is now open on the Center's official website. Space is limited, so we recommend registering as soon as possible."
         ]
       },
-      "publication-1": {
-        id: "publication-1", 
+      "event-1": {
+        id: "event-1", 
         title: isUk
-          ? "Дослідження 1"
+          ? "Подія 1"
           : "New AI Research Center Opens in Kyiv",
         description: isUk
           ? "Центр зосередиться на розробці рішень ШІ для сфер охорони здоров'я та освіти"
@@ -98,10 +98,10 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
           "The opening of the center was made possible through support from Ukraine's Ministry of Education and Science and international partners."
         ]
       },
-      "publication-2": {
-        id: "publication-2",
+      "event-2": {
+        id: "event-2",
         title: isUk
-          ? "Дослідження 2"
+          ? "Подія 2"
           : "Ukraine Joins Global AI Ethics Initiative",
         description: isUk
           ? "Нове міжнародне партнерство має на меті встановити етичні керівні принципи для розвитку ШІ"
@@ -136,10 +136,10 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
       },
     };
 
-    return allPublications[id as keyof typeof allPublications] || allPublications.featured;
+    return allEvents[id as keyof typeof allEvents] || allEvents.featured;
   };
 
-  const publication = getPublicationData(publicationId);
+  const event = getEventData(eventId);
 
   return (
     <div className="min-h-screen bg-white">
@@ -152,44 +152,44 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
             className=" text-primary hover:text-primary-dark"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            {isUk ? 'Назад до публікацій' : 'Back to Publications'}
+            {isUk ? 'Назад до подій' : 'Back to Events'}
           </Button>
         </div>
       </div>
 
-      {/* Publication Header */}
+      {/* Events Header */}
       <section className="py-4 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div>
             <Badge className="mb-4 bg-blue-600 text-white">
-              {publication.category}
+              {event.category}
             </Badge>
             
             <h1 className="text-3xl lg:text-4xl font-medium text-gray-900 mb-6 leading-tight">
-              {publication.title}
+              {event.title}
             </h1>
             
             <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-6">
               <div className="flex items-center">
                 <User className="w-4 h-4 mr-2" />
-                <span>{publication.author}</span>
+                <span>{event.author}</span>
               </div>
               <div className="flex items-center">
                 <Calendar className="w-4 h-4 mr-2" />
-                <span>{publication.date}</span>
+                <span>{event.date}</span>
               </div>
               <div className="flex items-center">
                 <Clock className="w-4 h-4 mr-2" />
-                <span>{publication.readTime} min</span>
+                <span>{event.readTime} min</span>
               </div>
             </div>
 
             <p className="text-xl text-gray-800 leading-relaxed mb-8">
-              {publication.description}
+              {event.description}
             </p>
 
             <div className="flex flex-wrap gap-2">
-              {publication.tags.map((tag, index) => (
+              {event.tags.map((tag, index) => (
                 <Badge key={index} variant="secondary" className="bg-gray-100 text-gray-700">
                   <Tag className="w-3 h-3 mr-1" />
                   {tag}
@@ -218,24 +218,24 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
       </section>
 
 
-      {/* Publication Image */}
+      {/* Event Image */}
       <section className="py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
             <ImageWithFallback
-              src={publication.image}
-              alt={publication.title}
+              src={event.image}
+              alt={event.title}
               className="w-full h-full object-cover"
             />
           </div>
         </div>
       </section>
 
-      {/* Publication Content */}
+      {/* Event Content */}
       <section className="pt-4 pb-8 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
-            {publication.content.map((paragraph, index) => (
+            {event.content.map((paragraph, index) => (
               <div key={index} className="mb-6">
                 {paragraph.startsWith('•') ? (
                   <div className="ml-4 text-base text-gray-800 leading-relaxed">
@@ -252,7 +252,7 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
         </div>
       </section>
 
-      {/* Related Publications */}
+      {/* Related Events */}
 
       {/*
       <section className="py-16 bg-gray-50">

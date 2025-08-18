@@ -5,19 +5,19 @@ import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen, Tag } from "lucide-
 import { ImageWithFallback } from "./figma/ImageWithFallback.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
 
-interface PublicationsDetailPageProps {
-  publicationId: string;
+interface DatasetsDetailPageProps {
+  datasetId: string;
   onBack: () => void;
 }
 
-export function PublicationsDetailPage({  publicationId, onBack }: PublicationsDetailPageProps) {
+export function DatasetsDetailPage({ datasetId, onBack }: DatasetsDetailPageProps) {
   const { t, language } = useLanguage();
   const isUk = language === "uk";
 
   // Отримуємо дані статті на основі ID
-  const getPublicationData = (id: string) => {
+  const getDatasetData = (id: string) => {
 
-    const allPublications = {
+    const allDatasets = {
       "featured": {
         id: "featured",
         title: isUk
@@ -60,10 +60,10 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
           "Registration for the event is now open on the Center's official website. Space is limited, so we recommend registering as soon as possible."
         ]
       },
-      "publication-1": {
-        id: "publication-1", 
+      "dataset-1": {
+        id: "dataset-1", 
         title: isUk
-          ? "Дослідження 1"
+          ? "Набір даних 1"
           : "New AI Research Center Opens in Kyiv",
         description: isUk
           ? "Центр зосередиться на розробці рішень ШІ для сфер охорони здоров'я та освіти"
@@ -98,10 +98,10 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
           "The opening of the center was made possible through support from Ukraine's Ministry of Education and Science and international partners."
         ]
       },
-      "publication-2": {
-        id: "publication-2",
+      "dataset-2": {
+        id: "dataset-2",
         title: isUk
-          ? "Дослідження 2"
+          ? "Набір даних 2"
           : "Ukraine Joins Global AI Ethics Initiative",
         description: isUk
           ? "Нове міжнародне партнерство має на меті встановити етичні керівні принципи для розвитку ШІ"
@@ -136,10 +136,10 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
       },
     };
 
-    return allPublications[id as keyof typeof allPublications] || allPublications.featured;
+    return allDatasets[id as keyof typeof allDatasets] || allDatasets.featured;
   };
 
-  const publication = getPublicationData(publicationId);
+  const dataset = getDatasetData(datasetId);
 
   return (
     <div className="min-h-screen bg-white">
@@ -152,44 +152,44 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
             className=" text-primary hover:text-primary-dark"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            {isUk ? 'Назад до публікацій' : 'Back to Publications'}
+            {isUk ? 'Назад до наборів даних' : 'Back to Datasets'}
           </Button>
         </div>
       </div>
 
-      {/* Publication Header */}
+      {/* Dataset Header */}
       <section className="py-4 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div>
             <Badge className="mb-4 bg-blue-600 text-white">
-              {publication.category}
+              {dataset.category}
             </Badge>
             
             <h1 className="text-3xl lg:text-4xl font-medium text-gray-900 mb-6 leading-tight">
-              {publication.title}
+              {dataset.title}
             </h1>
             
             <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-6">
               <div className="flex items-center">
                 <User className="w-4 h-4 mr-2" />
-                <span>{publication.author}</span>
+                <span>{dataset.author}</span>
               </div>
               <div className="flex items-center">
                 <Calendar className="w-4 h-4 mr-2" />
-                <span>{publication.date}</span>
+                <span>{dataset.date}</span>
               </div>
               <div className="flex items-center">
                 <Clock className="w-4 h-4 mr-2" />
-                <span>{publication.readTime} min</span>
+                <span>{dataset.readTime} min</span>
               </div>
             </div>
 
             <p className="text-xl text-gray-800 leading-relaxed mb-8">
-              {publication.description}
+              {dataset.description}
             </p>
 
             <div className="flex flex-wrap gap-2">
-              {publication.tags.map((tag, index) => (
+              {dataset.tags.map((tag, index) => (
                 <Badge key={index} variant="secondary" className="bg-gray-100 text-gray-700">
                   <Tag className="w-3 h-3 mr-1" />
                   {tag}
@@ -218,24 +218,24 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
       </section>
 
 
-      {/* Publication Image */}
+      {/* Dataset Image */}
       <section className="py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
             <ImageWithFallback
-              src={publication.image}
-              alt={publication.title}
+              src={dataset.image}
+              alt={dataset.title}
               className="w-full h-full object-cover"
             />
           </div>
         </div>
       </section>
 
-      {/* Publication Content */}
+      {/* Dataset Content */}
       <section className="pt-4 pb-8 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
-            {publication.content.map((paragraph, index) => (
+            {dataset.content.map((paragraph, index) => (
               <div key={index} className="mb-6">
                 {paragraph.startsWith('•') ? (
                   <div className="ml-4 text-base text-gray-800 leading-relaxed">
@@ -252,7 +252,7 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
         </div>
       </section>
 
-      {/* Related Publications */}
+      {/* Related Datasets */}
 
       {/*
       <section className="py-16 bg-gray-50">

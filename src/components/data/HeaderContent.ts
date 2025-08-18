@@ -71,5 +71,17 @@ export const HeaderContent: Record<string, {
   articleDetail: {
     background: "/images/background19.jpg",
     height: "300px",
-  }
+  },
+  publicationDetail: {
+    background: "/images/background19.jpg",
+    height: "300px",
+  },
+  datasetDetail: {
+    background: "/images/background19.jpg",
+    height: "300px",
+  },
+  eventDetail: {
+    background: "/images/background19.jpg",
+    height: "300px",
+  },
 };

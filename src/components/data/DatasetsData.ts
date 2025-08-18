@@ -1,6 +1,7 @@
 // Головний набір даних
 
 export const featuredDatasetsArticle = (isUk: boolean) => ({
+  id: "featured-dataset",
   title: isUk
     ? "Щорічна конференція з ШІ | 15-16 листопада 2024"
     : "Annual AI Conference | November 15-16, 2024",
@@ -25,6 +26,7 @@ export const featuredDatasetsArticle = (isUk: boolean) => ({
 
 export const DatasetsArticles = (isUk: boolean) => [
   {
+    id: "dataset-1",
     title: isUk
       ? "ШІ в сільському господарстві: рішення для розумного фермерства"
       : "AI in Agriculture: Smart Farming Solutions",
@@ -45,6 +47,7 @@ export const DatasetsArticles = (isUk: boolean) => [
       : ["agriculture", "artificial intelligence", "environment"]
   },
   {
+    id: "dataset-2",
     title: isUk
       ? "Воркшоп з машинного навчання для студентів"
       : "Machine Learning Workshop for Students",
@@ -65,6 +68,7 @@ export const DatasetsArticles = (isUk: boolean) => [
       : ["education", "machine learning", "youth"]
   },
   {
+    id: "dataset-3",
     title: isUk
       ? "Партнерство з європейськими центрами досліджень ШІ"
       : "Partnership with European AI Research Centers",

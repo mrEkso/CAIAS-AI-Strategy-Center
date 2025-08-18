@@ -9,9 +9,12 @@ import { Contacts } from "./components/Contacts.js";
 import { AboutUs } from "./components/AboutUs.js";
 import { ResearchTopics } from "./components/ResearchTopics.js";
 import { Publications } from "./components/Publications.js";
+import { PublicationsDetailPage } from "./components/PublicationsDetailPage.js";
 import { Datasets } from "./components/Datasets.js";
+import { DatasetsDetailPage } from "./components/DatasetsDetailPage.js";
 import { Podcasts } from "./components/Podcasts.js";
 import { Events } from "./components/Events.js";
+import { EventsDetailPage } from "./components/EventsDetailPage.js";
 import { ExpertsPage } from "./components/ExpertsPage.js";
 import { ExpertDetailPage } from "./components/ExpertDetailPage.js";
 import { Footer } from "./components/Footer.js";
@@ -20,6 +23,9 @@ function AppContent() {
   const [currentPage, setCurrentPage] = useState("home");
   const [selectedExpert, setSelectedExpert] = useState<string | null>(null);
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
+  const [SelectedPublication, setSelectedPublication] = useState<string | null>(null);
+  const [selectedDataset, setSelectedDataset] = useState<string | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
 
   const handleNavigation = (page: string) => {
     setCurrentPage(page);
@@ -36,6 +42,21 @@ function AppContent() {
     setCurrentPage("articleDetail");
   };
 
+  const handlePublicationClick = (publicationId: string) => {
+    setSelectedPublication(publicationId);
+    setCurrentPage("publicationDetail");
+  };
+
+  const handleDatasetClick = (datasetId: string) => {
+    setSelectedDataset(datasetId);
+    setCurrentPage("datasetDetail");
+  };
+
+  const handleEventClick = (eventId: string) => {
+    setSelectedEvent(eventId);
+    setCurrentPage("eventDetail");
+  };
+
   const handleBackToExperts = () => {
     setSelectedExpert(null);
     setCurrentPage("experts");
@@ -44,6 +65,21 @@ function AppContent() {
   const handleBackToAnnouncements = () => {
     setSelectedArticle(null);
     setCurrentPage("home");
+  };
+
+  const handleBackToPublications = () => {
+    setSelectedPublication(null);
+    setCurrentPage("publications");
+  };
+
+  const handleBackToDatasets = () => {
+    setSelectedDataset(null);
+    setCurrentPage("datasets");
+  };
+
+  const handleBackToEvents = () => {
+    setSelectedEvent(null);
+    setCurrentPage("events");
   };
 
   const renderCurrentPage = () => {
@@ -69,13 +105,40 @@ function AppContent() {
       case "researchTopics":
         return <ResearchTopics />;
       case "publications":
-        return <Publications />;
+        return <Publications onPublicationClick={handlePublicationClick} />;
+      case "publicationDetail":
+        return SelectedPublication ? (
+          <PublicationsDetailPage
+            publicationId={SelectedPublication}
+            onBack={handleBackToPublications}
+          />
+        ) : (
+          <Datasets onDatasetClick={handleDatasetClick} />
+        ); 
       case "datasets":
-        return <Datasets />;
+        return <Datasets onDatasetClick={handleDatasetClick} />;
+      case "datasetDetail":
+        return selectedDataset ? (
+          <DatasetsDetailPage
+            datasetId={selectedDataset}
+            onBack={handleBackToDatasets}
+          />
+        ) : (
+          <Datasets onDatasetClick={handleDatasetClick} />
+        ); 
       case "podcasts":
         return <Podcasts />;
       case "events":
-        return <Events />;
+        return <Events onEventClick={handleEventClick} />;
+      case "eventDetail":
+        return selectedEvent ? (
+          <EventsDetailPage
+            eventId={selectedEvent}
+            onBack={handleBackToEvents}
+          />
+        ) : (
+          <Events onEventClick={handleEventClick} />
+        ); 
       case "experts":
         return <ExpertsPage onExpertClick={handleExpertClick} />;
       case "expert-detail":

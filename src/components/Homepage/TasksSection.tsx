@@ -32,7 +32,7 @@ export function TasksSection() {
   return (
     <section className="relative py-16 bg-primary-light3/75">
       {/* Grain texture overlay */}
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute bg-black/5 inset-0 pointer-events-none">
           <div
             className="w-full h-full"
             style={{
@@ -43,7 +43,7 @@ export function TasksSection() {
           />
         </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-medium text-white mb-4">
             {t('tasks.title')}
