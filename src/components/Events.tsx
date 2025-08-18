@@ -171,6 +171,8 @@ export function Events() {
               </Card>
             ))}
             </div>
+
+            {/*
             <div className="flex justify-center mt-10">
               <Button
                 variant="outline"
@@ -180,6 +182,8 @@ export function Events() {
                 {t('events.moreEvents')}
               </Button>
             </div>
+            */}
+            
         </div>
       </section>
     </div>

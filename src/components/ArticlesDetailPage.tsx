@@ -149,7 +149,7 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
           <Button 
             variant="ghost" 
             onClick={onBack}
-            className="mb-4 text-gray-600 hover:text-gray-900"
+            className=" text-primary hover:text-primary-dark"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             {isUk ? 'Назад до анонсів' : 'Back to Announcements'}
@@ -158,9 +158,9 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
       </div>
 
       {/* Article Header */}
-      <section className="py-12 bg-white">
+      <section className="py-4 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8">
+          <div>
             <Badge className="mb-4 bg-blue-600 text-white">
               {article.category}
             </Badge>
@@ -184,11 +184,11 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
               </div>
             </div>
 
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
+            <p className="text-xl text-gray-800 leading-relaxed mb-8">
               {article.description}
             </p>
 
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap gap-2">
               {article.tags.map((tag, index) => (
                 <Badge key={index} variant="secondary" className="bg-gray-100 text-gray-700">
                   <Tag className="w-3 h-3 mr-1" />
@@ -197,30 +197,26 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
               ))}
             </div>
 
-            <div className="flex items-center gap-4">
-              <Button size="sm" variant="outline">
-                <Share2 className="w-4 h-4 mr-2" />
-                {isUk ? 'Поділитися' : 'Share'}
-              </Button>
-              
+            {/* <div className="flex items-center gap-4">
+                  <Button size="sm" variant="outline">
+                    <Share2 className="w-4 h-4 mr-2" />
+                    {isUk ? 'Поділитися' : 'Share'}
+                  </Button>
+                </div>
+            */}
+
               {/*
               <Button size="sm" variant="outline">
                 <BookOpen className="w-4 h-4 mr-2" />
                 {isUk ? 'Зберегти' : 'Save'}
-                </Button>
+              </Button>
             */}
 
-            </div>
+            
           </div>
         </div>
       </section>
 
-{/*
-  <Button size="sm" variant="outline">
-    <BookOpen className="w-4 h-4 mr-2" />
-    {isUk ? 'Зберегти' : 'Save'}
-    </Button>
-*/}
 
       {/* Article Image */}
       <section className="py-8">
@@ -236,17 +232,17 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
       </section>
 
       {/* Article Content */}
-      <section className="py-12 bg-white">
+      <section className="pt-4 pb-8 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
             {article.content.map((paragraph, index) => (
               <div key={index} className="mb-6">
                 {paragraph.startsWith('•') ? (
-                  <div className="ml-4 text-gray-700 leading-relaxed">
+                  <div className="ml-4 text-base text-gray-800 leading-relaxed">
                     {paragraph}
                   </div>
                 ) : (
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-800 leading-relaxed">
                     {paragraph}
                   </p>
                 )}
@@ -257,6 +253,8 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
       </section>
 
       {/* Related Articles */}
+
+      {/*
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h3 className="text-2xl font-medium text-gray-900 mb-8">
@@ -332,6 +330,10 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
           </div>
         </div>
       </section>
+
+      */}
+        
+      
     </div>
   );
 }

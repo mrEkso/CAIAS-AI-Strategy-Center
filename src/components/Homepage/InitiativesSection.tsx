@@ -47,7 +47,7 @@ export function InitiativesSection() {
         
         <div className="grid md:grid-cols-2 gap-8">
           {initiatives.map((initiative, index) => (
-            <Card key={index} className="border border-gray-200 hover:border-gray-300 transition-colors duration-300 hover:shadow-lg bg-white">
+            <Card key={index} className="border border-gray-200 shadow-md hover:border-gray-300 hover:shadow-xl hover:shadow-primary/20 transition-shadow duration-500 bg-white">
               <CardHeader>
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center flex-shrink-0">

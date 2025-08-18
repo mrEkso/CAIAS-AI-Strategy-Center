@@ -1,6 +1,6 @@
 import { Button } from "../ui/button.js";
 import { useLanguage } from "../../contexts/LanguageContext.js";
-const campusImage = "/images/campus.jpg";
+const CampusImage = "/images/campus.jpg";
 
 export function Hero() {
   const { t } = useLanguage();
@@ -11,13 +11,13 @@ export function Hero() {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ 
-          backgroundImage: `url(${campusImage})`,
+          backgroundImage: `url(${CampusImage})`,
           zIndex: 0
         }}
       />
       
       {/* Subtle dark overlay for text readability only */}
-      <div className="absolute inset-0 bg-black/40" style={{ zIndex: 1 }} />
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" style={{ zIndex: 1 }} />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24" style={{ zIndex: 3 }}>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -29,10 +29,10 @@ export function Hero() {
               {t('hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 shadow-lg">
+              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
                 {t('hero.learnMore')}
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 shadow-lg backdrop-blur-sm">
+              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
                 {t('hero.ourResearch')}
               </Button>
             </div>
@@ -58,10 +58,7 @@ export function Hero() {
                 </div>
               </div>
               <div className="space-y-2">
-                <h3 className="text-lg font-medium drop-shadow-md">{t('hero.mission')}</h3>
-                <p className="text-gray-100 text-sm drop-shadow-sm">
-                  {t('hero.missionDescription')}
-                </p>
+                <p className="text-gray-100 text-md font-medium drop-shadow-md mb-4 text-center">{t('hero.description')}</p>
               </div>
             </div>
             

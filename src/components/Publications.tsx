@@ -168,6 +168,8 @@ export function Publications() {
               </Card>
             ))}
             </div>
+
+            {/*
             <div className="flex justify-center mt-10">
               <Button
                 variant="outline"
@@ -177,6 +179,8 @@ export function Publications() {
                 {t('publications.morePublications')}
               </Button>
             </div>
+            */}
+            
         </div>
       </section>
     </div>

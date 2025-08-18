@@ -138,8 +138,7 @@ const ukrainianTranslations = {
     subtitle: "Розроблення інноваційних рішень у сфері штучного інтелекту в стратегічних секторах економіки",
     learnMore: "Дізнатися більше",
     ourResearch: "Наші дослідження",
-    mission: "Наша місія",
-    missionDescription: "Експертне середовище • Інноваційні рішення • Стратегічні сектори",
+    description: "Експертне середовище • Інноваційні рішення • Стратегічні сектори",
     university: "КПІ ім. Ігоря Сікорського"
   },
   tasks: {
@@ -444,8 +443,7 @@ const englishTranslations = {
     subtitle: "Developing innovative solutions in artificial intelligence for strategic economic sectors",
     learnMore: "Learn More",
     ourResearch: "Our Research",
-    mission: "Our Mission",
-    missionDescription: "Expert Environment • Innovative Solutions • Strategic Sectors",
+    description: "Expert Environment  •  Innovative Solutions  •  Strategic Sectors",
     university: "Igor Sikorsky Kyiv Polytechnic Institute"
   },
   tasks: {

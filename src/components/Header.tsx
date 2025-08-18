@@ -42,7 +42,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
           alt="Background"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
       {/* Header Content */}

@@ -15,8 +15,12 @@ const config: Config = {
       '4.75xl': '2.8125rem',
       },
       colors: {
+          'gray-750': '#272e3b', // між bg-gray-700 і bg-gray-800
         primary: "#2a3a91",
-          "primary-light": "#5676d6",
+          "primary-light": "#5676d6", 
+          "primary-light2": "#4ea0fc",
+          "primary-light3": "#4969c9",
+          "primary-medium": "#152056",
           "primary-dark": "#01061a",
         accent: 'var(--accent)',
           'accent-foreground': 'var(--accent-foreground)',

@@ -5,7 +5,7 @@ export function Partnership() {
   return (
     <main>
       <PartnersSection />
-      <PartnershipCTA />
+      {/* <PartnershipCTA /> */}
     </main>
   );
 }

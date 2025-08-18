@@ -8,92 +8,95 @@ interface ExpertsPageProps {
 }
 
 export function ExpertsPage({ onExpertClick }: ExpertsPageProps) {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
+  const isUk = language === "uk";
 
   const experts = [
     {
       id: "petrenko",
-      name: "Проф. Олександр Петренко",
-      nameEn: "Prof. Oleksandr Petrenko",
-      position: "Керівник центру",
-      positionEn: "Center Director",
+      name: isUk ? "Проф. Олександр Петренко" : "Prof. Oleksandr Petrenko",
+      position: isUk ? "Керівник центру" : "Center Director",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
     },
     {
       id: "kovalenko",
-      name: "Д-р Марина Коваленко",
-      nameEn: "Dr. Marina Kovalenko",
-      position: "Провідний науковий співробітник",
-      positionEn: "Lead Research Associate",
+      name: isUk ? "Д-р Марина Коваленко" : "Dr. Marina Kovalenko",
+      position: isUk ? "Провідний науковий співробітник" : "Lead Research Associate",
       image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face"
     },
     {
       id: "melnyk",
-      name: "Д-р Андрій Мельник",
-      nameEn: "Dr. Andriy Melnyk",
-      position: "Старший науковий співробітник",
-      positionEn: "Senior Research Associate",
+      name: isUk ? "Д-р Андрій Мельник" : "Dr. Andriy Melnyk",
+      position: isUk ? "Старший науковий співробітник" : "Senior Research Associate",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face"
     },
     {
       id: "shevchenko",
-      name: "Катерина Шевченко",
-      nameEn: "Kateryna Shevchenko",
-      position: "Молодший науковий співробітник",
-      positionEn: "Junior Research Associate",
+      name: isUk ? "Катерина Шевченко" : "Kateryna Shevchenko",
+      position: isUk ? "Молодший науковий співробітник" : "Junior Research Associate",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face"
     },
     {
       id: "ivanenko",
-      name: "Д-р Віктор Іваненко",
-      nameEn: "Dr. Viktor Ivanenko",
-      position: "Науковий співробітник",
-      positionEn: "Research Associate",
+      name: isUk ? "Д-р Віктор Іваненко" : "Dr. Viktor Ivanenko",
+      position: isUk ? "Науковий співробітник" : "Research Associate",
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face"
     },
     {
       id: "bondarenko",
-      name: "Юлія Бондаренко",
-      nameEn: "Yulia Bondarenko",
-      position: "Аналітик даних",
-      positionEn: "Data Analyst",
+      name: isUk ? "Юлія Бондаренко" : "Yulia Bondarenko",
+      position: isUk ? "Аналітик даних" : "Data Analyst",
       image: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=300&h=300&fit=crop&crop=face"
     },
     {
       id: "artemenko",
-      name: "Анна Артеменко",
-      nameEn: "Anna Artemenko",
-      position: "Аспірант",
-      positionEn: "PhD Student",
+      name: isUk ? "Анна Артеменко" : "Anna Artemenko",
+      position: isUk ? "Аспірант" : "PhD Student",
       image: "/images/ExpertPhotos/artemenko.jpg"
     },
     {
       id: "franko",
-      name: "Анастасія Франко",
-      nameEn: "Anastasia Franko",
-      position: "Спеціаліст з комунікацій",
-      positionEn: "Communications Specialist",
+      name: isUk ? "Анастасія Франко" : "Anastasia Franko",
+      position: isUk ? "Спеціаліст з комунікацій" : "Communications Specialist",
       image: "/images/ExpertPhotos/franko.jpg"
     }
   ];
 
-  const handleExpertClick = (expertId: string) => {
-    if (onExpertClick) {
-      onExpertClick(expertId);
+  const opportunities = [
+    {
+      icon: Calendar,
+      title: isUk ? "Стажування" : "Internship",
+      description: isUk ? "Програми для студентів" : "Programs for students",
+      details: isUk ? "3-6 місяців практичного досвіду" : "3-6 months of practical experience"
+    },
+    {
+      icon: Users,
+      title: isUk ? "Дослідження" : "Research",
+      description: isUk ? "Позиції для PhD" : "PhD positions",
+      details: isUk ? "Участь у міжнародних проектах" : "Participation in international projects"
+    },
+    {
+      icon: Mail,
+      title: isUk ? "Експертиза" : "Expertise",
+      description: isUk ? "Консультанти та ментори" : "Consultants and mentors",
+      details: isUk ? "Гнучкий графік співпраці" : "Flexible collaboration schedule"
     }
+  ];
+
+  const handleExpertClick = (expertId: string) => {
+    onExpertClick?.(expertId);
   };
 
   return (
     <div className="min-h-screen bg-white">
-
       {/* Experts Grid */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {experts.map((expert, index) => (
-              <Card 
-                key={index} 
-                className="border shadow-sm hover:shadow-md transition-all duration-300 bg-white cursor-pointer hover:scale-105"
+            {experts.map((expert) => (
+              <Card
+                key={expert.id}
+                className="border shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 transition-all duration-500 bg-white cursor-pointer hover:scale-105"
                 onClick={() => handleExpertClick(expert.id)}
               >
                 <CardContent className="p-6 text-center">
@@ -104,65 +107,45 @@ export function ExpertsPage({ onExpertClick }: ExpertsPageProps) {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">
-                    {t('header.title').includes('Center') ? expert.nameEn : expert.name}
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    {t('header.title').includes('Center') ? expert.positionEn : expert.position}
-                  </p>
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">{expert.name}</h3>
+                  <p className="text-sm text-gray-600">{expert.position}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-      {/* Join Our Team Section */}
-      <div className="relative mt-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-3xl blur-xl"></div>
-          <div className="relative bg-white backdrop-blur-sm border border-primary/20 rounded-3xl p-12">
-            <div className="text-center mb-12">
-              <h2 className="mb-6 text-foreground">Приєднуйтесь до нашої команди</h2>
-              <p className="text-muted-foreground mb-8 text-lg max-w-3xl mx-auto">
-                Ми завжди шукаємо талановитих дослідників та аналітиків, 
-                які прагнуть впливати на майбутнє штучного інтелекту в Україні.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: Calendar,
-                  title: "Стажування",
-                  description: "Програми для студентів",
-                  details: "3-6 місяців практичного досвіду"
-                },
-                {
-                  icon: Users,
-                  title: "Дослідження",
-                  description: "Позиції для PhD",
-                  details: "Участь у міжнародних проектах"
-                },
-                {
-                  icon: Mail,
-                  title: "Експертиза",
-                  description: "Консультанти та ментори",
-                  details: "Гнучкий графік співпраці"
-                }
-              ].map((opportunity, index) => {
-                const Icon = opportunity.icon;
-                return (
-                  <div key={index} className="group text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/40 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="w-8 h-8 text-primary" />
-                    </div>
-                    <h4 className="text-foreground mb-2 font-medium">{opportunity.title}</h4>
-                    <div className="text-muted-foreground mb-2">{opportunity.description}</div>
-                    <div className="text-primary text-sm">{opportunity.details}</div>
-                  </div>
-                  );
-                 })}
+          {/* Join Our Team Section */}
+          <div className="relative mt-24 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-3xl blur-xl"></div>
+              <div className="relative bg-white backdrop-blur-sm border border-primary/20 rounded-3xl p-12">
+                <div className="text-center mb-12">
+                  <h2 className="text-xl font-medium mb-6 text-foreground">
+                    {isUk ? "Приєднуйтесь до нашої команди" : "Join Our Team"}
+                  </h2>
+                  <p className="text-gray-700 text-muted-foreground mb-8 text-lg max-w-2xl mx-auto">
+                    {isUk
+                      ? "Ми завжди шукаємо талановитих дослідників та аналітиків, які прагнуть впливати на майбутнє штучного інтелекту в Україні."
+                      : "We are always looking for talented researchers and analysts who want to shape the future of AI."}
+                  </p>
                 </div>
-             </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {opportunities.map((opportunity, index) => {
+                    const Icon = opportunity.icon;
+                    return (
+                      <div key={index} className="group text-center">
+                        <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/40 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                          <Icon className="w-8 h-8 text-primary" />
+                        </div>
+                        <h4 className="text-foreground mb-2 font-medium">{opportunity.title}</h4>
+                        <div className="text-muted-foreground mb-2">{opportunity.description}</div>
+                        <div className="text-primary text-sm">{opportunity.details}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </div>

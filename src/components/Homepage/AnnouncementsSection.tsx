@@ -2,96 +2,17 @@ import { Badge } from "../ui/badge.js";
 import { Button } from "../ui/button.js";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext.js";
+import { Announcements } from "../data/AnnouncementsData.js";
 
 interface AnnouncementsSectionProps {
   onArticleClick?: ((articleId: string) => void) | undefined;
 }
 
 export function AnnouncementsSection({ onArticleClick }: AnnouncementsSectionProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const isUk = language === "uk";
 
-  const announcements = [
-    {
-      id: "featured-article",
-      title: t('announcements.title').includes('Announcements') 
-        ? "Transforming European AI Policy: A New Framework for Innovation and Ethics"
-        : "Трансформація європейської політики ШІ: нова рамка для інновацій та етики",
-      category: t('announcements.title').includes('Announcements') ? "Book" : "Книга",
-      authors: t('announcements.title').includes('Announcements') 
-        ? "Dmytro Kolesnikov, Anna Petryk, Sergiy Fedorov and Maria Tkachenko"
-        : "Дмитро Колесніков, Анна Петрик, Сергій Федоров та Марія Ткаченко",
-      date: t('announcements.title').includes('Announcements') 
-        ? "10 July 2025"
-        : "10 липня 2025",
-      tags: ["eu budget", "ai policy", "innovation"],
-      image: "https://images.unsplash.com/photo-1666597107756-ef489e9f1f09?w=1080",
-      size: "large"
-    },
-    {
-      id: "article-1",
-      title: t('announcements.title').includes('Announcements')
-        ? "AI governance models across emerging markets"
-        : "Моделі управління ШІ на ринках, що розвиваються",
-      category: t('announcements.title').includes('Announcements') ? "Policy Brief" : "Політична записка",
-      authors: t('announcements.title').includes('Announcements') 
-        ? "Oleksandr Savchenko"
-        : "Олександр Савченко",
-      date: t('announcements.title').includes('Announcements') 
-        ? "07 August 2025"
-        : "07 серпня 2025",
-      tags: ["governance", "emerging markets", "ai regulation"],
-      image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=300&fit=crop",
-      size: "small"
-    },
-    {
-      id: "article-2",
-      title: t('announcements.title').includes('Announcements')
-        ? "The Ukrainian AI ecosystem: building sustainable innovation networks"
-        : "Українська екосистема ШІ: побудова сталих інноваційних мереж",
-      category: t('announcements.title').includes('Announcements') ? "Working paper" : "Робоча стаття",
-      authors: t('announcements.title').includes('Announcements') 
-        ? "Viktoriia Levchenko and Taras Kovalenko"
-        : "Вікторія Левченко та Тарас Коваленко",
-      date: t('announcements.title').includes('Announcements') 
-        ? "18 July 2025"
-        : "18 липня 2025",
-      tags: ["ukraine", "innovation", "ecosystem"],
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop",
-      size: "small"
-    },
-    {
-      id: "article-3",
-      title: t('announcements.title').includes('Announcements')
-        ? "Machine learning applications in sustainable development: progress and challenges"
-        : "Застосування машинного навчання у сталому розвитку: прогрес та виклики",
-      category: t('announcements.title').includes('Announcements') ? "Analysis" : "Аналіз",
-      authors: t('announcements.title').includes('Announcements') 
-        ? "Ivan Petrenko"
-        : "Іван Петренко",
-      date: t('announcements.title').includes('Announcements') 
-        ? "25 July 2025"
-        : "25 липня 2025",
-      tags: ["machine learning", "sustainability", "development"],
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
-      size: "small"
-    },
-    {
-      id: "article-4",
-      title: t('announcements.title').includes('Announcements')
-        ? "Digital transformation strategies for public sector AI implementation"
-        : "Стратегії цифрової трансформації для впровадження ШІ в державному секторі",
-      category: t('announcements.title').includes('Announcements') ? "Report" : "Звіт",
-      authors: t('announcements.title').includes('Announcements') 
-        ? "Oksana Marchenko and Andriy Shevchenko"
-        : "Оксана Марченко та Андрій Шевченко",
-      date: t('announcements.title').includes('Announcements') 
-        ? "02 August 2025"
-        : "02 серпня 2025",
-      tags: ["digital transformation", "public sector", "implementation"],
-      image: "https://images.unsplash.com/photo-1726064855881-3bbb7000b29f?w=1080",
-      size: "small"
-    }
-  ];
+  const announcements = Announcements(isUk);
 
   const placeholderImg = "/images/placeholder.jpg";
 
