@@ -5,49 +5,49 @@ export const HeaderContent: Record<string, {
   height: string;
 }> = {
   home: {
-    background: "/images/background4.jpg", //"/images/ai_background.jpg"
+    background: "/images/HeaderBackgrounds/background4.jpg", //"/images/ai_background.jpg"
     bottomText1: "Штучний інтелект як інструмент майбутнього",
     bottomText2: "Ми працюємо над розвитком штучного інтелекту для науки та суспільства",
     height: "560px",
   },
   partnership: {
-    background: "/images/background17.jpg", //"/images/1.jpg"
+    background: "/images/HeaderBackgrounds/background17.jpg", //"/images/1.jpg"
     bottomText1: "Партнерство",
     bottomText2: "Разом ми будуємо майбутнє технологій",
     height: "400px",
   },
   contacts: {
-    background: "/images/5.jpg",
+    background: "/images/HeaderBackgrounds/5.jpg",
     bottomText1: "Наші контакти",
     bottomText2: "Зв'яжіться з нами для співпраці, консультацій та партнерських ініціатив",
     height: "400px",
   },
   about: {
-    background: "/images/background1.jpg",
+    background: "/images/HeaderBackgrounds/background1.jpg",
     bottomText1: "Про наш центр",
     bottomText2: "Історія, місія та цінності",
     height: "400px",
   },
   researchTopics: {
-    background: "/images/3.jpg",
+    background: "/images/HeaderBackgrounds/3.jpg",
     bottomText1: "Теми досліджень",
     bottomText2: "Знаходьте наші дописи за темами",
     height: "400px",
   },
   publications: {
-    background: "/images/2.jpg",
+    background: "/images/HeaderBackgrounds/2.jpg",
     bottomText1: "Публікації",
     bottomText2: "Знайомтеся із результатами нашої роботи",
     height: "400px",
   },
   datasets: {
-    background: "/images/6.jpg",
+    background: "/images/HeaderBackgrounds/6.jpg",
     bottomText1: "Набори даних",
     bottomText2: "Користуйтеся нашими відкритими даними",
     height: "400px",
   },
   podcasts: {
-    background: "/images/m.jpg", // /images/background3.png
+    background: "/images/HeaderBackgrounds/m.jpg", // /images/background3.png
     bottomText1: "Подкасти",
     bottomText2: "Слухайте наші подкасти з запрошеними гостями",
     height: "400px",
@@ -65,23 +65,23 @@ export const HeaderContent: Record<string, {
     height: "400px",
   },
   expertDetail: {
-    background: "/images/background19.jpg",
+    background: "/images/HeaderBackgrounds/background19.jpg",
     height: "300px",
   },
   articleDetail: {
-    background: "/images/background19.jpg",
+    background: "/images/HeaderBackgrounds/background19.jpg",
     height: "300px",
   },
   publicationDetail: {
-    background: "/images/background19.jpg",
+    background: "/images/HeaderBackgrounds/38.png",
     height: "300px",
   },
   datasetDetail: {
-    background: "/images/background19.jpg",
+    background: "/images/HeaderBackgrounds/background19.jpg",
     height: "300px",
   },
   eventDetail: {
-    background: "/images/background19.jpg",
+    background: "/images/HeaderBackgrounds/89.png",
     height: "300px",
   },
 };

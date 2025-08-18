@@ -12,7 +12,8 @@ interface ExpertDetailPageProps {
 }
 
 export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const isEn = language === "en";
 
   const expertImages: Record<string, string> = {
     petrenko: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
@@ -26,7 +27,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
   const researchPapers: Record<string, any[]> = {
     petrenko: [
       {
-        title: t('news.title').includes('News') 
+        title: isEn
           ? "Advanced Neural Network Architectures for Computer Vision"
           : "Розвинені архітектури нейронних мереж для комп'ютерного зору",
         journal: "IEEE Transactions on Pattern Analysis",
@@ -34,7 +35,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
         citations: 142
       },
       {
-        title: t('news.title').includes('News')
+        title: isEn
           ? "Machine Learning Applications in Ukrainian Industry"
           : "Застосування машинного навчання в українській промисловості",
         journal: "Journal of AI Research",
@@ -42,7 +43,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
         citations: 89
       },
       {
-        title: t('news.title').includes('News')
+        title: isEn
           ? "Ethical AI Framework for Government Applications"
           : "Етична структура ШІ для державних застосувань",
         journal: "AI Ethics Quarterly",
@@ -52,7 +53,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
     ],
     kovalenko: [
       {
-        title: t('news.title').includes('News')
+        title: isEn
           ? "Transformer Models for Ukrainian Language Processing"
           : "Трансформерні моделі для обробки української мови",
         journal: "Computational Linguistics",
@@ -60,7 +61,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
         citations: 98
       },
       {
-        title: t('news.title').includes('News')
+        title: isEn
           ? "Sentiment Analysis in Social Media: Ukrainian Context"
           : "Аналіз настроїв у соціальних мережах: український контекст",
         journal: "Language Resources and Evaluation",
@@ -70,7 +71,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
     ],
     melnyk: [
       {
-        title: t('news.title').includes('News')
+        title: isEn
           ? "Real-time Object Detection for Autonomous Vehicles"
           : "Виявлення об'єктів у реальному часі для автономних транспортних засобів",
         journal: "Computer Vision and Image Understanding",
@@ -78,7 +79,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
         citations: 123
       },
       {
-        title: t('news.title').includes('News')
+        title: isEn
           ? "Robotic Vision Systems in Industrial Applications"
           : "Роботичні системи зору в промислових застосуваннях",
         journal: "Robotics and Autonomous Systems",
@@ -88,7 +89,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
     ],
     shevchenko: [
       {
-        title: t('news.title').includes('News')
+        title: isEn
           ? "Ethical Guidelines for AI Implementation in Ukraine"
           : "Етичні керівні принципи для впровадження ШІ в Україні",
         journal: "AI & Society",
@@ -96,7 +97,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
         citations: 45
       },
       {
-        title: t('news.title').includes('News')
+        title: isEn
           ? "Bias Detection in Machine Learning Models"
           : "Виявлення упередженості в моделях машинного навчання",
         journal: "Ethics in Information Technology",
@@ -106,7 +107,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
     ],
     ivanenko: [
       {
-        title: t('news.title').includes('News')
+        title: isEn
           ? "Quantum Machine Learning for Financial Modeling"
           : "Квантове машинне навчання для фінансового моделювання",
         journal: "Quantum Information Processing",
@@ -114,7 +115,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
         citations: 76
       },
       {
-        title: t('news.title').includes('News')
+        title: isEn
           ? "Post-Quantum Cryptography Implementation"
           : "Впровадження постквантової криптографії",
         journal: "Journal of Cryptology",
@@ -124,7 +125,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
     ],
     bondarenko: [
       {
-        title: t('news.title').includes('News')
+        title: isEn
           ? "Big Data Analytics in Ukrainian Public Sector"
           : "Аналіз великих даних в українському державному секторі",
         journal: "Government Information Quarterly",
@@ -132,7 +133,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
         citations: 34
       },
       {
-        title: t('news.title').includes('News')
+        title: isEn
           ? "Data Visualization Best Practices for Decision Making"
           : "Найкращі практики візуалізації даних для прийняття рішень",
         journal: "Information Visualization",
@@ -202,7 +203,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
           <Button 
             onClick={onBack} 
             variant="outline" 
-            className="mb-8 border-white text-white hover:bg-white hover:text-gray-900"
+            className="mb-8 bg-gray-600 text-white hover:bg-gray-300 hover:text-gray-900"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             {t('experts.backToList')}
@@ -219,8 +220,8 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
                   />
                 </div>
                 <h1 className="text-2xl font-medium mb-2">{expert.name}</h1>
-                <p className="text-blue-100 mb-4">{expert.position}</p>
-                <Badge className="bg-white/20 text-white border-white/30 mb-4">
+                <p className="text-white mb-4">{expert.position}</p>
+                <Badge className="text-sm bg-white/20 text-white border-white/30 mb-4">
                   {expert.specialization}
                 </Badge>
                 <div className="flex justify-center space-x-4">
@@ -228,7 +229,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
                     <Mail className="w-4 h-4 mr-2" />
                     {t('experts.contact')}
                   </Button>
-                  <Button size="sm" variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                  <Button size="sm" variant="outline" className="bg-white/20 hover:bg-white/30 border border-white/30">
                     <Linkedin className="w-4 h-4" />
                   </Button>
                 </div>
@@ -285,7 +286,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
                     {expert.skills.map((skill: string, index: number) => (
-                      <Badge key={index} variant="secondary" className="bg-gray-100 text-gray-700">
+                      <Badge key={index} variant="secondary" className="bg-gray-100 text-gray-700 text-sm">
                         {skill}
                       </Badge>
                     ))}

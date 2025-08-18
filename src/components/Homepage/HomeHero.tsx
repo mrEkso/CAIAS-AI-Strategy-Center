@@ -2,8 +2,19 @@ import { Button } from "../ui/button.js";
 import { useLanguage } from "../../contexts/LanguageContext.js";
 const CampusImage = "/images/campus.jpg";
 
-export function Hero() {
+interface HomeHeroProps {
+  currentPage: string;
+  onNavigate: (page: string) => void;
+}
+
+export function HomeHero({ currentPage, onNavigate }: HomeHeroProps) {
   const { t } = useLanguage();
+
+  const handleNavigation = (page: string) => {
+    if (onNavigate) {
+      onNavigate(page);
+    }
+  };
 
   return (
     <section className="relative text-white overflow-hidden">
@@ -23,17 +34,51 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl lg:text-5xl font-medium mb-6 leading-tight drop-shadow-lg">
-              {t('hero.title')}
+              {t('homeHero.title')}
             </h1>
             <p className="text-xl mb-8 text-gray-100 leading-relaxed drop-shadow-md">
-              {t('hero.subtitle')}
+              {t('homeHero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
+
+              {/*
               <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
                 {t('hero.learnMore')}
               </Button>
               <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
                 {t('hero.ourResearch')}
+              </Button>
+            </div>
+          </div>
+          */}
+{/*
+              <Button size="lg" 
+                variant="outline" 
+                className={` shadow-lg backdrop-blur-sm ${
+                  currentPage === "home"
+                    ? "bg-white text-gray-900 font-medium rounded-full"
+                    : "text-white/90 hover:text-gray-900"
+                }`}
+                onClick={() => handleNavigation("about")}
+              >
+                <AboutUs className="w-4 h-4 mr-3" />
+                {t("header.nav.home")}
+              </Button>
+
+                {t('homeHero.learnMore')}
+              </Button>
+              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
+                {t('homeHero.ourResearch')}
+              </Button>
+            </div>
+          </div>
+          */}
+
+              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
+                {t('homeHero.learnMore')}
+              </Button>
+              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
+                {t('homeHero.ourResearch')}
               </Button>
             </div>
           </div>
@@ -58,13 +103,17 @@ export function Hero() {
                 </div>
               </div>
               <div className="space-y-2">
-                <p className="text-gray-100 text-md font-medium drop-shadow-md mb-4 text-center">{t('hero.description')}</p>
+                <p className="text-gray-100 text-md font-medium drop-shadow-md mb-4 flex justify-between">
+                  <span>{t('homeHero.description.line1')}</span>
+                  <span>{t('homeHero.description.line2')}</span>
+                  <span>{t('homeHero.description.line3')}</span>
+                </p>
               </div>
             </div>
             
             {/* University Connection Badge */}
             <div className="absolute -bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/30 shadow-lg">
-              <p className="text-gray-900 text-sm font-medium">{t('hero.university')}</p>
+              <p className="text-gray-900 text-sm font-medium">{t('homeHero.university')}</p>
             </div>
           </div>
         </div>

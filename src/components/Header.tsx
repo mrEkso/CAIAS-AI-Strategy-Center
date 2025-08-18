@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from "./ui/button.js";
 import { Globe, Search, Menu } from "lucide-react";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet.js";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "./ui/sheet.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
 import { HeaderContent } from "./data/HeaderContent.js";
+import { SideMenu } from "./SideMenu.js";
 
 interface HeaderProps {
   currentPage?: string;
@@ -19,9 +20,11 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
   };
 
   const handleNavigation = (page: string) => {
+    setIsMenuOpen(false);
     if (onNavigate) {
       onNavigate(page);
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const toggleLanguage = () => {
@@ -42,7 +45,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
           alt="Background"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
       </div>
 
       {/* Header Content */}
@@ -198,17 +201,45 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="xl:hidden">
-            <Button
-              variant="ghost"
-              size="lg"
-              className="text-white hover:bg-white/10 p-3 rounded-full"
-            >
-              <Menu className="w-7 h-7" />
-            </Button>
-          </div>
-        </div>
+          {/* Mobile Menu with SideMenu */}
+            <div className="xl:hidden">
+              <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+                <SheetTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="2xl"
+                    className="text-white hover:bg-white/10 p-10 h-8 w-10 rounded-full"
+                  >
+                    <Menu className="h-8 w-10" />
+                  </Button>
+                </SheetTrigger>
+
+                <SheetContent
+                  side="right"
+                  className={`
+                    w-80 sm:w-96 bg-gray-900 text-white
+                    ${isMenuOpen ? 'slide-in' : 'slide-out'}
+                  `}
+                  >
+
+                  <SheetHeader className="pb-2">
+                    <div>
+                      <SheetTitle className="pb-2 text-left text-2xl font-medium text-white/90">
+                        {t('header.nav.menu')}
+                      </SheetTitle>
+                      <SheetDescription className="text-left text-base text-white/80">
+                        {t('header.nav.menuDescription')}
+                      </SheetDescription>
+                    </div>
+                  </SheetHeader>
+
+                  <div className="flex-1 overflow-y-auto">
+                    <SideMenu currentPage={currentPage} onNavigate={handleNavigation} />
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+
 
           {/* Bottom text section */}
             {(() => {
@@ -338,6 +369,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
                 ? "Switch to English"
                 : "Перемкнути на українську"}
             </Button>
+            </div>
           </div>
         </div>
       </div>

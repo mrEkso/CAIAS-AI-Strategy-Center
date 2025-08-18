@@ -9,6 +9,12 @@ interface FooterProps {
 export function Footer({ currentPage = "home", onNavigate }: FooterProps) {
   const { t } = useLanguage();
 
+  const handleNavigation = (page: string) => {
+    if (onNavigate) {
+      onNavigate(page);
+    }
+  };
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -60,14 +66,75 @@ export function Footer({ currentPage = "home", onNavigate }: FooterProps) {
           <div>
             <h4 className="text-lg font-medium mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm">{t('header.nav.home')}</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm">{t('header.nav.experts')}</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm">{t('header.nav.news')}</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm">{t('header.nav.research')}</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm">{t('header.nav.publications')}</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm">{t('header.nav.contacts')}</a></li>
+              <li>
+                <button
+                  onClick={() => {
+                    handleNavigation("home");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="text-gray-300 hover:text-white transition-colors text-sm"
+                >
+                  {t('header.nav.home')}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    handleNavigation("experts");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="text-gray-300 hover:text-white transition-colors text-sm"
+                >
+                  {t('header.nav.experts')}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    handleNavigation("publications");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="text-gray-300 hover:text-white transition-colors text-sm"
+                >
+                  {t('header.nav.publications')}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    handleNavigation("datasets");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="text-gray-300 hover:text-white transition-colors text-sm"
+                >
+                  {t('header.nav.datasets')}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    handleNavigation("events");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="text-gray-300 hover:text-white transition-colors text-sm"
+                >
+                  {t('header.nav.events')}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    handleNavigation("contacts");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="text-gray-300 hover:text-white transition-colors text-sm"
+                >
+                  {t('header.nav.contacts')}
+                </button>
+              </li>
             </ul>
           </div>
+
           
           {/* Social Media */}
           <div>

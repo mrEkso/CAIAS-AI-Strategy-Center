@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LanguageProvider } from "./contexts/LanguageContext.js";
 import { Header } from "./components/Header.js";
 import { StickyHeader } from "./components/StickyHeader.js";
@@ -23,13 +23,22 @@ function AppContent() {
   const [currentPage, setCurrentPage] = useState("home");
   const [selectedExpert, setSelectedExpert] = useState<string | null>(null);
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
-  const [SelectedPublication, setSelectedPublication] = useState<string | null>(null);
+  const [selectedPublication, setSelectedPublication] = useState<string | null>(null);
   const [selectedDataset, setSelectedDataset] = useState<string | null>(null);
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
+
+   // 🔹 Глобальний скрол вгору при зміні сторінки або відкритті контенту
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage, selectedExpert, selectedArticle, selectedPublication, selectedDataset, selectedEvent]);
 
   const handleNavigation = (page: string) => {
     setCurrentPage(page);
     setSelectedExpert(null);
+    setSelectedArticle(null);
+    setSelectedPublication(null);
+    setSelectedDataset(null);
+    setSelectedEvent(null);
   };
 
   const handleExpertClick = (expertId: string) => {
@@ -107,9 +116,9 @@ function AppContent() {
       case "publications":
         return <Publications onPublicationClick={handlePublicationClick} />;
       case "publicationDetail":
-        return SelectedPublication ? (
+        return selectedPublication ? (
           <PublicationsDetailPage
-            publicationId={SelectedPublication}
+            publicationId={selectedPublication}
             onBack={handleBackToPublications}
           />
         ) : (

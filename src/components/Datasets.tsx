@@ -28,7 +28,8 @@ export function Datasets({ onDatasetClick }: DatasetsProps) {
 
           <Card 
             onClick={() => onDatasetClick?.(featuredArticle.id)}
-            className="group overflow-hidden border shadow-lg bg-white hover:shadow-xl transition-transform duration-500 transform hover:scale-[1.02] flex flex-col cursor-pointer">
+            className="group overflow-hidden border shadow-lg bg-white hover:shadow-xl transition-transform duration-500 transform hover:scale-[1.02] flex flex-col cursor-pointer"
+          >
             <div className="grid lg:grid-cols-2 gap-0 h-full">
               <div className="relative h-64 lg:h-auto">
                 <ImageWithFallback

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card.js";
 import { Search, Users, BookOpen, Lightbulb } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext.js";
-const GrainTexture = "/images/grain-texture.jpg";
+const GrainTexture = "/images/Textures/grain-texture.jpg";
 
 export function TasksSection() {
   const { t } = useLanguage();

@@ -26,11 +26,15 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
         description: isUk
           ? "Цьогорічна щорічна конференція зосереджена на 25-річчі досліджень штучного інтелекту та його впливі на українську економіку"
           : "This year's annual conference focuses on 25 years of artificial intelligence research and its impact on Ukrainian economy",
-        category: isUk ? "Щорічні заходи" : "Annual Events",
+        category: isUk 
+          ? "Щорічні заходи" 
+          : "Annual Events",
         date: "2024.11.15",
         readTime: "8",
-        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=400&fit=crop",
-        author: isUk ? "Проф. Олександр Петренко" : "Center for Strategic Use of AI",
+        image: "https://images.unsplash.com/photo-1655088651367-f9f4e1328f08?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        author: isUk 
+          ? "Проф. Олександр Петренко" 
+          : "Center for Strategic Use of AI",
         tags: isUk
           ? ["штучний інтелект", "конференція", "дослідження", "економіка", "Україна"]
           : ["artificial intelligence", "conference", "research", "economy", "Ukraine"],
@@ -68,11 +72,15 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
         description: isUk
           ? "Центр зосередиться на розробці рішень ШІ для сфер охорони здоров'я та освіти"
           : "The center will focus on developing AI solutions for healthcare and education sectors",
-        category: isUk ? "Дослідження" : "Research",
+        category: isUk 
+          ? "Дослідження" 
+          : "Research",
         date: "2024.11.10",
         readTime: "5",
         image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop",
-        author: isUk ? "Д-р Марина Коваленко" : "Dr. Marina Kovalenko",
+        author: isUk 
+          ? "Д-р Марина Коваленко" 
+          : "Dr. Marina Kovalenko",
         tags: isUk 
           ? ["дослідження", "охорона здоров'я", "освіта", "Київ", "інновації"]
           : ["research", "healthcare", "education", "Kyiv", "innovation"],
@@ -106,11 +114,15 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
         description: isUk
           ? "Нове міжнародне партнерство має на меті встановити етичні керівні принципи для розвитку ШІ"
           : "New international partnership aims to establish ethical guidelines for AI development",
-        category: isUk ? "Етика" : "Ethics",
+        category: isUk 
+          ? "Етика" 
+          : "Ethics",
         date: "2024.11.08",
         readTime: "6",
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop",
-        author: isUk ? "Катерина Шевченко" : "Kateryna Shevchenko",
+        author: isUk 
+          ? "Катерина Шевченко" 
+          : "Kateryna Shevchenko",
         tags: isUk 
           ? ["етика", "міжнародне співробітництво", "стандарти", "регулювання"]
           : ["ethics", "international cooperation", "standards", "regulation"],
@@ -148,11 +160,14 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Button 
             variant="ghost" 
-            onClick={onBack}
-            className=" text-primary hover:text-primary-dark"
+            onClick={() => {
+              onBack();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="text-primary hover:text-primary-dark"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            {isUk ? 'Назад до публікацій' : 'Back to Publications'}
+            {isUk ? 'Назад до публікацій' : 'Back to EvePublicationsnts'}
           </Button>
         </div>
       </div>
@@ -221,7 +236,7 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
       {/* Publication Image */}
       <section className="py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
+          <div className="relative h-72 sm:h-96 md:h-128 lg:h-256 rounded-lg overflow-hidden shadow-lg"> {/* h-64 md:h-96 */}
             <ImageWithFallback
               src={publication.image}
               alt={publication.title}

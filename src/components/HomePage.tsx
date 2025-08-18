@@ -1,5 +1,5 @@
 import { AnnouncementsSection } from "./Homepage/AnnouncementsSection.js";
-import { Hero } from "./Homepage/Hero.js";
+import { HomeHero } from "./Homepage/HomeHero.js";
 import { TasksSection } from "./Homepage/TasksSection.js";
 import { InitiativesSection } from "./Homepage/InitiativesSection.js";
 import { StatsSection } from "./Homepage/StatsSection.js";
@@ -13,7 +13,7 @@ export function HomePage({ onArticleClick }: HomePageProps) {
     <main>
       <AnnouncementsSection onArticleClick={onArticleClick} />
       <TasksSection />
-      <Hero />
+      <HomeHero />
       <InitiativesSection />
       <StatsSection />
     </main>

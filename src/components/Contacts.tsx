@@ -18,7 +18,7 @@ export function Contacts() {
           </div>
           
           {/* Center Information Card */}
-          <Card className="bg-white/70 shadow-sm mb-8">
+          <Card className="mb-8 bg-white/70 border-primary/15 shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/15 transition-shadow duration-500">
             <CardHeader className="pb-4">
               <div className="flex items-center justify-center space-x-3">
                 <Building2 className="w-6 h-6 text-blue-600" />
@@ -34,7 +34,7 @@ export function Contacts() {
 
           {/* Contact Details Grid */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <Card className="bg-white/70 shadow-sm">
+            <Card className="bg-white/70 border-primary/15 shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/15 transition-shadow duration-500">
               <CardContent className="p-6">
                 <div className="text-center">
                   <MapPin className="w-6 h-6 text-blue-600 mx-auto mb-3" />
@@ -48,7 +48,7 @@ export function Contacts() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/70 shadow-sm">
+            <Card className="bg-white/70 border-primary/15 shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/15 transition-shadow duration-500">
               <CardContent className="p-6">
                 <div className="text-center">
                   <Clock className="w-6 h-6 text-blue-600 mx-auto mb-3" />
@@ -65,7 +65,7 @@ export function Contacts() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/70 shadow-sm">
+            <Card className="bg-white/70 border-primary/15 shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/15 transition-shadow duration-500">
               <CardContent className="p-6">
                 <div className="text-center">
                   <Phone className="w-6 h-6 text-blue-600 mx-auto mb-3" />
@@ -79,7 +79,7 @@ export function Contacts() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/70 shadow-sm">
+            <Card className="bg-white/70 border-primary/15 shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/15 transition-shadow duration-500">
               <CardContent className="p-6">
                 <div className="text-center">
                   <Mail className="w-6 h-6 text-blue-600 mx-auto mb-3" />
@@ -108,7 +108,7 @@ export function Contacts() {
             </p>
           </div>
           
-          <Card className="overflow-hidden max-w-4xl mx-auto">
+          <Card className="overflow-hidden max-w-4xl mx-auto shadow-lg shadow-primary/15">
             <div className="h-[560px] relative">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.1089494993675!2d30.450247!3d50.4501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce637bfe1717%3A0x5370c2254bbbd2a6!2sBeresteiskyi%20Ave%2C%2037%2C%20Kyiv%2C%20Ukraine%2C%2003056!5e0!3m2!1sen!2sus!4v1642000000000!5m2!1sen!2sus"

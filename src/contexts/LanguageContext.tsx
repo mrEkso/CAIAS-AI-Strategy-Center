@@ -84,9 +84,9 @@ const ukrainianTranslations = {
       menuDescription: "Навігація по всіх розділах сайту",
       home: "Головна",
       experts: "Експерти",
-      news: "Новини",
-      research: "Дослідження",
       publications: "Публікації",
+      datasets: "Набори даних",
+      events: "Події",
       contacts: "Контакти"
     },
     bottomText1: {
@@ -133,12 +133,16 @@ const ukrainianTranslations = {
     phone: "+380 44 204 8000",
     email: "info@ai-center.kpi.ua"
   },
-  hero: {
+  homeHero: {
     title: "Формування експертного середовища у сфері ШІ",
     subtitle: "Розроблення інноваційних рішень у сфері штучного інтелекту в стратегічних секторах економіки",
     learnMore: "Дізнатися більше",
     ourResearch: "Наші дослідження",
-    description: "Експертне середовище • Інноваційні рішення • Стратегічні сектори",
+    description: {
+      line1: "• Експертне середовище",
+      line2: "• Інноваційні рішення",
+      line3: "• Стратегічні сектори",
+    },
     university: "КПІ ім. Ігоря Сікорського"
   },
   tasks: {
@@ -390,10 +394,10 @@ const englishTranslations = {
       menuDescription: "Navigate through all website sections",
       home: "Home",
       experts: "Experts",
-      news: "Новини",
-      research: "Дослідження",
-      publications: "Публікації",
-      contacts: "Контакти"
+      publications: "Publications",
+      datasets: "Datasets",
+      events: "Events",
+      contacts: "Contacts"
     },
     bottomText1: {
       home: "Artificial Intelligence as a Tool of the Future",
@@ -438,12 +442,16 @@ const englishTranslations = {
     phone: "+380 44 204 8000",
     email: "info@ai-center.kpi.ua"
   },
-  hero: {
+  homeHero: {
     title: "Building Expert Environment in AI Field",
     subtitle: "Developing innovative solutions in artificial intelligence for strategic economic sectors",
     learnMore: "Learn More",
     ourResearch: "Our Research",
-    description: "Expert Environment  •  Innovative Solutions  •  Strategic Sectors",
+    description: {
+      line1: "• Expert Environment",
+      line2: "• Innovative Solutions",
+      line3: "• Strategic Sectors",
+    },
     university: "Igor Sikorsky Kyiv Polytechnic Institute"
   },
   tasks: {
