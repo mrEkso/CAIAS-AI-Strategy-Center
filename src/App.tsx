@@ -41,11 +41,6 @@ function AppContent() {
     setSelectedEvent(null);
   };
 
-  const handleExpertClick = (expertId: string) => {
-    setSelectedExpert(expertId);
-    setCurrentPage("expert-detail");
-  };
-
   const handleArticleClick = (articleId: string) => {
     setSelectedArticle(articleId);
     setCurrentPage("articleDetail");
@@ -66,9 +61,9 @@ function AppContent() {
     setCurrentPage("eventDetail");
   };
 
-  const handleBackToExperts = () => {
-    setSelectedExpert(null);
-    setCurrentPage("experts");
+  const handleExpertClick = (expertId: string) => {
+    setSelectedExpert(expertId);
+    setCurrentPage("expertDetail");
   };
 
   const handleBackToAnnouncements = () => {
@@ -91,11 +86,24 @@ function AppContent() {
     setCurrentPage("events");
   };
 
+  const handleBackToExperts = () => {
+    setSelectedExpert(null);
+    setCurrentPage("experts");
+  };
+
+  const homePage = (
+  <HomePage 
+    onArticleClick={handleArticleClick} 
+    onNavigate={handleNavigation} 
+    currentPage={currentPage} 
+  />
+);
+
   const renderCurrentPage = () => {
     switch (currentPage) {
       case "home":
       default:
-        return <HomePage onArticleClick={handleArticleClick} />;
+        return homePage;
       case "articleDetail":
         return selectedArticle ? (
           <ArticlesDetailPage
@@ -103,7 +111,7 @@ function AppContent() {
             onBack={handleBackToAnnouncements}
           />
         ) : (
-          <HomePage onArticleClick={handleArticleClick} />
+          homePage
         ); 
       case "partnership":
         return <Partnership />;
@@ -122,7 +130,7 @@ function AppContent() {
             onBack={handleBackToPublications}
           />
         ) : (
-          <Datasets onDatasetClick={handleDatasetClick} />
+          <Publications onPublicationClick={handlePublicationClick} />
         ); 
       case "datasets":
         return <Datasets onDatasetClick={handleDatasetClick} />;
@@ -150,7 +158,7 @@ function AppContent() {
         ); 
       case "experts":
         return <ExpertsPage onExpertClick={handleExpertClick} />;
-      case "expert-detail":
+      case "expertDetail":
         return selectedExpert ? (
           <ExpertDetailPage
             expertId={selectedExpert}
@@ -162,22 +170,34 @@ function AppContent() {
     }
   };
 
-  const showFooter = currentPage !== "expert-detail";
+  const showFooter = currentPage !== "expertDetail";
 
   return (
     <div className="min-h-screen bg-white">
       <Header
-        currentPage={currentPage === "expert-detail" ? "experts" : currentPage}
+        currentPage={currentPage}
         onNavigate={handleNavigation}
       />
       <StickyHeader
-        currentPage={currentPage === "expert-detail" ? "experts" : currentPage}
+        currentPage={
+          currentPage === "articleDetail" ? "home" : 
+          currentPage === "publicationDetail" ? "publications" : 
+          currentPage === "datasetDetail" ? "datasets" : 
+          currentPage === "eventDetail" ? "events" : 
+          currentPage === "expertDetail" ? "experts" :
+          currentPage
+        }
         onNavigate={handleNavigation}
+        onArticleClick={handleArticleClick}
+        onPublicationClick={handlePublicationClick}
+        onDatasetClick={handleDatasetClick}
+        onEventClick={handleEventClick}
+        onExpertClick={handleExpertClick}
       />
       {renderCurrentPage()}
       {showFooter && (
       <Footer 
-        currentPage={currentPage === "expert-detail" ? "experts" : currentPage}
+        currentPage={currentPage}
         onNavigate={handleNavigation} 
       />
     )}

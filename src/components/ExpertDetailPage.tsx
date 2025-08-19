@@ -4,7 +4,6 @@ import { Button } from "./ui/button.js";
 import { ArrowLeft, Mail, Linkedin, Award, BookOpen, Users, Calendar, ExternalLink } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
-import { HeaderContent } from "./data/HeaderContent.js";
 
 interface ExpertDetailPageProps {
   expertId: string;
@@ -203,7 +202,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
           <Button 
             onClick={onBack} 
             variant="outline" 
-            className="mb-8 bg-gray-600 text-white hover:bg-gray-300 hover:text-gray-900"
+            className="mb-8 bg-gray-600 text-white hover:bg-gray-400 hover:text-gray-900"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             {t('experts.backToList')}
@@ -211,7 +210,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
           
           <div className="grid lg:grid-cols-3 gap-8 items-start">
             <div className="lg:col-span-1">
-              <div className="bg-gradient-to-br from-gray-600 to-gray-800 rounded-2xl p-8 text-center">
+              <div className="bg-gradient-to-br from-gray-700 to-primary-medium2 rounded-2xl p-8 text-center">
                 <div className="w-48 h-48 rounded-xl mx-auto overflow-hidden mb-4">
                   <ImageWithFallback
                     src={expert.image}
@@ -221,7 +220,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
                 </div>
                 <h1 className="text-2xl font-medium mb-2">{expert.name}</h1>
                 <p className="text-white mb-4">{expert.position}</p>
-                <Badge className="text-sm bg-white/20 text-white border-white/30 mb-4">
+                <Badge className="text-sm bg-white/20 text-white/90 border-white/30 mb-4 whitespace-normal break-words text-center px-2 py-2">
                   {expert.specialization}
                 </Badge>
                 <div className="flex justify-center space-x-4">
@@ -229,7 +228,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
                     <Mail className="w-4 h-4 mr-2" />
                     {t('experts.contact')}
                   </Button>
-                  <Button size="sm" variant="outline" className="bg-white/20 hover:bg-white/30 border border-white/30">
+                  <Button size="sm" variant="outline" className="bg-white/20 hover:bg-white/30 border border-white/30 text-white/90 hover:text-white/90">
                     <Linkedin className="w-4 h-4" />
                   </Button>
                 </div>
@@ -239,21 +238,42 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
             <div className="lg:col-span-2 space-y-6">
               {/* Quick Stats */}
               <div className="grid md:grid-cols-3 gap-4">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                <div className="bg-primary-light4 backdrop-blur-sm rounded-xl p-4 text-center h-full flex flex-col justify-center">
                   <div className="text-2xl font-medium mb-1">{expert.experience}</div>
                   <p className="text-blue-100 text-sm">{t('experts.experience')}</p>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-                  <div className="text-2xl font-medium mb-1">{expert.researchPapers.length}+</div>
+                <div className="bg-primary-light4 backdrop-blur-sm rounded-xl p-4 text-center h-full flex flex-col justify-center">
+                  <div className="text-3xl font-medium mb-1">{expert.researchPapers.length}+</div>
                   <p className="text-blue-100 text-sm">{t('experts.publicationsCount')}</p>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-                  <div className="text-2xl font-medium mb-1">
+                <div className="bg-primary-light4 backdrop-blur-sm rounded-xl p-4 text-center h-full flex flex-col justify-center"> 
+                  <div className="text-3xl font-medium mb-1">
                     {expert.researchPapers.reduce((sum: number, paper: any) => sum + paper.citations, 0)}
                   </div>
                   <p className="text-blue-100 text-sm">{t('experts.citations')}</p>
                 </div>
               </div>
+
+              {/* Achievements */}
+              <Card className="border bg-primary-light4">
+                <CardHeader>
+                  <CardTitle className="flex items-center">
+                    <Award className="w-5 h-5 mr-2 text-white/90" />
+                    {t('experts.achievements')}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {expert.achievements.map((achievement: string, index: number) => (
+                      <li key={index} className="flex items-start">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span className="text-white/90">{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+
             </div>
           </div>
         </div>
@@ -266,7 +286,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
             {/* Left Column */}
             <div className="lg:col-span-1 space-y-6">
               {/* Education */}
-              <Card className="border shadow-sm bg-white">
+              <Card className="border bg-white shadow-md hover:shadow-lg shadow-primary/10 hover:shadow-primary/15 duration-500">
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <BookOpen className="w-5 h-5 mr-2 text-gray-700" />
@@ -279,7 +299,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
               </Card>
 
               {/* Skills */}
-              <Card className="border shadow-sm bg-white">
+              <Card className="border bg-white shadow-md hover:shadow-lg shadow-primary/10 hover:shadow-primary/15 duration-500">
                 <CardHeader>
                   <CardTitle>{t('experts.keySkills')}</CardTitle>
                 </CardHeader>
@@ -297,28 +317,9 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
 
             {/* Right Column */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Achievements */}
-              <Card className="border shadow-sm bg-white">
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <Award className="w-5 h-5 mr-2 text-gray-700" />
-                    {t('experts.achievements')}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    {expert.achievements.map((achievement: string, index: number) => (
-                      <li key={index} className="flex items-start">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-700">{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
 
               {/* Research Papers */}
-              <Card className="border shadow-sm bg-white">
+              <Card className="border bg-white shadow-md hover:shadow-lg shadow-primary/10 hover:shadow-primary/15 duration-500">
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <Users className="w-5 h-5 mr-2 text-gray-700" />
@@ -328,7 +329,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
                 <CardContent>
                   <div className="space-y-4">
                     {expert.researchPapers.map((paper: any, index: number) => (
-                      <div key={index} className="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+                      <div key={index} className="border border-gray-200 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow shadow-primary/10 hover:shadow-primary/15 duration-500">
                         <h4 className="font-medium text-gray-900 mb-2">{paper.title}</h4>
                         <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
                           <span className="italic">{paper.journal}</span>

@@ -21,8 +21,8 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
       "featured": {
         id: "featured",
         title: isUk
-          ? "Щорічна конференція з ШІ | 15-16 листопада 2024"
-          : "Annual AI Conference | November 15-16, 2024",
+          ? "Трансформація європейської політики ШІ: нова рамка для інновацій та етики"
+          : "Transforming European AI Policy: A New Framework for Innovation and Ethics",
         description: isUk
           ? "Цьогорічна щорічна конференція зосереджена на 25-річчі досліджень штучного інтелекту та його впливі на українську економіку"
           : "This year's annual conference focuses on 25 years of artificial intelligence research and its impact on Ukrainian economy",
@@ -31,7 +31,7 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
           : "Annual Events",
         date: "2024.11.15",
         readTime: "8",
-        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1666597107756-ef489e9f1f09?w=1080",
         author: isUk 
           ? "Проф. Олександр Петренко" 
           : "Center for Strategic Use of AI",
@@ -77,7 +77,7 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
           : "Research",
         date: "2024.11.10",
         readTime: "5",
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop",
+        image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=300&fit=crop",
         author: isUk 
           ? "Д-р Марина Коваленко" 
           : "Dr. Marina Kovalenko",

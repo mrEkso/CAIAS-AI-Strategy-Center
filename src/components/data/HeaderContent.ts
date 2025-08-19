@@ -64,24 +64,24 @@ export const HeaderContent: Record<string, {
     bottomText2: "Дізнайтеся більше про наших спеціалістів",
     height: "400px",
   },
-  expertDetail: {
-    background: "/images/HeaderBackgrounds/background19.jpg",
-    height: "300px",
-  },
   articleDetail: {
     background: "/images/HeaderBackgrounds/background19.jpg",
-    height: "300px",
+    height: "200px",
   },
   publicationDetail: {
     background: "/images/HeaderBackgrounds/38.png",
-    height: "300px",
+    height: "200px",
   },
   datasetDetail: {
     background: "/images/HeaderBackgrounds/background19.jpg",
-    height: "300px",
+    height: "200px",
   },
   eventDetail: {
     background: "/images/HeaderBackgrounds/89.png",
-    height: "300px",
+    height: "200px",
+  },
+  expertDetail: {
+    background: "/images/HeaderBackgrounds/background18.jpg",
+    height: "200px",
   },
 };

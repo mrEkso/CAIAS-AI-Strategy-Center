@@ -31,7 +31,7 @@ export function DatasetsDetailPage({ datasetId, onBack }: DatasetsDetailPageProp
           : "Annual Events",
         date: "2024.11.15",
         readTime: "8",
-        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=400&fit=crop",
+        image: "https://images.unsplash.com/photo-1724245047328-431c55de6cb7?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         author: isUk 
           ? "Проф. Олександр Петренко" 
           : "Center for Strategic Use of AI",
@@ -120,6 +120,46 @@ export function DatasetsDetailPage({ datasetId, onBack }: DatasetsDetailPageProp
         date: "2024.11.08",
         readTime: "6",
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop",
+        author: isUk 
+          ? "Катерина Шевченко" 
+          : "Kateryna Shevchenko",
+        tags: isUk 
+          ? ["етика", "міжнародне співробітництво", "стандарти", "регулювання"]
+          : ["ethics", "international cooperation", "standards", "regulation"],
+        content: isUk ? [
+          "Україна офіційно приєдналася до Глобальної ініціативи з етики штучного інтелекту, що стало важливим кроком у формуванні міжнародних стандартів відповідального розвитку AI-технологій.",
+          "Ця ініціатива об'єднує понад 50 країн та міжнародних організацій з метою розробки спільних принципів етичного використання штучного інтелекту.",
+          "Основні цілі ініціативи:",
+          "• Розробка універсальних етичних стандартів для AI",
+          "• Створення механізмів контролю та моніторингу",
+          "• Обмін досвідом між країнами-учасницями",
+          "• Захист прав людини в епоху штучного інтелекту",
+          "Участь України в цій ініціативі відкриває нові можливості для співпраці з провідними світовими експертами в галузі етики AI та сприяє розвитку відповідального підходу до впровадження нових технологій."
+        ] : [
+          "Ukraine has officially joined the Global AI Ethics Initiative, marking an important step in shaping international standards for responsible AI technology development.",
+          "This initiative brings together over 50 countries and international organizations to develop common principles for ethical AI use.",
+          "Main goals of the initiative:",
+          "• Development of universal ethical standards for AI",
+          "• Creation of control and monitoring mechanisms", 
+          "• Experience sharing between participating countries",
+          "• Protection of human rights in the age of artificial intelligence",
+          "Ukraine's participation in this initiative opens new opportunities for collaboration with leading global experts in AI ethics and promotes a responsible approach to implementing new technologies."
+        ]
+      },
+      "dataset-3": {
+        id: "dataset-3",
+        title: isUk
+          ? "Набір даних 2"
+          : "Ukraine Joins Global AI Ethics Initiative",
+        description: isUk
+          ? "Нове міжнародне партнерство має на меті встановити етичні керівні принципи для розвитку ШІ"
+          : "New international partnership aims to establish ethical guidelines for AI development",
+        category: isUk 
+          ? "Етика" 
+          : "Ethics",
+        date: "2024.11.08",
+        readTime: "6",
+        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=250&fit=crop",
         author: isUk 
           ? "Катерина Шевченко" 
           : "Kateryna Shevchenko",

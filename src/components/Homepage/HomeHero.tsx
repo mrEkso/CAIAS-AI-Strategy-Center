@@ -40,45 +40,25 @@ export function HomeHero({ currentPage, onNavigate }: HomeHeroProps) {
               {t('homeHero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-
-              {/*
-              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
-                {t('hero.learnMore')}
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
-                {t('hero.ourResearch')}
-              </Button>
-            </div>
-          </div>
-          */}
-{/*
-              <Button size="lg" 
+              <Button 
+                size="lg" 
                 variant="outline" 
-                className={` shadow-lg backdrop-blur-sm ${
-                  currentPage === "home"
-                    ? "bg-white text-gray-900 font-medium rounded-full"
-                    : "text-white/90 hover:text-gray-900"
-                }`}
-                onClick={() => handleNavigation("about")}
-              >
-                <AboutUs className="w-4 h-4 mr-3" />
-                {t("header.nav.home")}
-              </Button>
-
+                onClick={() => {
+                  handleNavigation("about");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
                 {t('homeHero.learnMore')}
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
-                {t('homeHero.ourResearch')}
-              </Button>
-            </div>
-          </div>
-          */}
-
-              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
-                {t('homeHero.learnMore')}
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
-                {t('homeHero.ourResearch')}
+              <Button 
+                size="lg" 
+                variant="outline"
+                onClick={() => {
+                  handleNavigation("events");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
+                {t('homeHero.ourEvents')}
               </Button>
             </div>
           </div>

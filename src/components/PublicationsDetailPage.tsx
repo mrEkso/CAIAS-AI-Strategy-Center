@@ -167,7 +167,7 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
             className="text-primary hover:text-primary-dark"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            {isUk ? 'Назад до публікацій' : 'Back to EvePublicationsnts'}
+            {isUk ? 'Назад до публікацій' : 'Back to Publications'}
           </Button>
         </div>
       </div>

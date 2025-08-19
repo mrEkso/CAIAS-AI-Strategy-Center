@@ -118,8 +118,15 @@ const ukrainianTranslations = {
   stickyHeader: {
     title: "Центр Стратегій Застосування Штучного Інтелекту",
     search: {
-      placeholder: "Що шукаємо?"
+      placeholder: "Шукаю...",
+      close: "Закрити",
+      noResults: "Нема результатів"
     }
+  },
+  search: {
+    close: "Закрити",
+    results: "Результати пошуку",
+    noResults: "Нема результатів"
   },
   footer: {
     title: "Центр Стратегій Застосування Штучного Інтелекту",
@@ -137,7 +144,7 @@ const ukrainianTranslations = {
     title: "Формування експертного середовища у сфері ШІ",
     subtitle: "Розроблення інноваційних рішень у сфері штучного інтелекту в стратегічних секторах економіки",
     learnMore: "Дізнатися більше",
-    ourResearch: "Наші дослідження",
+    ourEvents: "Наші події",
     description: {
       line1: "• Експертне середовище",
       line2: "• Інноваційні рішення",
@@ -430,6 +437,11 @@ const englishTranslations = {
       placeholder: "Looking for..."
     }
   },
+  search: {
+    close: "Close",
+    results: "Search results",
+    noResults: "No results"
+  },
   footer: {
     title: "Center for Artificial Intelligence Application Strategies",
     about: "Our Center",
@@ -446,7 +458,7 @@ const englishTranslations = {
     title: "Building Expert Environment in AI Field",
     subtitle: "Developing innovative solutions in artificial intelligence for strategic economic sectors",
     learnMore: "Learn More",
-    ourResearch: "Our Research",
+    ourEvents: "Our Events",
     description: {
       line1: "• Expert Environment",
       line2: "• Innovative Solutions",

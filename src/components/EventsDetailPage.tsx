@@ -21,7 +21,7 @@ export function EventsDetailPage({  eventId, onBack }: EventsDetailPageProps) {
       "featured": {
         id: "featured",
         title: isUk
-          ? "Основний набір даних"
+          ? "Головна подія"
           : "Annual AI Conference | November 15-16, 2024",
         description: isUk
           ? "Цьогорічна щорічна конференція зосереджена на 25-річчі досліджень штучного інтелекту та його впливі на українську економіку"

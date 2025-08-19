@@ -2,21 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { Button } from "./ui/button.js";
 import { Input } from "./ui/input.js";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "./ui/sheet.js";
-import { Globe, Search, Menu, X, Home, Users, Newspaper, BookOpen, Database, Calendar, MessageCircle, Phone, FileText, Handshake, Info, Mic } from "lucide-react";
+import { Globe, Search, Menu, X } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext.js";
 import { SideMenu } from "./SideMenu.js";
+import { useSearch } from "../hooks/useSearch.js";
+import { SearchResults } from "./SearchResults.js";
 
 interface StickyHeaderProps {
   currentPage?: string;
   onNavigate?: (page: string) => void;
+  onArticleClick?: (articleId: string) => void;
+  onPublicationClick?: (publicationId: string) => void;
+  onDatasetClick?: (datasetId: string) => void;
+  onEventClick?: (eventId: string) => void;
+  onExpertClick?: (expertId: string) => void;
 }
 
-export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderProps) {
+export function StickyHeader({ currentPage = "home", onNavigate, onArticleClick, onPublicationClick, onDatasetClick, onEventClick, onExpertClick }: StickyHeaderProps) {
   const { language, setLanguage, t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { searchQuery, setSearchQuery, searchResults } = useSearch();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,15 +47,32 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
     setLanguage(language === 'uk' ? 'en' : 'uk');
   };
 
+  const handleSearchResultClick = (result: any) => {
+    if (result.type === 'announcement') {
+      onArticleClick?.(result.id);
+    } else if (result.type === 'publication') {
+    onPublicationClick?.(result.id);
+    } else if (result.type === 'dataset') {
+    onDatasetClick?.(result.id);
+    } else if (result.type === 'event') {
+    onEventClick?.(result.id);
+    } else if (result.type === 'expert') {
+      onExpertClick?.(result.id);
+    }
+    setIsSearchOpen(false);
+    setSearchQuery('');
+  };
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Search query:', searchQuery);
-    // Here you would implement the actual search functionality
+    // Search is handled by the useSearch hook automatically
   };
 
   return (
     <div className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out ${
-      isVisible ? 'translate-y-0' : '-translate-y-full'
+      isVisible || (isSearchOpen && searchQuery)
+      ? 'translate-y-0'
+      : '-translate-y-full'
     }`}>
       <div className="bg-gray-900/95 backdrop-blur-lg shadow-lg border-b border-gray-900/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,42 +101,54 @@ export function StickyHeader({ currentPage = "home", onNavigate }: StickyHeaderP
             </div>
 
             {/* Center - Search */}
-            <div className="flex-1 max-w-md mx-4">
-              {isSearchOpen ? (
-                <form onSubmit={handleSearch} className="relative">
-                  <Input
-                    type="text"
-                    placeholder={t('stickyHeader.search.placeholder')}
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-10 h-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                    autoFocus
-                  />
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white" />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0 hover:bg-gray-100"
-                    onClick={() => {
-                      setIsSearchOpen(false);
-                      setSearchQuery("");
-                    }}
-                  >
-                    <X className="w-4 h-4" />
-                  </Button>
-                </form>
-              ) : (
+            <div className="flex-1 max-w-md mx-4 relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-600" />
+            
+            {isSearchOpen ? (
+              <form onSubmit={handleSearch}>
+                <Input
+                  type="text"
+                  placeholder={t('stickyHeader.search.placeholder')}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-10 h-10 border-white focus:border-blue-500 focus:ring-blue-500"
+                  autoFocus
+                />
                 <Button
-                  variant="outline"
-                  className="w-full justify-start text-gray-500 border-gray-300 hover:border-gray-400 h-10"
-                  onClick={() => setIsSearchOpen(true)}
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0 text-gray-600 hover:text-gray-400 rounded-lg"
+                  onClick={() => {
+                    setIsSearchOpen(false);
+                    setSearchQuery('');
+                  }}
                 >
-                  <Search className="w-4 h-4 mr-2" />
-                  {t('stickyHeader.search.placeholder')}
+                  <X className="w-4 h-4" />
                 </Button>
-              )}
-            </div>
+              </form>
+            ) : (
+              <Button
+                variant="outline"
+                className="w-full pl-10 text-gray-600 hover:text-gray-500 border-gray-200 h-10 justify-start"
+                onClick={() => setIsSearchOpen(true)}
+              >
+                {t('stickyHeader.search.placeholder')}
+              </Button>
+            )}
+
+            {isSearchOpen && searchQuery && (
+              <SearchResults
+                searchQuery={searchQuery}
+                results={searchResults}
+                onResultClick={handleSearchResultClick}
+                onClose={() => {
+                  setIsSearchOpen(false);
+                  setSearchQuery('');
+                }}
+              />
+            )}
+          </div>
 
             {/* Right side - Language switcher and Menu */}
             <div className="flex items-center space-x-2">
