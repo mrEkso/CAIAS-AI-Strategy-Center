@@ -41,7 +41,7 @@ function AppContent() {
     setSelectedEvent(null);
   };
 
-  const handleArticleClick = (articleId: string) => {
+  const handleAnnouncementClick = (articleId: string) => {
     setSelectedArticle(articleId);
     setCurrentPage("articleDetail");
   };
@@ -93,7 +93,7 @@ function AppContent() {
 
   const homePage = (
   <HomePage 
-    onArticleClick={handleArticleClick} 
+    onAnnouncementClick={handleAnnouncementClick} 
     onNavigate={handleNavigation} 
     currentPage={currentPage} 
   />
@@ -177,6 +177,11 @@ function AppContent() {
       <Header
         currentPage={currentPage}
         onNavigate={handleNavigation}
+        onAnnouncementClick={handleAnnouncementClick}
+        onPublicationClick={handlePublicationClick}
+        onDatasetClick={handleDatasetClick}
+        onEventClick={handleEventClick}
+        onExpertClick={handleExpertClick}
       />
       <StickyHeader
         currentPage={
@@ -188,7 +193,7 @@ function AppContent() {
           currentPage
         }
         onNavigate={handleNavigation}
-        onArticleClick={handleArticleClick}
+        onAnnouncementClick={handleAnnouncementClick}
         onPublicationClick={handlePublicationClick}
         onDatasetClick={handleDatasetClick}
         onEventClick={handleEventClick}

@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from "./ui/button.js";
-import { Globe, Search, Menu } from "lucide-react";
+import { Input } from "./ui/input.js";
+import { Globe, Search, Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "./ui/sheet.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
 import { HeaderContent } from "./data/HeaderContent.js";
 import { SideMenu } from "./SideMenu.js";
+import { useSearch } from "../hooks/useSearch.js";
+import { SearchResults } from "./SearchResults.js";
 
 interface HeaderProps {
   currentPage?: string;
   onNavigate?: (page: string) => void;
+  onAnnouncementClick?: (articleId: string) => void;
+  onPublicationClick?: (publicationId: string) => void;
+  onDatasetClick?: (datasetId: string) => void;
+  onEventClick?: (eventId: string) => void;
+  onExpertClick?: (expertId: string) => void;
 }
 
-export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
+export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, onPublicationClick, onDatasetClick, onEventClick, onExpertClick  }: HeaderProps) {
   const { language, setLanguage, t } = useLanguage();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const { searchQuery, setSearchQuery, searchResults } = useSearch();
 
   const pageData = HeaderContent[currentPage] ?? HeaderContent.home ?? {
     background: "",
@@ -32,6 +42,27 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
   };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleSearchResultClick = (result: any) => {
+    if (result.type === 'announcement') {
+      onAnnouncementClick?.(result.id);
+    } else if (result.type === 'publication') {
+    onPublicationClick?.(result.id);
+    } else if (result.type === 'dataset') {
+    onDatasetClick?.(result.id);
+    } else if (result.type === 'event') {
+    onEventClick?.(result.id);
+    } else if (result.type === 'expert') {
+      onExpertClick?.(result.id);
+    }
+    setIsSearchOpen(false);
+    setSearchQuery('');
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Search is handled by the useSearch hook automatically
+  };
 
   return (
     <header
@@ -82,65 +113,89 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
 
           {/* Navigation Section */}
           <div className="hidden xl:flex flex-col items-end justify-center space-y-6 flex-1 ml-8">
-            {/* Top Navigation Row */}
-            <div className="flex items-center space-x-8">
-              <button
-                onClick={() => handleNavigation("partnership")}
-                className={`text-[1.05rem] font-regular transition-colors px-3 py-2 rounded-full ${
-                  currentPage === "partnership"
-                    ? "text-white bg-white/20 shadow-full"
-                    : "text-white/90 hover:text-white hover:bg-white/10"
-                }`}
-              >
-                {t("header.topNav.partnership")}
-              </button>
-              <button
-                onClick={() => handleNavigation("contacts")}
-                className={`text-[1.05rem] font-regular transition-colors px-3 py-2 rounded-full ${
-                  currentPage === "contacts"
-                    ? "text-white bg-white/20 shadow-lg"
-                    : "text-white/90 hover:text-white hover:bg-white/10"
-                }`}
-              >
-                {t("header.topNav.contacts")}
-              </button>
-              <button
-                onClick={() => handleNavigation("about")}
-                className={`text-[1.05rem] font-regular transition-colors px-3 py-2 rounded-full ${
-                  currentPage === "about"
-                    ? "text-white bg-white/20 shadow-lg"
-                    : "text-white/90 hover:text-white hover:bg-white/10"
-                }`}
-              >
-                {t("header.topNav.about")}
-              </button>
 
-              {/* Language Toggle and Search */}
-              <div className="flex items-center space-x-3 ml-6">
+            <div className="relative flex items-center justify-end">
+              {/* Top navigation row */}
+              <div className={`flex items-center justify-between w-full transition-all duration-300 ${isSearchOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                <div className="flex items-center space-x-8 text-lg">
+                  <button 
+                    onClick={() => handleNavigation("partnership")} 
+                    className="text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-full">{t('header.topNav.partnership')}</button>
+                  <button 
+                    onClick={() => handleNavigation("contacts")} 
+                    className="text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-full">{t('header.topNav.contacts')}</button>
+                  <button 
+                    onClick={() => handleNavigation("about")} 
+                    className="text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-full">{t('header.topNav.about')}</button>
+                  <Button onClick={toggleLanguage} variant="ghost" size="sm" className="text-white/90 hover:text-white hover:bg-white/10 h-10 px-4 rounded-full flex items-center">
+                    <Globe className="w-5 h-5 mr-2" />
+                    {language === "uk" ? "EN" : "УК"}
+                  </Button>
+                </div>
+
+                {/* Search button */}
                 <Button
-                  onClick={toggleLanguage}
+                  onClick={() => setIsSearchOpen(true)}
                   variant="ghost"
                   size="sm"
-                  className="text-white/90 hover:text-white hover:bg-white/10 text-[1.05rem] h-10 px-4 rounded-full"
-                >
-                  <Globe className="w-5 h-5 mr-2" />
-                  {language === "uk" ? "EN" : "УК"}
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-white/90 hover:text-white hover:bg-white/10 h-10 w-10 p-0 rounded-full"
+                  className="text-white/90 hover:text-white hover:bg-white/10 h-10 w-10 p-0 mr-1 rounded-full"
                 >
                   <Search className="w-5 h-5" />
                 </Button>
               </div>
-            </div>
+
+              {/* Search bar */}
+              {isSearchOpen && (
+                <form
+                  onSubmit={handleSearchSubmit}
+                  className="absolute inset-x-0 top-0 z-50 flex items-center justify-start"
+                >
+                  <Input
+                    type="text"
+                    placeholder={t('search.placeholder')}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full max-w-[200rem] h-10 bg-white/90 border border-gray-300 text-gray-900 placeholder:text-gray-500 pl-10 pr-12 rounded-lg focus:bg-white focus:border-blue-500 focus:ring-blue-500"
+                    autoFocus
+                  />
+
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-600" />
+
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0 hover:bg-gray-100 rounded-lg "
+                    onClick={() => {
+                      setIsSearchOpen(false);
+                      setSearchQuery('');
+                    }}
+                  >
+                    <X className="w-4 h-4 text-gray-600 hover:text-gray-400" />
+                  </Button>
+                </form>
+              )}
+            
+            {/* Search results */}
+            {isSearchOpen && searchQuery && (
+              <SearchResults
+                searchQuery={searchQuery}
+                results={searchResults}
+                onResultClick={handleSearchResultClick}
+                onClose={() => {
+                  setIsSearchOpen(false);
+                  setSearchQuery('');
+                }}
+              />
+            )}
+          </div>
+
 
             {/* Bottom Navigation Row */}
-            <div className="flex items-center space-x-8">
+            <div className="flex items-center space-x-8 text-lg">
               <button
                 onClick={() => handleNavigation("researchTopics")}
-                className={`text-[1.05rem] font-bold transition-colors px-3 py-2 rounded-full ${
+                className={`font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "researchTopics"
                     ? "text-white bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
@@ -150,7 +205,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               </button>
               <button
                 onClick={() => handleNavigation("publications")}
-                className={`text-[1.05rem] font-bold transition-colors px-3 py-2 rounded-full ${
+                className={`font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "publications"
                     ? "text-white bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
@@ -160,7 +215,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               </button>
               <button
                 onClick={() => handleNavigation("datasets")}
-                className={`text-[1.05rem] font-bold transition-colors px-3 py-2 rounded-full ${
+                className={`font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "datasets"
                     ? "text-white bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
@@ -170,7 +225,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               </button>
               <button
                 onClick={() => handleNavigation("podcasts")}
-                className={`text-[1.05rem] font-bold transition-colors px-3 py-2 rounded-full ${
+                className={`font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "podcasts"
                     ? "text-white bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
@@ -180,7 +235,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               </button>
               <button
                 onClick={() => handleNavigation("events")}
-                className={`text-[1.05rem] font-bold transition-colors px-3 py-2 rounded-full ${
+                className={`font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "events"
                     ? "text-white bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"
@@ -190,7 +245,7 @@ export function Header({ currentPage = "home", onNavigate }: HeaderProps) {
               </button>
               <button
                 onClick={() => handleNavigation("experts")}
-                className={`text-[1.05rem] font-bold transition-colors px-3 py-2 rounded-full ${
+                className={`font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "experts"
                     ? "text-white bg-white/20 shadow-lg"
                     : "text-white/90 hover:text-white hover:bg-white/10"

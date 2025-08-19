@@ -29,7 +29,7 @@ export function SearchResults({ searchQuery, results, onResultClick, onClose }: 
   if (!searchQuery.trim()) return null;
 
   return (
-    <div className="absolute mt-2 top-full left-1/2 transform -translate-x-1/2 w-[130%] right-0 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto z-50">
+    <div className="absolute mt-2 top-full left-1/2 transform -translate-x-1/2 w-[120%] right-0 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto z-50">
       <div className="p-4 border-b border-gray-100">
         <div className="flex items-center justify-between">
           <h3 className="font-medium text-gray-900">

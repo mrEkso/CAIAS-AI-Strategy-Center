@@ -1,73 +1,51 @@
 import { Card, CardContent } from "../ui/card.js";
 import { Calendar, Users, Globe, BookOpen, Target, Lightbulb, Users2, Award } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext.js";
+const Background = "/images/HeaderBackgrounds/192.jpg";
 
 export function AboutContent() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-24 px-4 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/2 to-transparent"></div>
+    <section className="relative py-24 px-4 bg-white">
+
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
+        style={{ 
+          backgroundImage: `url(${Background})`,
+          zIndex: 0
+        }}
+      />
       
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
           {/* Основна інформація */}
           <div className="lg:col-span-2 space-y-12">
             <div>
-              <h2 className="mb-8 text-foreground text-2xl">Про центр</h2>
-              <div className="space-y-8 text-muted-foreground leading-relaxed">
-                <p className="text-lg">
-                  Центр стратегій застосування штучного інтелекту КПІ ім. Ігоря Сікорського заснований у 2025 році 
-                  як незалежна аналітична платформа нового покоління (Think Tank), що об'єднує молодих експертів, 
-                  провідних менторів, представників держави, бізнесу, міжнародної спільноти та молодих талантів, 
-                  які прагнуть визначати стратегії цифрового розвитку України.
-                </p>
-                
-                <p>
-                  Центр функціонує як інтелектуальний хаб, де молоді таланти отримують можливість творити аналітику 
-                  стратегічного рівня, а їхні ідеї, у партнерстві з досвідом менторів-експертів, перетворюються 
-                  на рішення, здатні трансформувати державну політику, економіку та систему врядування. 
-                  Ми дотримуємось принципів незалежності, відкритості та наукової обґрунтованості.
-                </p>
-                
-                <p>
-                  Діяльність Центру інтегрована у реалізацію Стратегії розвитку ШІ КПІ ім. Ігоря Сікорського, 
-                  яка спрямована на посилення експертного впливу університету у сфері цифрової трансформації, 
-                  та відповідає завданням Стратегії ШІ України 2030, яка визначає штучний інтелект як критичний 
-                  ресурс відновлення, безпеки та економічного зростання держави.
-                </p>
-                
-                <p>
-                  Через публікації, стратегічні дослідження, публічні дискусії та активну участь у міжнародних 
-                  ініціативах Центр формує відкритий простір для обговорення ключових викликів і рішень у сфері 
-                  штучного інтелекту.
-                </p>
+              <h2 className="mb-8 text-white text-foreground text-2xl">{t('aboutus.aboutCenter.title')}</h2>
+              <div className="space-y-8 text-muted-foreground leading-relaxed text-md">
+                <p>{t('aboutus.aboutCenter.paragraph1')}</p>
+                <p>{t('aboutus.aboutCenter.paragraph2')}</p>
+                <p>{t('aboutus.aboutCenter.paragraph3')}</p>
+                <p>{t('aboutus.aboutCenter.paragraph4')}</p>
               </div>
             </div>
             
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20">
-              <h3 className="mb-6 text-foreground text-xl">Дослідницька програма</h3>
+            <div className="p-8 rounded-3xl bg-white/95">
+              <h3 className="mb-6 text-foreground text-xl">{t('aboutus.aboutResearch.title')}</h3>
               <div className="space-y-6 text-muted-foreground leading-relaxed">
-                <p>
-                  Річна дослідницька програма Центру формується на основі відкритого діалогу з дослідниками, 
-                  представниками урядових структур, бізнесу та міжнародних організацій. Програма відображає 
-                  актуальні пріоритети національного розвитку у контексті глобальних трендів у сфері ШІ 
-                  та затверджується у вересні кожного року.
-                </p>
-                
-                <p className="font-bold text-foreground">
-                  Центр стратегій застосування ШІ - це місце, де молоді таланти стають авторами нової хвилі 
-                  аналітичного лідерства України, активно взаємодіючи з провідними світовими Think Tanks 
-                  та формуючи місце України у глобальному технологічному ландшафті.
-                </p>
+                <p>{t('aboutus.aboutResearch.paragraph1')}</p>
+                <p className="font-bold text-foreground">{t('aboutus.aboutResearch.paragraph2')}</p>
               </div>
             </div>
           </div>
 
+
           {/* Бічна панель */}
           <div className="space-y-8">
             {/* Ключові факти */}
-            <Card className="bg-card/70 backdrop-blur-sm border-border hover:shadow-lg transition-all duration-300">
+            <Card className="bg-white/95 backdrop-blur-sm border-border hover:shadow-lg transition-all duration-300">
               <CardContent className="p-8">
                 <h3 className="mb-8 text-foreground text-lg">Ключові факти</h3>
                 <div className="space-y-6">
@@ -115,7 +93,7 @@ export function AboutContent() {
             </Card>
 
             {/* Принципи роботи */}
-            <Card className="bg-card/70 backdrop-blur-sm border-border hover:shadow-lg transition-all duration-300">
+            <Card className="bg-white/95 backdrop-blur-sm border-border hover:shadow-lg transition-all duration-300">
               <CardContent className="p-8">
                 <h3 className="mb-8 text-foreground text-lg">Принципи роботи</h3>
                 <div className="space-y-4">
@@ -128,7 +106,7 @@ export function AboutContent() {
                   ].map((principle, index) => {
                     const Icon = principle.icon;
                     return (
-                      <div key={index} className="flex items-center space-x-4 p-3 rounded-xl hover:bg-primary/5 transition-colors duration-200">
+                      <div key={index} className="flex items-center space-x-4 p-3 rounded-xl bg-primary/5">
                         <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                           <Icon className="w-4 h-4 text-primary" />
                         </div>

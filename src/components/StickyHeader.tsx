@@ -11,14 +11,14 @@ import { SearchResults } from "./SearchResults.js";
 interface StickyHeaderProps {
   currentPage?: string;
   onNavigate?: (page: string) => void;
-  onArticleClick?: (articleId: string) => void;
+  onAnnouncementClick?: (articleId: string) => void;
   onPublicationClick?: (publicationId: string) => void;
   onDatasetClick?: (datasetId: string) => void;
   onEventClick?: (eventId: string) => void;
   onExpertClick?: (expertId: string) => void;
 }
 
-export function StickyHeader({ currentPage = "home", onNavigate, onArticleClick, onPublicationClick, onDatasetClick, onEventClick, onExpertClick }: StickyHeaderProps) {
+export function StickyHeader({ currentPage = "home", onNavigate, onAnnouncementClick, onPublicationClick, onDatasetClick, onEventClick, onExpertClick }: StickyHeaderProps) {
   const { language, setLanguage, t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -49,7 +49,7 @@ export function StickyHeader({ currentPage = "home", onNavigate, onArticleClick,
 
   const handleSearchResultClick = (result: any) => {
     if (result.type === 'announcement') {
-      onArticleClick?.(result.id);
+      onAnnouncementClick?.(result.id);
     } else if (result.type === 'publication') {
     onPublicationClick?.(result.id);
     } else if (result.type === 'dataset') {
@@ -108,7 +108,7 @@ export function StickyHeader({ currentPage = "home", onNavigate, onArticleClick,
               <form onSubmit={handleSearch}>
                 <Input
                   type="text"
-                  placeholder={t('stickyHeader.search.placeholder')}
+                  placeholder={t('search.placeholder')}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-10 pr-10 h-10 border-white focus:border-blue-500 focus:ring-blue-500"
@@ -133,10 +133,11 @@ export function StickyHeader({ currentPage = "home", onNavigate, onArticleClick,
                 className="w-full pl-10 text-gray-600 hover:text-gray-500 border-gray-200 h-10 justify-start"
                 onClick={() => setIsSearchOpen(true)}
               >
-                {t('stickyHeader.search.placeholder')}
+                {t('search.placeholder')}
               </Button>
             )}
 
+            {/* Search results */}
             {isSearchOpen && searchQuery && (
               <SearchResults
                 searchQuery={searchQuery}

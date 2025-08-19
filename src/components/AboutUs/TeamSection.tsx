@@ -33,10 +33,10 @@ export function TeamSection() {
       
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <h1 className="mb-6 text-foreground">Наша команда</h1>
+          <h1 className="mb-6 text-foreground text-2xl">Наша команда</h1>
           <p className="text-muted-foreground max-w-4xl mx-auto text-lg leading-relaxed">
-            Команда центру складається з досвідчених експертів та молодих талантів, 
-            які об'єднують наукову досконалість з практичним досвідом впровадження ШІ-технологій.
+            Команда Центру забезпечує аналітичну підтримку стратегічних проєктів, розвиток партнерств і щоденну 
+            роботу Центру, об’єднуючи молодих дослідників і експертів для створення рішень у сфері ШІ.
           </p>
         </div>
 

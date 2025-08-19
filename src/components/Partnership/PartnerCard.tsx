@@ -11,7 +11,7 @@ interface PartnerCardProps {
 
 export function PartnerCard({ name, logo, description, category, website }: PartnerCardProps) {
   return (
-    <Card className="h-full bg-card border-border shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/15 transition-shadow duration-500">
+    <Card className="h-full bg-card border-border shadow-lg shadow-primary/10 hover:shadow-xl hover:shadow-primary/15 transition-shadow duration-500">
       <CardContent className="p-6 flex flex-col h-full">
         <div className="flex items-center justify-center mb-4 h-20">
           <ImageWithFallback

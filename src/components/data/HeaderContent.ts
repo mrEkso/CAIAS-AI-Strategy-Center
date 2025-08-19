@@ -65,7 +65,7 @@ export const HeaderContent: Record<string, {
     height: "400px",
   },
   articleDetail: {
-    background: "/images/HeaderBackgrounds/background19.jpg",
+    background: "/images/HeaderBackgrounds/background3.png",
     height: "200px",
   },
   publicationDetail: {

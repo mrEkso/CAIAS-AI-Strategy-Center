@@ -6,7 +6,7 @@ export function AboutHero() {
   return (
     <section className="relative min-h-[60vh] flex flex-col items-center justify-center px-4 overflow-hidden">
       {/* Фонові елементи */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/20"></div>
       <div className="absolute top-20 left-20 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary/3 rounded-full blur-3xl"></div>
 
@@ -46,7 +46,7 @@ export function AboutHero() {
 
         {/* Бачення */}
         <div className="group">
-          <div className="relative p-8 rounded-3xl bg-card/50 backdrop-blur-sm border border-border hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5">
+          <div className="relative p-8 rounded-3xl bg-card/50 backdrop-blur-sm border border-border hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 mb-16">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/40 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300">

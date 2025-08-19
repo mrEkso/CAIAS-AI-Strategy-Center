@@ -5,10 +5,10 @@ import { useLanguage } from "../../contexts/LanguageContext.js";
 import { Announcements } from "../data/AnnouncementsData.js";
 
 interface AnnouncementsSectionProps {
-  onArticleClick?: ((articleId: string) => void) | undefined;
+  onAnnouncementClick?: ((articleId: string) => void) | undefined;
 }
 
-export function AnnouncementsSection({ onArticleClick }: AnnouncementsSectionProps) {
+export function AnnouncementsSection({ onAnnouncementClick }: AnnouncementsSectionProps) {
   const { t, language } = useLanguage();
   const isUk = language === "uk";
 
@@ -35,7 +35,7 @@ export function AnnouncementsSection({ onArticleClick }: AnnouncementsSectionPro
               onClick={() => {
                 const id = announcements[0]?.id;
                 if (id) {
-                  onArticleClick?.(id);
+                  onAnnouncementClick?.(id);
                 }
               }}
               className="relative h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
@@ -84,7 +84,7 @@ export function AnnouncementsSection({ onArticleClick }: AnnouncementsSectionPro
               {announcements.slice(1, 3).map((announcement, index) => (
                 <div 
                   key={index + 1} 
-                  onClick={() => onArticleClick?.(announcement.id)}
+                  onClick={() => onAnnouncementClick?.(announcement.id)}
                   className="relative h-[285px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
                 >
                   <img
@@ -141,7 +141,7 @@ export function AnnouncementsSection({ onArticleClick }: AnnouncementsSectionPro
               {announcements.slice(3, 5).map((announcement, index) => (
                 <div 
                   key={index + 3} 
-                  onClick={() => onArticleClick?.(announcement.id)}
+                  onClick={() => onAnnouncementClick?.(announcement.id)}
                   className="relative h-[285px] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
                 >
                   <img

@@ -20,7 +20,8 @@ const config: Config = {
           "primary-light": "#5676d6", 
           "primary-light2": "#4ea0fc",
           "primary-light3": "#4969c9",
-          "primary-light4": "#2e3357", // #2e3357
+          "primary-light4": "#2e3357", 
+          "primary-light5": "#a49beb", 
           "primary-medium": "#152056", // між primary і primary-dark 
           "primary-medium2": "#1e2154", // #181754
           "primary-dark": "#01061a",

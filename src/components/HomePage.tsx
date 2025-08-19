@@ -5,15 +5,15 @@ import { InitiativesSection } from "./Homepage/InitiativesSection.js";
 import { StatsSection } from "./Homepage/StatsSection.js";
 
 interface HomePageProps {
-  onArticleClick?: (articleId: string) => void;
+  onAnnouncementClick?: (articleId: string) => void;
   onNavigate: (page: string) => void;
   currentPage: string;   
 }
 
-export function HomePage({ onArticleClick, onNavigate, currentPage }: HomePageProps) {
+export function HomePage({ onAnnouncementClick, onNavigate, currentPage }: HomePageProps) {
   return (
     <main>
-      <AnnouncementsSection onArticleClick={onArticleClick} />
+      <AnnouncementsSection onAnnouncementClick={onAnnouncementClick} />
       <TasksSection />
       <HomeHero onNavigate={onNavigate} currentPage={currentPage}/>
       <InitiativesSection />

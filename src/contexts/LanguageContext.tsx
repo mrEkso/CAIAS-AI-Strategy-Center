@@ -117,13 +117,9 @@ const ukrainianTranslations = {
   },
   stickyHeader: {
     title: "Центр Стратегій Застосування Штучного Інтелекту",
-    search: {
-      placeholder: "Шукаю...",
-      close: "Закрити",
-      noResults: "Нема результатів"
-    }
   },
   search: {
+    placeholder: "Шукаю...",
     close: "Закрити",
     results: "Результати пошуку",
     noResults: "Нема результатів"
@@ -254,6 +250,42 @@ const ukrainianTranslations = {
     contactForm: "Форма зворотного зв'язку"
   },
   aboutus: {
+    aboutCenter: {
+      title: "Про центр",
+      paragraph1: [ "Центр стратегій застосування штучного інтелекту КПІ ім. Ігоря Сікорського заснований у 2025 році", 
+                    "як незалежна аналітична платформа нового покоління (Think Tank), що об'єднує молодих експертів,",
+                    "провідних менторів, представників держави, бізнесу, міжнародної спільноти та молодих талантів,",
+                    "які прагнуть визначати стратегії цифрового розвитку України."
+                  ].join(' '),
+      paragraph2: [ "Центр функціонує як інтелектуальний хаб, де молоді таланти отримують можливість творити аналітику",
+                    "стратегічного рівня, а їхні ідеї, у партнерстві з досвідом менторів-експертів, перетворюються",
+                    "на рішення, здатні трансформувати державну політику, економіку та систему врядування.",
+                    "Ми дотримуємось принципів незалежності, відкритості та наукової обґрунтованості."
+                  ].join(' '),
+      paragraph3: [ "Діяльність Центру інтегрована у реалізацію Стратегії розвитку ШІ КПІ ім. Ігоря Сікорського,",
+                    "яка спрямована на посилення експертного впливу університету у сфері цифрової трансформації,",
+                    "та відповідає завданням Стратегії ШІ України 2030, яка визначає штучний інтелект як критичний",
+                    "ресурс відновлення, безпеки та економічного зростання держави."
+                  ].join(' '),
+      paragraph4: [ "Через публікації, стратегічні дослідження, публічні дискусії та активну участь у міжнародних",
+                    "ініціативах Центр формує відкритий простір для обговорення ключових викликів і рішень у сфері",
+                    "штучного інтелекту."
+                  ].join(' '),
+      },
+    aboutResearch: {
+      title: "Дослідницька програма",
+      paragraph1: [ "Річна дослідницька програма Центру формується на основі відкритого діалогу з дослідниками,",
+                    "представниками урядових структур, бізнесу та міжнародних організацій. Програма відображає ",
+                    "актуальні пріоритети національного розвитку у контексті глобальних трендів у сфері ШІ ",
+                    "та затверджується у вересні кожного року."
+                  ].join(' '),
+      paragraph2: [ "Центр стратегій застосування ШІ - це місце, де молоді таланти стають авторами нової хвилі",
+                    "аналітичного лідерства України, активно взаємодіючи з провідними світовими Think Tanks ",
+                    "та формуючи місце України у глобальному технологічному ландшафті."
+                  ].join(' '),
+
+    }
+
 
   },
   researchTopics: {
@@ -433,11 +465,9 @@ const englishTranslations = {
   },
   stickyHeader: {
     title: "Center for Artificial Intelligence Application Strategies",
-    search: {
-      placeholder: "Looking for..."
-    }
   },
   search: {
+    placeholder: "Looking for...",
     close: "Close",
     results: "Search results",
     noResults: "No results"
@@ -568,6 +598,40 @@ const englishTranslations = {
     contactForm: "Contact Form"
   },
   aboutus: {
+    aboutCenter: {
+      title: "About Center",
+      paragraph1: [ "Center for Artificial Intelligence Application Strategies of Igor Sikorsky Kyiv Polytechnic Institute",
+                    "was founded in 2025 as an independent next-generation analytical platform (Think Tank) that brings together",
+                    "young experts, leading mentors, government representatives, business leaders, the international community,",
+                    "and promising young talents who aim to define Ukraine’s digital development strategies."
+                  ].join(' '),
+      paragraph2: [ "The Center functions as an intellectual hub where young talents are empowered to create strategic-level",
+                    "analytics, and their ideas - combined with the experience of mentoring experts - are transformed into",
+                    "solutions capable of reshaping public policy, the economy, and governance systems. We adhere to the",
+                    "principles of independence, openness, and scientific rigor."
+                  ].join(' '),
+      paragraph3: [ "The Center’s activities are integrated with the AI Development Strategy of Igor Sikorsky Kyiv Polytechnic Institute,",
+                    "Institute, which seeks to strengthen the university’s expert influence in digital transformation, and align",
+                    "with the AI Strategy of Ukraine 2030, which positions artificial intelligence as a critical resource for",
+                    "reconstruction, security, and economic growth."
+                  ].join(' '),
+      paragraph4: [ "Through publications, strategic research, public discussions, and active participation in international",
+                    "initiatives, the Center creates an open forum for discussing key challenges and solutions in the field of artificial intelligence.",
+                  ].join(' '),
+      },
+    aboutResearch: {
+      title: "Research Program",
+      paragraph1: [ "Our annual research program is shaped through open dialogue with researchers, government representatives,",
+                    "businesses, and international organizations. It reflects current national development priorities in the",
+                    "context of global AI trends and is approved each September."
+                  ].join(' '),
+      paragraph2: [ "The Center for Artificial Intelligence Application",
+                    "Strategies is a space where young talents become authors of a new wave of analytical leadership in Ukraine,",
+                    "engaging actively with leading global Think Tanks and shaping Ukraine’s role in the global technological landscape."
+                  ].join(' '),
+
+    }
+
 
   },
   researchTopics: {
