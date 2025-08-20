@@ -28,6 +28,9 @@ const config: Config = {
         accent: 'var(--accent)',
           'accent-foreground': 'var(--accent-foreground)',
       },
+      inset: {
+        '0.25': '0.07rem', 
+      },
     },
   },
   plugins: [],

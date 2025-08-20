@@ -2,12 +2,16 @@ import { AboutHero } from "./AboutUs/AboutHero.js";
 import { AboutContent } from "./AboutUs/AboutContent.js";
 import { TeamSection } from "./AboutUs/TeamSection.js";
 
-export function AboutUs() {
+interface AboutUsProps {
+  onTeamMemberClick?: (teamMemberId: string) => void;
+}
+
+export function AboutUs({ onTeamMemberClick }: AboutUsProps) {
   return (
     <main>
       <AboutHero />
       <AboutContent />
-      <TeamSection />
+      <TeamSection onTeamMemberClick={onTeamMemberClick}/>
     </main>
   );
 }

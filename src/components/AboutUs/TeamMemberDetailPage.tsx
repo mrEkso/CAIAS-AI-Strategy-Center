@@ -4,26 +4,31 @@ import { Button } from "../ui/button.js";
 import { ArrowLeft, Mail, Linkedin, Award, BookOpen, Users, Calendar, ExternalLink } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback.js";
 import { useLanguage } from "../../contexts/LanguageContext.js";
+import { teamMembersData } from "../data/TeamMembersData.js";
 
-interface TeamDetailPageProps {
-  teamId: string;
+interface TeamMemberDetailPageProps {
+  teamMemberId: string;
   onBack?: () => void;
 }
 
-export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
-  const { t } = useLanguage();
+export function TeamMemberDetailPage({ teamMemberId, onBack }: TeamMemberDetailPageProps) {
+  const { t, language } = useLanguage();
+  const isUk = language === "uk";
+
+  const teamMembers = teamMembersData(isUk);
 
   const teamImages: Record<string, string> = {
     ilyash: "/images/TeamPhotos/Olga_Ilyash.jpg",
-    okaianchenko: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
+    okaianchenko: "/images/TeamPhotos/Davyd_Okaianchenko.jpg",
     kulesh: "/images/TeamPhotos/Kateryna_Kulesh.jpg",
-    parkhomenko: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
+    parkhomenko: "/images/TeamPhotos/Artem_Parkhomenko.jpg",
   };
+
 
   const researchPapers: Record<string, any[]> = {
     ilyash: [
       {
-        title: t('news.title').includes('News') 
+        title: isUk
           ? "Advanced Neural Network Architectures for Computer Vision"
           : "Розвинені архітектури нейронних мереж для комп'ютерного зору",
         journal: "IEEE Transactions on Pattern Analysis",
@@ -31,7 +36,7 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
         citations: 142
       },
       {
-        title: t('news.title').includes('News')
+        title: isUk
           ? "Machine Learning Applications in Ukrainian Industry"
           : "Застосування машинного навчання в українській промисловості",
         journal: "Journal of AI Research",
@@ -39,7 +44,7 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
         citations: 89
       },
       {
-        title: t('news.title').includes('News')
+        title: isUk
           ? "Ethical AI Framework for Government Applications"
           : "Етична структура ШІ для державних застосувань",
         journal: "AI Ethics Quarterly",
@@ -49,7 +54,7 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
     ],
     okaianchenko: [
       {
-        title: t('news.title').includes('News')
+        title: isUk
           ? "Transformer Models for Ukrainian Language Processing"
           : "Трансформерні моделі для обробки української мови",
         journal: "Computational Linguistics",
@@ -57,7 +62,7 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
         citations: 98
       },
       {
-        title: t('news.title').includes('News')
+        title: isUk
           ? "Sentiment Analysis in Social Media: Ukrainian Context"
           : "Аналіз настроїв у соціальних мережах: український контекст",
         journal: "Language Resources and Evaluation",
@@ -67,7 +72,7 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
     ],
     kulesh: [
       {
-        title: t('news.title').includes('News')
+        title: isUk
           ? "Real-time Object Detection for Autonomous Vehicles"
           : "Виявлення об'єктів у реальному часі для автономних транспортних засобів",
         journal: "Computer Vision and Image Understanding",
@@ -75,7 +80,7 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
         citations: 123
       },
       {
-        title: t('news.title').includes('News')
+        title: isUk
           ? "Robotic Vision Systems in Industrial Applications"
           : "Роботичні системи зору в промислових застосуваннях",
         journal: "Robotics and Autonomous Systems",
@@ -85,7 +90,7 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
     ],
     parkhomenko: [
       {
-        title: t('news.title').includes('News')
+        title: isUk
           ? "Ethical Guidelines for AI Implementation in Ukraine"
           : "Етичні керівні принципи для впровадження ШІ в Україні",
         journal: "AI & Society",
@@ -93,7 +98,7 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
         citations: 45
       },
       {
-        title: t('news.title').includes('News')
+        title: isUk
           ? "Bias Detection in Machine Learning Models"
           : "Виявлення упередженості в моделях машинного навчання",
         journal: "Ethics in Information Technology",
@@ -103,31 +108,32 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
     ]
   };
 
+
   // Safely get team member data with fallbacks
-  const getName = () => t(`teamData.${teamId}.name`);
-  const getPosition = () => t(`teamData.${teamId}.position`);
-  const getSpecialization = () => t(`teamData.${teamId}.specialization`);
-  const getEducation = () => t(`teamData.${teamId}.education`);
-  const getExperience = () => t(`teamData.${teamId}.experience`);
-  const getEmail = () => t(`teamData.${teamId}.email`);
+  const getName = () => t(`teamMembersData.${teamMemberId}.name`);
+  const getPosition = () => t(`teamMembersData.${teamMemberId}.position`);
+  const getSpecialization = () => t(`teamMembersData.${teamMemberId}.specialization`);
+  const getEducation = () => t(`teamMembersData.${teamMemberId}.education`);
+  const getExperience = () => t(`teamMembersData.${teamMemberId}.experience`);
+  const getEmail = () => t(`teamMembersData.${teamMemberId}.email`);
   
   const getAchievements = () => {
-    const achievementsStr = t(`teamData.${teamId}.achievements`);
-    if (achievementsStr && !achievementsStr.includes('teamData')) {
+    const achievementsStr = t(`teamMembersData.${teamMemberId}.achievements`);
+    if (achievementsStr && !achievementsStr.includes('teamMembersData')) {
       return achievementsStr.split(',').map(item => item.trim()).filter(item => item.length > 0);
     }
     return [];
   };
   
   const getSkills = () => {
-    const skillsStr = t(`teamData.${teamId}.skills`);
-    if (skillsStr && !skillsStr.includes('teamData')) {
+    const skillsStr = t(`teamMembersData.${teamMemberId}.skills`);
+    if (skillsStr && !skillsStr.includes('teamMembersData')) {
       return skillsStr.split(',').map(item => item.trim()).filter(item => item.length > 0);
     }
     return [];
   };
 
-  const team = {
+  const teamMember = {
     name: getName(),
     position: getPosition(),
     specialization: getSpecialization(),
@@ -136,19 +142,19 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
     achievements: getAchievements(),
     skills: getSkills(),
     email: getEmail(),
-    image: teamImages[teamId],
-    researchPapers: researchPapers[teamId] || []
+    image: teamImages[teamMemberId],
+    researchPapers: researchPapers[teamMemberId] || []
   };
 
   // Check if team member exists (if translation contains the key, it means team member doesn't exist)
-  if (!team.name || team.name.includes('teamData')) {
+  if (!teamMember.name || teamMember.name.includes('teamMembersData')) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-medium text-gray-900 mb-4">{t('team.teamNotFound')}</h2>
+          <h2 className="text-2xl font-medium text-gray-900 mb-4">{t('teamMembers.teamMemberNotFound')}</h2>
           <Button onClick={onBack} variant="outline">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            {t('team.backButton')}
+            {t('teamMembers.backButton')}
           </Button>
         </div>
       </div>
@@ -163,33 +169,34 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
           <Button 
             onClick={onBack} 
             variant="outline" 
-            className="mb-8 border-white text-white hover:bg-white hover:text-gray-900"
+            className="mb-8 bg-gray-600 text-white hover:bg-gray-400 hover:text-gray-900"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            {t('team.backToList')}
+            {t('teamMembers.backToList')}
           </Button>
           
+          {/* Photo, name and position of the team member */}
           <div className="grid lg:grid-cols-3 gap-8 items-start">
             <div className="lg:col-span-1">
-              <div className="bg-gradient-to-br from-gray-600 to-gray-800 rounded-2xl p-8 text-center">
+              <div className="bg-gradient-to-br from-gray-700 to-primary-medium2 rounded-2xl p-8 text-center">
                 <div className="w-48 h-48 rounded-xl mx-auto overflow-hidden mb-4">
                   <ImageWithFallback
-                    src={team.image}
-                    alt={team.name}
+                    src={teamMember.image}
+                    alt={teamMember.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h1 className="text-2xl font-medium mb-2">{team.name}</h1>
-                <p className="text-blue-100 mb-4">{team.position}</p>
-                <Badge className="bg-white/20 text-white border-white/30 mb-4">
-                  {team.specialization}
+                <h1 className="text-2xl font-medium mb-2">{teamMember.name}</h1>
+                <p className="text-white mb-4">{teamMember.position}</p>
+                <Badge className="text-sm bg-white/20 text-white/90 border-white/30 mb-4 whitespace-normal break-words text-center px-2 py-2">
+                  {teamMember.specialization}
                 </Badge>
                 <div className="flex justify-center space-x-4">
                   <Button size="sm" className="bg-white/20 hover:bg-white/30 border border-white/30">
                     <Mail className="w-4 h-4 mr-2" />
-                    {t('team.contact')}
+                    {t('teamMembers.contact')}
                   </Button>
-                  <Button size="sm" variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                  <Button size="sm" variant="outline" className="bg-white/20 hover:bg-white/30 border border-white/30 text-white/90 hover:text-white/90">
                     <Linkedin className="w-4 h-4" />
                   </Button>
                 </div>
@@ -199,21 +206,42 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
             <div className="lg:col-span-2 space-y-6">
               {/* Quick Stats */}
               <div className="grid md:grid-cols-3 gap-4">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-                  <div className="text-2xl font-medium mb-1">{team.experience}</div>
-                  <p className="text-blue-100 text-sm">{t('team.experience')}</p>
+                <div className="bg-primary-light4 backdrop-blur-sm rounded-xl p-4 text-center h-full flex flex-col justify-center">
+                  <div className="text-2xl font-medium mb-1">{teamMember.experience}</div>
+                  <p className="text-blue-100 text-sm">{t('teamMembers.experience')}</p>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-                  <div className="text-2xl font-medium mb-1">{team.researchPapers.length}+</div>
-                  <p className="text-blue-100 text-sm">{t('team.publicationsCount')}</p>
+                <div className="bg-primary-light4 backdrop-blur-sm rounded-xl p-4 text-center h-full flex flex-col justify-center">
+                  <div className="text-2xl font-medium mb-1">{teamMember.researchPapers.length}+</div>
+                  <p className="text-blue-100 text-sm">{t('teamMembers.publicationsCount')}</p>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-                  <div className="text-2xl font-medium mb-1">
-                    {team.researchPapers.reduce((sum: number, paper: any) => sum + paper.citations, 0)}
+                <div className="bg-primary-light4 backdrop-blur-sm rounded-xl p-4 text-center h-full flex flex-col justify-center">
+                  <div className="text-3xl font-medium mb-1">
+                    {teamMember.researchPapers.reduce((sum: number, paper: any) => sum + paper.citations, 0)}
                   </div>
-                  <p className="text-blue-100 text-sm">{t('team.citations')}</p>
+                  <p className="text-blue-100 text-sm">{t('teamMembers.citations')}</p>
                 </div>
               </div>
+
+              {/* Achievements */}
+              <Card className="border bg-primary-light4">
+                <CardHeader>
+                  <CardTitle className="flex items-center">
+                    <Award className="w-5 h-5 mr-2 text-white/90" />
+                    {t('teamMembers.achievements')}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {teamMember.achievements.map((achievement: string, index: number) => (
+                      <li key={index} className="flex items-start">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span className="text-white/90">{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+
             </div>
           </div>
         </div>
@@ -226,27 +254,27 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
             {/* Left Column */}
             <div className="lg:col-span-1 space-y-6">
               {/* Education */}
-              <Card className="border shadow-sm bg-white">
+              <Card className="border bg-white shadow-md hover:shadow-lg shadow-primary/10 hover:shadow-primary/15 duration-500">
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <BookOpen className="w-5 h-5 mr-2 text-gray-700" />
-                    {t('team.education')}
+                    {t('teamMembers.education')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-700">{team.education}</p>
+                  <p className="text-gray-700">{teamMember.education}</p>
                 </CardContent>
               </Card>
 
               {/* Skills */}
-              <Card className="border shadow-sm bg-white">
+              <Card className="border bg-white shadow-md hover:shadow-lg shadow-primary/10 hover:shadow-primary/15 duration-500">
                 <CardHeader>
-                  <CardTitle>{t('team.keySkills')}</CardTitle>
+                  <CardTitle>{t('teamMembers.keySkills')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    {team.skills.map((skill: string, index: number) => (
-                      <Badge key={index} variant="secondary" className="bg-gray-100 text-gray-700">
+                    {teamMember.skills.map((skill: string, index: number) => (
+                      <Badge key={index} variant="secondary" className="bg-gray-100 text-gray-700 text-sm">
                         {skill}
                       </Badge>
                     ))}
@@ -257,38 +285,19 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
 
             {/* Right Column */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Achievements */}
-              <Card className="border shadow-sm bg-white">
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <Award className="w-5 h-5 mr-2 text-gray-700" />
-                    {t('team.achievements')}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    {team.achievements.map((achievement: string, index: number) => (
-                      <li key={index} className="flex items-start">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-700">{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
 
               {/* Research Papers */}
-              <Card className="border shadow-sm bg-white">
+              <Card className="border bg-white shadow-md hover:shadow-lg shadow-primary/10 hover:shadow-primary/15 duration-500">
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <Users className="w-5 h-5 mr-2 text-gray-700" />
-                    {t('team.recentPublications')}
+                    {t('teamMembers.recentPublications')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {team.researchPapers.map((paper: any, index: number) => (
-                      <div key={index} className="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+                    {teamMember.researchPapers.map((paper: any, index: number) => (
+                      <div key={index} className="border border-gray-200 rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow shadow-primary/10 hover:shadow-primary/15 duration-500">
                         <h4 className="font-medium text-gray-900 mb-2">{paper.title}</h4>
                         <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
                           <span className="italic">{paper.journal}</span>
@@ -299,11 +308,11 @@ export function TeamDetailPage({ teamId, onBack }: TeamDetailPageProps) {
                         </div>
                         <div className="flex items-center justify-between">
                           <Badge variant="outline" className="text-xs">
-                            {paper.citations} {t('team.citationsText')}
+                            {paper.citations} {t('teamMembers.citationsText')}
                           </Badge>
                           <Button size="sm" variant="ghost" className="text-blue-600 hover:text-blue-800">
                             <ExternalLink className="w-3 h-3 mr-1" />
-                            {t('team.view')}
+                            {t('teamMembers.view')}
                           </Button>
                         </div>
                       </div>

@@ -208,6 +208,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
             {t('experts.backToList')}
           </Button>
           
+          {/* Photo, name and position of the expert */}
           <div className="grid lg:grid-cols-3 gap-8 items-start">
             <div className="lg:col-span-1">
               <div className="bg-gradient-to-br from-gray-700 to-primary-medium2 rounded-2xl p-8 text-center">

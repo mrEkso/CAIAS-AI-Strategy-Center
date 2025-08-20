@@ -17,7 +17,7 @@ export function HomeHero({ currentPage, onNavigate }: HomeHeroProps) {
   };
 
   return (
-    <section className="relative text-white overflow-hidden">
+    <section className="relative text-white overflow-hidden min-h-[50vh]  flex items-center">
       {/* Campus Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

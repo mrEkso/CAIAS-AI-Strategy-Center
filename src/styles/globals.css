@@ -8,8 +8,24 @@
 
 @font-face {
   font-family: 'Exo 2';
+  src: url('/fonts/Exo_2/static/Exo2-Light.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Exo 2';
   src: url('/fonts/Exo_2/static/Exo2-Medium.ttf') format('truetype');
   font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Exo 2';
+  src: url('/fonts/Exo_2/static/Exo2-SemiBold.ttf') format('truetype');
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }

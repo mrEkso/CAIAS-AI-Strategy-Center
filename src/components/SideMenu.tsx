@@ -26,7 +26,7 @@ export function SideMenu({ currentPage, onNavigate }: SideMenuProps) {
           className={`w-full justify-start text-left h-11 px-4 ${
             currentPage === "home"
               ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
+              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full" // text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full
           }`}
           onClick={() => handleNavigation("home")}
         >
@@ -39,7 +39,7 @@ export function SideMenu({ currentPage, onNavigate }: SideMenuProps) {
           className={`w-full justify-start text-left h-11 px-4 ${
             currentPage === "experts"
               ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
           }`}
           onClick={() => handleNavigation("experts")}
         >
@@ -52,7 +52,7 @@ export function SideMenu({ currentPage, onNavigate }: SideMenuProps) {
           className={`w-full justify-start text-left h-11 px-4 ${
             currentPage === "researchTopics"
               ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
           }`}
           onClick={() => handleNavigation("researchTopics")}
         >
@@ -71,7 +71,7 @@ export function SideMenu({ currentPage, onNavigate }: SideMenuProps) {
           className={`w-full justify-start text-left h-11 px-4 ${
             currentPage === "publications"
               ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
           }`}
           onClick={() => handleNavigation("publications")}
         >
@@ -84,7 +84,7 @@ export function SideMenu({ currentPage, onNavigate }: SideMenuProps) {
           className={`w-full justify-start text-left h-11 px-4 ${
             currentPage === "datasets"
               ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
           }`}
           onClick={() => handleNavigation("datasets")}
         >
@@ -97,7 +97,7 @@ export function SideMenu({ currentPage, onNavigate }: SideMenuProps) {
           className={`w-full justify-start text-left h-11 px-4 ${
             currentPage === "podcasts"
               ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
           }`}
           onClick={() => handleNavigation("podcasts")}
         >
@@ -110,7 +110,7 @@ export function SideMenu({ currentPage, onNavigate }: SideMenuProps) {
           className={`w-full justify-start text-left h-11 px-4 ${
             currentPage === "events"
               ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
           }`}
           onClick={() => handleNavigation("events")}
         >
@@ -129,7 +129,7 @@ export function SideMenu({ currentPage, onNavigate }: SideMenuProps) {
           className={`w-full justify-start text-left h-11 px-4 ${
             currentPage === "partnership"
               ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
           }`}
           onClick={() => handleNavigation("partnership")}
         >
@@ -142,7 +142,7 @@ export function SideMenu({ currentPage, onNavigate }: SideMenuProps) {
           className={`w-full justify-start text-left h-11 px-4 ${
             currentPage === "contacts"
               ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
           }`}
           onClick={() => handleNavigation("contacts")}
         >
@@ -155,7 +155,7 @@ export function SideMenu({ currentPage, onNavigate }: SideMenuProps) {
           className={`w-full justify-start text-left h-11 px-4 ${
             currentPage === "about"
               ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full"
+              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
           }`}
           onClick={() => handleNavigation("about")}
         >

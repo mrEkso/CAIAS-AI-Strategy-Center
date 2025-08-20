@@ -84,4 +84,8 @@ export const HeaderContent: Record<string, {
     background: "/images/HeaderBackgrounds/background18.jpg",
     height: "200px",
   },
+  teamMemberDetail: {
+    background: "/images/HeaderBackgrounds/background18.jpg",
+    height: "200px",
+  },
 };

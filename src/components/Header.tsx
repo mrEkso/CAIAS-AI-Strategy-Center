@@ -17,6 +17,7 @@ interface HeaderProps {
   onDatasetClick?: (datasetId: string) => void;
   onEventClick?: (eventId: string) => void;
   onExpertClick?: (expertId: string) => void;
+  onTeamMemberClick?: (teamMemberId: string) => void;
 }
 
 export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, onPublicationClick, onDatasetClick, onEventClick, onExpertClick  }: HeaderProps) {
@@ -66,7 +67,7 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
 
   return (
     <header
-      className="relative w-full overflow-hidden"
+      className="relative w-full"
       style={{ height: pageData.height || "560px" }}
     >
       {/* Background Image */}
@@ -318,7 +319,7 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
                     </p>
                   )}
                   {bottomText2 && (
-                    <p className="text-white text-xl font-medium max-w-xl leading-normal">
+                    <p className="text-white text-xl font-medium max-w-xl leading-relaxed">
                       {bottomText2}
                     </p>
                   )}

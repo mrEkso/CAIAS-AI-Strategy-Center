@@ -16,9 +16,10 @@ interface StickyHeaderProps {
   onDatasetClick?: (datasetId: string) => void;
   onEventClick?: (eventId: string) => void;
   onExpertClick?: (expertId: string) => void;
+  onTeamMemberClick?: (teamMemberId: string) => void;
 }
 
-export function StickyHeader({ currentPage = "home", onNavigate, onAnnouncementClick, onPublicationClick, onDatasetClick, onEventClick, onExpertClick }: StickyHeaderProps) {
+export function StickyHeader({ currentPage = "home", onNavigate, onAnnouncementClick, onPublicationClick, onDatasetClick, onEventClick, onExpertClick, onTeamMemberClick }: StickyHeaderProps) {
   const { language, setLanguage, t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -57,7 +58,9 @@ export function StickyHeader({ currentPage = "home", onNavigate, onAnnouncementC
     } else if (result.type === 'event') {
     onEventClick?.(result.id);
     } else if (result.type === 'expert') {
-      onExpertClick?.(result.id);
+    onExpertClick?.(result.id);
+    } else if (result.type === 'teamMember') {
+    onTeamMemberClick?.(result.id);
     }
     setIsSearchOpen(false);
     setSearchQuery('');

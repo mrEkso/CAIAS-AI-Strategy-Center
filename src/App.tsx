@@ -7,6 +7,7 @@ import { ArticlesDetailPage } from "./components/ArticlesDetailPage.js";
 import { Partnership } from "./components/Partnership.js";
 import { Contacts } from "./components/Contacts.js";
 import { AboutUs } from "./components/AboutUs.js";
+import { TeamMemberDetailPage } from "./components/AboutUs/TeamMemberDetailPage.js";
 import { ResearchTopics } from "./components/ResearchTopics.js";
 import { Publications } from "./components/Publications.js";
 import { PublicationsDetailPage } from "./components/PublicationsDetailPage.js";
@@ -21,24 +22,26 @@ import { Footer } from "./components/Footer.js";
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState("home");
-  const [selectedExpert, setSelectedExpert] = useState<string | null>(null);
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
   const [selectedPublication, setSelectedPublication] = useState<string | null>(null);
   const [selectedDataset, setSelectedDataset] = useState<string | null>(null);
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
+  const [selectedExpert, setSelectedExpert] = useState<string | null>(null);
+  const [selectedTeamMember, setSelectedTeamMember] = useState<string | null>(null);
 
    // 🔹 Глобальний скрол вгору при зміні сторінки або відкритті контенту
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [currentPage, selectedExpert, selectedArticle, selectedPublication, selectedDataset, selectedEvent]);
+  }, [currentPage, selectedArticle, selectedPublication, selectedDataset, selectedEvent, selectedExpert, selectedTeamMember]);
 
   const handleNavigation = (page: string) => {
     setCurrentPage(page);
-    setSelectedExpert(null);
     setSelectedArticle(null);
     setSelectedPublication(null);
     setSelectedDataset(null);
     setSelectedEvent(null);
+    setSelectedExpert(null);
+    setSelectedTeamMember(null);
   };
 
   const handleAnnouncementClick = (articleId: string) => {
@@ -66,6 +69,11 @@ function AppContent() {
     setCurrentPage("expertDetail");
   };
 
+  const handleTeamMemberClick = (teamMemberId: string) => {
+    setSelectedTeamMember(teamMemberId);
+    setCurrentPage("teamMemberDetail");
+  };
+
   const handleBackToAnnouncements = () => {
     setSelectedArticle(null);
     setCurrentPage("home");
@@ -89,6 +97,26 @@ function AppContent() {
   const handleBackToExperts = () => {
     setSelectedExpert(null);
     setCurrentPage("experts");
+  };
+
+  const handleBackToTeamMembers = () => {
+    setSelectedTeamMember(null);
+    setCurrentPage("about");
+
+  // Невелика затримка, щоб AboutUs встиг відрендеритися
+  setTimeout(() => {
+    const el = document.getElementById("team-section");
+      if (el) {
+        // scrollIntoView з плавністю
+        try {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        } catch {
+          // Якщо браузер не підтримує — fallback
+          const top = el.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      }
+    }, 100);
   };
 
   const homePage = (
@@ -118,7 +146,16 @@ function AppContent() {
       case "contacts":
         return <Contacts />;
       case "about":
-        return <AboutUs />;
+        return <AboutUs onTeamMemberClick={handleTeamMemberClick}/>;
+      case "teamMemberDetail":
+        return selectedTeamMember ? (
+          <TeamMemberDetailPage
+            teamMemberId={selectedTeamMember}
+            onBack={handleBackToTeamMembers}
+          />
+        ) : (
+          <AboutUs onTeamMemberClick={handleTeamMemberClick} />
+        ); 
       case "researchTopics":
         return <ResearchTopics />;
       case "publications":
@@ -170,7 +207,7 @@ function AppContent() {
     }
   };
 
-  const showFooter = currentPage !== "expertDetail";
+  const showFooter = currentPage 
 
   return (
     <div className="min-h-screen bg-white">
@@ -182,6 +219,7 @@ function AppContent() {
         onDatasetClick={handleDatasetClick}
         onEventClick={handleEventClick}
         onExpertClick={handleExpertClick}
+        onTeamMemberClick={handleTeamMemberClick}
       />
       <StickyHeader
         currentPage={
@@ -190,6 +228,7 @@ function AppContent() {
           currentPage === "datasetDetail" ? "datasets" : 
           currentPage === "eventDetail" ? "events" : 
           currentPage === "expertDetail" ? "experts" :
+          currentPage === "teamMemberDetail" ? "about" :
           currentPage
         }
         onNavigate={handleNavigation}
@@ -198,6 +237,7 @@ function AppContent() {
         onDatasetClick={handleDatasetClick}
         onEventClick={handleEventClick}
         onExpertClick={handleExpertClick}
+        onTeamMemberClick={handleTeamMemberClick}
       />
       {renderCurrentPage()}
       {showFooter && (
