@@ -91,22 +91,18 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
             {/* University Logo */}
             <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center text-gray-900 group-hover:bg-gray-100 transition-colors shadow-lg">
               <img
-                src="/images/L-100x100.png"
+                src="/images/Logos/L-100x100.png"
                 alt="Logo"
                 className="w-16 h-16 object-contain"
               />
             </div>
 
             {/* Title - Hidden on mobile */}
-            <div className="hidden sm:block mt-2">
-              <h1 className="text-white text-xl font-medium leading-tight mb-2">
-                {t("header.title.line1")}
-                <br />
-                {t("header.title.line2")}
-                <br />
-                {t("header.title.line3")}
+            <div className="hidden sm:block mt-2 max-w-[11rem] overflow-hidden">
+              <h1 className="text-white text-lg font-medium leading-tight">
+                {t("header.title")}
               </h1>
-              <p className="text-white/80 text-base">
+              <p className="text-white/80 text-sm">
                 {t("header.subtitle")}
               </p>
             </div>
@@ -130,7 +126,7 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
                     className="text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-full">{t('header.topNav.about')}</button>
                   <Button onClick={toggleLanguage} variant="ghost" size="sm" className="text-white/90 hover:text-white hover:bg-white/10 h-10 px-4 rounded-full flex items-center">
                     <Globe className="w-5 h-5 mr-2" />
-                    {language === "uk" ? "EN" : "УК"}
+                    {language === "uk" ? "EN" : "UA"}
                   </Button>
                 </div>
 
@@ -280,12 +276,9 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
 
                   <SheetHeader className="pb-2">
                     <div>
-                      <SheetTitle className="pb-2 text-left text-2xl font-medium text-white/90">
+                      <SheetTitle className="text-left text-2xl font-medium text-white/90">
                         {t('header.nav.menu')}
                       </SheetTitle>
-                      <SheetDescription className="text-left text-base text-white/80">
-                        {t('header.nav.menuDescription')}
-                      </SheetDescription>
                     </div>
                   </SheetHeader>
 
@@ -314,12 +307,12 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
               return (
                 <div className="absolute bottom-12 text-left space-y-4">
                   {bottomText1 && (
-                    <p className="text-white text-4.75xl font-bold max-w-xl leading-snug">
+                    <p className="text-white text-4.75xl font-bold max-w-md-lg leading-snug">
                       {bottomText1}
                     </p>
                   )}
                   {bottomText2 && (
-                    <p className="text-white text-xl font-medium max-w-xl leading-relaxed">
+                    <p className="text-white text-xl font-medium max-w-sm-md leading-relaxed">
                       {bottomText2}
                     </p>
                   )}

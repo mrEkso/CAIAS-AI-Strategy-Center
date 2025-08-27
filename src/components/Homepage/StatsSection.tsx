@@ -1,4 +1,5 @@
 import { useLanguage } from "../../contexts/LanguageContext.js";
+const StoneTexture = "/images/Textures/stone-texture2.jpg";
 
 export function StatsSection() {
   const { t } = useLanguage();
@@ -27,7 +28,20 @@ export function StatsSection() {
   ];
 
   return (
-    <section className="py-16 bg-gray-750 text-white">
+    <section className="relative py-16 bg-gray-750 text-white">
+
+      {/* Grain texture overlay */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundImage: `url(${StoneTexture})`,
+              opacity: 0.2,
+              mixBlendMode: 'overlay',
+            }}
+          />
+        </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-medium mb-4">
@@ -43,7 +57,7 @@ export function StatsSection() {
             <div key={index} className="text-flex">
               <div className="flex flex-col justify-center items-center text-center w-full h-full bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 
                               shadow-md shadow-white/5 hover:shadow-xl hover:shadow-white/5 transition-shadow duration-500">
-                <div className="text-4xl lg:text-5xl font-medium text-white mb-4">
+                <div className="text-4xl lg:text-4.5xl font-medium text-white mb-4">
                   {stat.number}
                 </div>
                 <h3 className="text-xl font-medium mb-2">

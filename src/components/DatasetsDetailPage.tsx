@@ -149,7 +149,7 @@ export function DatasetsDetailPage({ datasetId, onBack }: DatasetsDetailPageProp
       "dataset-3": {
         id: "dataset-3",
         title: isUk
-          ? "Набір даних 2"
+          ? "Набір даних 3"
           : "Ukraine Joins Global AI Ethics Initiative",
         description: isUk
           ? "Нове міжнародне партнерство має на меті встановити етичні керівні принципи для розвитку ШІ"

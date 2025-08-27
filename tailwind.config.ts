@@ -31,6 +31,10 @@ const config: Config = {
       inset: {
         '0.25': '0.07rem', 
       },
+      maxWidth: {
+        'sm-md': '26rem', // 416px (між sm і md)
+        'md-lg': '30rem', // 480px (між md і lg)
+      },
     },
   },
   plugins: [],

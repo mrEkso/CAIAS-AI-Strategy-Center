@@ -65,12 +65,16 @@ export function ExpertsPage({ onExpertClick }: ExpertsPageProps) {
               </Card>
             ))}
           </div>
+        </div>
+        </section>
 
-          {/* Join Our Team Section */}
-          <div className="relative mt-24 px-4 sm:px-6 lg:px-8">
+
+        {/* Join Our Team Section */}
+        <section className="py-16 bg-white">
+          <div className="px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-3xl blur-xl"></div>
-              <div className="relative bg-white backdrop-blur-sm border border-primary/20 rounded-3xl p-12">
+              
+              <div className="bg-white backdrop-blur-sm border border-primary/20 rounded-3xl p-12 shadow-lg shadow-primary/15 hover:shadow-xl hover:shadow-primary/20 transition duration-500">
                 <div className="text-center mb-12">
                   <h2 className="text-xl font-medium mb-6 text-foreground">
                     {isUk ? "Приєднуйтесь до нашої команди" : "Join Our Team"}
@@ -100,8 +104,8 @@ export function ExpertsPage({ onExpertClick }: ExpertsPageProps) {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
   );
 }
+

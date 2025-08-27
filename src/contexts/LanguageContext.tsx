@@ -60,11 +60,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
 const ukrainianTranslations = {
   header: {
-    title: {
-      line1: "Центр Стратегій",
-      line2: "Застосування",
-      line3: "Штучного Інтелекту",
-    },
+    title: "ЦЕНТР СТРАТЕГІЙ ЗАСТОСУВАННЯ ШТУЧНОГО ІНТЕЛЕКТУ",
     subtitle: "КПІ ім. Ігоря Сікорського",
     topNav: {
       partnership: "Партнерство",
@@ -74,14 +70,13 @@ const ukrainianTranslations = {
     bottomNav: {
       researchTopics: "Теми",
       publications: "Публікації",
-      datasets: "Дані",
+      datasets: "Датасети",
       podcasts: "Подкасти",
       events: "Події",
       experts: "Експерти"
     },
     nav: {
       menu: "Меню",
-      menuDescription: "Навігація по всіх розділах сайту",
       home: "Головна",
       experts: "Експерти",
       publications: "Публікації",
@@ -123,6 +118,33 @@ const ukrainianTranslations = {
     close: "Закрити",
     results: "Результати пошуку",
     noResults: "Нема результатів"
+  },
+  cookieBanner: {
+    title: "Використання файлів cookie",
+    description: "Ми використовуємо файли cookie для покращення вашого досвіду на нашому сайті, аналізу трафіку та персоналізації контенту. Ваша конфіденційність важлива для нас.",
+    acceptAll: "Прийняти всі",
+    customize: "Налаштувати",
+    necessaryOnly: "Тільки необхідні",
+    settingsTitle: "Налаштування файлів cookie",
+    settingsDescription: "Оберіть, які типи файлів cookie ви хочете дозволити. Це допоможе нам покращити ваш досвід використання сайту.",
+    necessary: {
+      title: "Необхідні файли cookie",
+      description: "Ці файли cookie необхідні для базового функціонування сайту і не можуть бути вимкнені.",
+    },
+    analytics: {
+      title: "Аналітичні файли cookie",
+      description: "Допомагають нам зрозуміти, як відвідувачі взаємодіють з сайтом, збираючи анонімну інформацію.",
+    },
+    marketing: {
+      title: "Маркетингові файли cookie",
+      description: "Використовуються для відстеження відвідувачів на веб-сайтах для показу релевантної реклами.",
+    },
+    preferences: {
+      title: "Файли cookie для персоналізації",
+      description: "Зберігають ваші уподобання та налаштування для покращення вашого досвіду.",
+    },
+    saveSettings: "Зберегти налаштування",
+    cancel: "Скасувати",
   },
   footer: {
     title: "Центр Стратегій Застосування Штучного Інтелекту",
@@ -196,12 +218,12 @@ const ukrainianTranslations = {
     title: "Результати нашої роботи",
     subtitle: "Цифри, що демонструють наш внесок у розвиток штучного інтелекту в Україні",
     research: {
-      number: "50+",
+      number: "5+",
       label: "Експертних досліджень",
       description: "Проведено аналітичних досліджень у сфері ШІ"
     },
     partners: {
-      number: "25+",
+      number: "6+",
       label: "Партнерських організацій",
       description: "Активна співпраця з провідними установами"
     },
@@ -243,7 +265,9 @@ const ukrainianTranslations = {
     addressLabel: "Адреса:",
     address: "Берестейський проспект, 37,\nКиїв, Україна, 03056",
     phoneLabel: "Телефон:",
+    phone: "+380 44 204 8000",
     emailLabel: "Email:",
+    email: "info@ai-center.kpi.ua",
     workingHours: "Години роботи:",
     workingDays: "Понеділок - П'ятниця",
     workingTime: "9:00 - 18:00",
@@ -297,7 +321,7 @@ const ukrainianTranslations = {
         focus: "Фокус",
         focusValue: "ШІ та цифрова трансформація",
         status: "Статус",
-        statusValue: "Аналітичний центр КПІ"
+        statusValue: "Аналітичний центр КПІ ім. Ігоря Сікорського"
       },
       principles: {
         title: "Принципи роботи",
@@ -500,11 +524,7 @@ const ukrainianTranslations = {
 
 const englishTranslations = {
   header: {
-    title: {
-      line1: "Center for Artificial",
-      line2: "Intelligence",
-      line3: "Application Strategies"
-    },
+    title: "CENTER FOR ARTIFICIAL INTELLIGENCE APPLICATION STRATEGIES",
     subtitle: "Igor Sikorsky Kyiv Polytechnic Institute",
     topNav: {
       partnership: "Partnerships",
@@ -521,7 +541,6 @@ const englishTranslations = {
     },
     nav: {
       menu: "Menu",
-      menuDescription: "Navigate through all website sections",
       home: "Home",
       experts: "Experts",
       publications: "Publications",
@@ -562,6 +581,33 @@ const englishTranslations = {
     close: "Close",
     results: "Search results",
     noResults: "No results"
+  },
+  cookieBanner: {
+    title: "Cookie Usage",
+    description: "We use cookies to improve your experience on our website, analyze traffic, and personalize content. Your privacy is important to us.",
+    acceptAll: "Accept All",
+    customize: "Customize",
+    necessaryOnly: "Necessary Only",
+    settingsTitle: "Cookie Settings",
+    settingsDescription: "Choose which types of cookies you want to allow. This will help us improve your experience on the site.",
+    necessary: {
+      title: "Necessary Cookies",
+      description: "These cookies are essential for the basic functioning of the site and cannot be disabled.",
+    },
+    analytics: {
+      title: "Analytics Cookies",
+      description: "Help us understand how visitors interact with the site by collecting anonymous information.",
+    },
+    marketing: {
+      title: "Marketing Cookies",
+      description: "Used for tracking visitors across websites to show relevant advertising.",
+    },
+    preferences: {
+      title: "Preferences Cookies",
+      description: "Store your preferences and settings to improve your experience.",
+    },
+    saveSettings: "Save Settings",
+    cancel: "Cancel",
   },
   footer: {
     title: "Center for Artificial Intelligence Application Strategies",
@@ -635,12 +681,12 @@ const englishTranslations = {
     title: "Results of Our Work",
     subtitle: "Numbers that demonstrate our contribution to artificial intelligence development in Ukraine",
     research: {
-      number: "50+",
+      number: "5+",
       label: "Expert Research Studies",
       description: "Analytical research conducted in AI field"
     },
     partners: {
-      number: "25+",
+      number: "6+",
       label: "Partner Organizations",
       description: "Active collaboration with leading institutions"
     },
@@ -682,7 +728,9 @@ const englishTranslations = {
     addressLabel: "Address:",
     address: "37, Prospect Beresteiskyi (former Peremohy),\nKyiv, Ukraine, 03056",
     phoneLabel: "Phone:",
+    phone: "+380 44 204 8000",
     emailLabel: "Email:",
+    email: "info@ai-center.kpi.ua",
     workingHours: "Working Hours:",
     workingDays: "Monday - Friday",
     workingTime: "9:00 AM - 6:00 PM",
@@ -735,7 +783,7 @@ const englishTranslations = {
         focus: "Focus",
         focusValue: "AI and Digital Transformation",
         status: "Status",
-        statusValue: "Analytical Center of KPI"
+        statusValue: "Analytical Center of Igor Sikorsky Kyiv Polytechnic Institute"
       },
       principles: {
         title: "Principles of Work",

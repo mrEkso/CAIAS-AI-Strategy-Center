@@ -11,7 +11,7 @@ interface TeamMemberCardProps {
   onClick?: () => void;
 }
 
-  export function TeamMemberCard({ id, name, position, photo, description, onClick }: TeamMemberCardProps) {
+  export function TeamMemberCard({ id, name, position, photo, onClick }: TeamMemberCardProps) {
 
     {/* Картки членів команди Центру */}
     return (

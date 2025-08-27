@@ -20,7 +20,7 @@ export function Contacts() {
           {/* Center Information Card */}
           <Card className="mb-8 bg-white/70 border-primary/15 shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/15 transition-shadow duration-500">
             <CardHeader className="pb-4">
-              <div className="flex items-center justify-center space-x-3">
+              <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-3">
                 <Building2 className="w-6 h-6 text-blue-600" />
                 <CardTitle className="text-xl text-center">
                   {t('contacts.centerName')}
@@ -73,7 +73,7 @@ export function Contacts() {
                     {t('contacts.phoneLabel')}
                   </h3>
                   <p className="text-gray-600">
-                    +380 44 204 8000
+                    {t('contacts.phone')}
                   </p>
                 </div>
               </CardContent>
@@ -87,7 +87,7 @@ export function Contacts() {
                     {t('contacts.emailLabel')}
                   </h3>
                   <p className="text-gray-600">
-                    info@ai-center.kpi.ua
+                    {t('contacts.email')}
                   </p>
                 </div>
               </CardContent>

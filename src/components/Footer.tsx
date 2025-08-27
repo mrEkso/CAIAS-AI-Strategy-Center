@@ -32,7 +32,7 @@ export function Footer({ currentPage = "home", onNavigate }: FooterProps) {
         >
               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-white group-hover:bg-gray-100 transition-colors shadow-lg">
                 <img
-                  src="/images/L-100x100.png"
+                  src="/images/Logos/L-100x100.png"
                   alt="Logo"
                   className="w-8 h-8 object-contain"
                 />

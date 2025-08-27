@@ -258,10 +258,7 @@ html {
   font-size: var(--font-size);
 }
 
-
-/**
- * Side Menu Animation
- */
+/* Side Menu Animation */
 
 @keyframes slideInRight {
   0% { transform: translateX(100%); opacity: 0; }
@@ -279,4 +276,17 @@ html {
 
 .slide-out {
   animation: slideOutRight 0.5s cubic-bezier(0.25,0.8,0.25,1) forwards;
+}
+
+/* Cookie Banner Animation */
+
+.cookie-banner-wrapper {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.cookie-banner-wrapper.show {
+  transform: translateY(0);
+  opacity: 1;
 }

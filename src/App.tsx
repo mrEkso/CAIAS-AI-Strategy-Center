@@ -19,6 +19,7 @@ import { EventsDetailPage } from "./components/EventsDetailPage.js";
 import { ExpertsPage } from "./components/ExpertsPage.js";
 import { ExpertDetailPage } from "./components/ExpertDetailPage.js";
 import { Footer } from "./components/Footer.js";
+import { CookieBanner } from "./components/CookieBanner.js";
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -29,7 +30,7 @@ function AppContent() {
   const [selectedExpert, setSelectedExpert] = useState<string | null>(null);
   const [selectedTeamMember, setSelectedTeamMember] = useState<string | null>(null);
 
-   // 🔹 Глобальний скрол вгору при зміні сторінки або відкритті контенту
+   // Глобальний скрол вгору при зміні сторінки або відкритті контенту
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage, selectedArticle, selectedPublication, selectedDataset, selectedEvent, selectedExpert, selectedTeamMember]);
@@ -207,7 +208,7 @@ function AppContent() {
     }
   };
 
-  const showFooter = currentPage 
+  const showFooter = true 
 
   return (
     <div className="min-h-screen bg-white">
@@ -245,9 +246,10 @@ function AppContent() {
         currentPage={currentPage}
         onNavigate={handleNavigation} 
       />
-    )}
-  </div>
-);
+      )}
+      <CookieBanner />
+    </div>
+  );
 }
 
 export default function App() {

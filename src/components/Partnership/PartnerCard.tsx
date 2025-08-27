@@ -53,7 +53,7 @@ export function PartnerCard({ name, logo, description, category, website }: Part
               href={website}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:underline text-sm"
+              className="text-primary hover:underline text-sm font-semibold"
             >
               {t('partnerships.card.visitWebsite')}
             </a>

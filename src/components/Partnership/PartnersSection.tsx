@@ -45,7 +45,7 @@ const partnersData = [
     name: isUk ? "Прогрестех-Україна" : "Progresstech-Ukraine",
     logo: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=200&h=120&fit=crop",
     description: isUk 
-      ? "Progresstech-Ukraine - технологічна компанія, що спеціалізується на впровадженні інноваційних рішень штучного інтелекту в бізнес-процесах."
+      ? "Прогрестех-Україна - технологічна компанія, що спеціалізується на впровадженні інноваційних рішень штучного інтелекту в бізнес-процесах."
       : "Progresstech-Ukraine – a technology company specializing in the implementation of innovative AI solutions in business processes.",
     category: isUk 
       ? "Технологічний партнер"
@@ -67,8 +67,8 @@ const partnersData = [
     name: isUk ? "ESTDEV" : "ESTDEV",
     logo: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=200&h=120&fit=crop",
     description: isUk 
-      ? "Estonian Centre for International Development - естонський центр міжнародного розвитку, що підтримує цифрову трансформацію в Україні."
-      : "Estonian Centre for International Development – an Estonian center for international development supporting digital transformation in Ukraine.",
+      ? "ESTDEV - естонський центр міжнародного розвитку, що підтримує цифрову трансформацію в Україні."
+      : "ESTDEV – Estonian Centre for International Development supporting digital transformation in Ukraine.",
     category: isUk 
       ? "Академічний партнер"
       : "Academic Partner",
@@ -100,10 +100,10 @@ const partnersData = [
           {[
             { number: "6", label: isUk ? "Ключових партнерів" : "Key Partners", description: isUk ? "Стратегічна співпраця" : "Strategic Cooperation" },
             { number: "3", label: isUk ? "Країни" : "Countries", description: isUk ? "Міжнародна мережа" : "International Network" },
-            { number: "15+", label: isUk ? "Спільних проектів" : "Joint Projects", description: isUk ? "У 2024 році" : "In 2024" },
+            { number: "5+", label: isUk ? "Спільних проектів" : "Joint Projects", description: isUk ? "У 2025 році" : "In 2025" },
             { number: "100%", label: isUk ? "Відкритість" : "Openness", description: isUk ? "Прозора співпраця" : "Transparent Cooperation" },
           ].map((stat, index) => (
-            <div key={index} className="text-center p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/10 hover:border-primary/20 transition-all duration-300">
+            <div key={index} className="text-center p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/10 shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
               <div className="text-3xl font-bold text-primary mb-2">
                 {stat.number}
               </div>

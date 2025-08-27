@@ -89,7 +89,7 @@ export function StickyHeader({ currentPage = "home", onNavigate, onAnnouncementC
               {/* University Logo */}
                 <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-white group-hover:bg-gray-100 transition-colors shadow-lg">
               <img
-                src="/images/L-100x100.png"
+                src="/images/Logos/L-100x100.png"
                 alt="Logo"
                 className="w-8 h-8 object-contain"
               />
@@ -163,7 +163,7 @@ export function StickyHeader({ currentPage = "home", onNavigate, onAnnouncementC
                 className="text-white/90 hover:text-gray-900 hover:bg-gray-100 text-sm h-9 px-3 rounded-full"
               >
                 <Globe className="w-4 h-4 mr-1" />
-                {language === 'uk' ? 'EN' : 'УК'}
+                {language === 'uk' ? 'EN' : 'UA'}
               </Button>
               
               <div className="w-px h-6 bg-gray-300"></div>
@@ -190,12 +190,9 @@ export function StickyHeader({ currentPage = "home", onNavigate, onAnnouncementC
 
                   <SheetHeader className="pb-2">
                     <div>
-                      <SheetTitle className="pb-2 text-left text-2xl font-medium text-white/90">
+                      <SheetTitle className="text-left text-2xl font-medium text-white/90">
                         {t('header.nav.menu')}
                       </SheetTitle>
-                      <SheetDescription className="text-left text-base text-white/80">
-                        {t('header.nav.menuDescription')}
-                      </SheetDescription>
                     </div>
                   </SheetHeader>
 
