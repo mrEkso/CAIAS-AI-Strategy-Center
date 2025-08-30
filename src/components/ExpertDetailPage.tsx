@@ -4,15 +4,14 @@ import { Button } from "./ui/button.js";
 import { ArrowLeft, Mail, Linkedin, Award, BookOpen, Users, Calendar, ExternalLink } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
+import { Link, useParams } from "react-router-dom";
 
-interface ExpertDetailPageProps {
-  expertId: string;
-  onBack?: () => void;
-}
 
-export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
+export function ExpertDetailPage() {
   const { t, language } = useLanguage();
   const isEn = language === "en";
+  const { id } = useParams();  // <-- отримуємо id з URL
+  const expertId = id; 
 
   const expertImages: Record<string, string> = {
     petrenko: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
@@ -143,6 +142,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
   };
 
   // Safely get expert data with fallbacks
+  const getId = () => t(`expertsData.${expertId}.id`);
   const getName = () => t(`expertsData.${expertId}.name`);
   const getPosition = () => t(`expertsData.${expertId}.position`);
   const getSpecialization = () => t(`expertsData.${expertId}.specialization`);
@@ -167,6 +167,7 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
   };
 
   const expert = {
+    id: getId(),
     name: getName(),
     position: getPosition(),
     specialization: getSpecialization(),
@@ -175,8 +176,8 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
     achievements: getAchievements(),
     skills: getSkills(),
     email: getEmail(),
-    image: expertImages[expertId],
-    researchPapers: researchPapers[expertId] || []
+    image: expertId ? expertImages[expertId] : undefined,
+    researchPapers: expertId ? researchPapers[expertId] || [] : []
   };
 
   // Check if expert exists (if translation contains the key, it means expert doesn't exist)
@@ -185,10 +186,12 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-medium text-gray-900 mb-4">{t('experts.expertNotFound')}</h2>
-          <Button onClick={onBack} variant="outline">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {t('experts.backButton')}
-          </Button>
+          <Link to="/experts"> 
+            <Button variant="outline">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              {t('experts.backButton')}
+            </Button>
+          </Link>
         </div>
       </div>
     );
@@ -199,14 +202,15 @@ export function ExpertDetailPage({ expertId, onBack }: ExpertDetailPageProps) {
       {/* Header with Back Button */}
       <section className="bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <Button 
-            onClick={onBack} 
-            variant="outline" 
-            className="mb-8 bg-gray-600 text-white hover:bg-gray-400 hover:text-gray-900"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {t('experts.backToList')}
-          </Button>
+          <Link to="/experts">
+            <Button 
+              variant="outline" 
+              className="mb-8 bg-gray-600 text-white hover:bg-gray-400 hover:text-gray-900"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              {t('experts.backToList')}
+            </Button>
+          </Link>
           
           {/* Photo, name and position of the expert */}
           <div className="grid lg:grid-cols-3 gap-8 items-start">

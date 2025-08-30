@@ -290,3 +290,7 @@ html {
   transform: translateY(0);
   opacity: 1;
 }
+
+#team {
+  scroll-margin-top: 40px; /* висота хедера */
+}

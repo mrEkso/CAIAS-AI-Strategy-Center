@@ -2,7 +2,7 @@
 
 export const teamMembersData = (isUk: boolean) => [
   {
-    id: "ilyash",
+    id: "olga_ilyash",
     name: isUk 
       ? "Ольга Іляш"
       : "Olga Ilyash",
@@ -23,7 +23,7 @@ export const teamMembersData = (isUk: boolean) => [
         ].join(' ')
   },
   {
-    id: "okaianchenko",
+    id: "davyd_okaianchenko",
     name: isUk 
       ? "Давид Окаянченко"
       : "Davyd Okaianchenko",
@@ -33,7 +33,7 @@ export const teamMembersData = (isUk: boolean) => [
     photo: "/images/TeamPhotos/Davyd_Okaianchenko.jpg",
   },
   {
-    id: "kulesh",
+    id: "kateryna_kulesh",
     name: isUk 
       ? "Катерина Кулеш"
       : "Kateryna Kulesh",
@@ -43,7 +43,7 @@ export const teamMembersData = (isUk: boolean) => [
     photo: "/images/TeamPhotos/Kateryna_Kulesh.jpg",
   },
   {
-    id: "parkhomenko",
+    id: "artem_parkhomenko",
     name: isUk 
       ? "Артем Пархоменко"
       : "Artem Parkhomenko",

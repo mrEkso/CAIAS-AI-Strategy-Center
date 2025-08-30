@@ -11,6 +11,7 @@ const config: Config = {
         exo2: ['"Exo 2"', 'Arial'],
       },
       fontSize: {
+      'sm-base': '0.925rem', // між sm і base
       '4.5xl': '2.625rem', // між 4xl і 5xl
       '4.75xl': '2.8125rem',
       },
@@ -21,7 +22,8 @@ const config: Config = {
           "primary-light2": "#4ea0fc",
           "primary-light3": "#4969c9",
           "primary-light4": "#2e3357", 
-          "primary-light5": "#a49beb", 
+          "primary-light5": "#a49beb",
+          "primary-light6": "#444973",
           "primary-medium": "#152056", // між primary і primary-dark 
           "primary-medium2": "#1e2154", // #181754
           "primary-dark": "#01061a",
@@ -34,6 +36,10 @@ const config: Config = {
       maxWidth: {
         'sm-md': '26rem', // 416px (між sm і md)
         'md-lg': '30rem', // 480px (між md і lg)
+      },
+      lineHeight: {
+        'extra-tight': '1.1', // кастомні leading
+        'super-tight': '1.15',
       },
     },
   },

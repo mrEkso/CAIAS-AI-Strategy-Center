@@ -74,6 +74,17 @@ const partnersData = [
       : "Academic Partner",
     website: "https://estdev.ee"
   },
+  {
+    name: isUk ? "IMT School for Advanced Studies Lucca" : "IMT School for Advanced Studies Lucca",
+    logo: "/images/IMT_Lucca.jpg",
+    description: isUk
+      ? "IMT School for Advanced Studies Lucca – італійська аспірантська школа, що спеціалізується на міждисциплінарних дослідженнях у сфері економіки, інженерії, інформатики та соціальних наук."
+      : "IMT School for Advanced Studies Lucca – an Italian graduate school specializing in interdisciplinary research in economics, engineering, computer science, and social sciences.",
+    category: isUk
+      ? "Академічний партнер"
+      : "Academic Partner",
+    website: "https://en.wikipedia.org/wiki/IMT_School_for_Advanced_Studies_Lucca"
+  },
 ];
 
 
@@ -98,7 +109,7 @@ const partnersData = [
         {/* Статистика партнерства */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {[
-            { number: "6", label: isUk ? "Ключових партнерів" : "Key Partners", description: isUk ? "Стратегічна співпраця" : "Strategic Cooperation" },
+            { number: "7", label: isUk ? "Ключових партнерів" : "Key Partners", description: isUk ? "Стратегічна співпраця" : "Strategic Cooperation" },
             { number: "3", label: isUk ? "Країни" : "Countries", description: isUk ? "Міжнародна мережа" : "International Network" },
             { number: "5+", label: isUk ? "Спільних проектів" : "Joint Projects", description: isUk ? "У 2025 році" : "In 2025" },
             { number: "100%", label: isUk ? "Відкритість" : "Openness", description: isUk ? "Прозора співпраця" : "Transparent Cooperation" },

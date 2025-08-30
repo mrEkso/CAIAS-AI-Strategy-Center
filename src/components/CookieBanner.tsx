@@ -183,7 +183,9 @@ export function CookieBanner() {
                 <Switch checked={consent.analytics} onCheckedChange={() => toggleConsent("analytics")} className="mt-1" />
               </div>
 
-              {/* Маркетингові cookies */}
+              {/*
+
+               Маркетингові cookies 
               <div className="flex items-start justify-between p-4 border border-border rounded-xl">
                 <div className="flex items-start gap-3 flex-1">
                   <Cookie className="w-5 h-5 text-primary mt-1" />
@@ -196,6 +198,8 @@ export function CookieBanner() {
                 </div>
                 <Switch checked={consent.marketing} onCheckedChange={() => toggleConsent("marketing")} className="mt-1" />
               </div>
+
+              */}
 
               {/* Персоналізація */}
               <div className="flex items-start justify-between p-4 border border-border rounded-xl">

@@ -4,13 +4,13 @@ import { Card } from "./ui/card.js";
 import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen, Tag } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
+import { Link } from "react-router-dom";
 
 interface PublicationsDetailPageProps {
-  publicationId: string;
-  onBack: () => void;
+  publicationId?: string;
 }
 
-export function PublicationsDetailPage({  publicationId, onBack }: PublicationsDetailPageProps) {
+export function PublicationsDetailPage({  publicationId }: PublicationsDetailPageProps) {
   const { t, language } = useLanguage();
   const isUk = language === "uk";
 
@@ -21,7 +21,7 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
       "featured": {
         id: "featured",
         title: isUk
-          ? "Основний набір даних"
+          ? "Щорічна конференція з ШІ | 15-16 листопада 2024"
           : "Annual AI Conference | November 15-16, 2024",
         description: isUk
           ? "Цьогорічна щорічна конференція зосереджена на 25-річчі досліджень штучного інтелекту та його впливі на українську економіку"
@@ -151,24 +151,22 @@ export function PublicationsDetailPage({  publicationId, onBack }: PublicationsD
     return allPublications[id as keyof typeof allPublications] || allPublications.featured;
   };
 
-  const publication = getPublicationData(publicationId);
+  const publication = getPublicationData(publicationId || "featured");
 
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <div className="bg-gray-50 py-4">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Button 
-            variant="ghost" 
-            onClick={() => {
-              onBack();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            className="text-primary hover:text-primary-dark"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {isUk ? 'Назад до публікацій' : 'Back to Publications'}
-          </Button>
+          <Link to="/publications" >
+            <Button 
+              variant="ghost" 
+              className="text-primary hover:text-primary-dark"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              {isUk ? 'Назад до публікацій' : 'Back to Publications'}
+            </Button>
+          </Link>
         </div>
       </div>
 

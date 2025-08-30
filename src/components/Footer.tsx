@@ -1,145 +1,103 @@
 import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import React, { useEffect } from 'react';
 import { useLanguage } from "../contexts/LanguageContext.js";
+import { Link, useLocation } from "react-router-dom";
 
-interface FooterProps {
-  currentPage?: string;
-  onNavigate?: (page: string) => void;
-}
 
-export function Footer({ currentPage = "home", onNavigate }: FooterProps) {
-  const { t } = useLanguage();
+export function Footer() {
+  const { language, t } = useLanguage();
+  const isUk = language === "uk";
+  const location = useLocation();
 
-  const handleNavigation = (page: string) => {
-    if (onNavigate) {
-      onNavigate(page);
-    }
-  };
+  useEffect(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [location.pathname]);
+
+  const navLinks = [
+    { key: "home", label: t('header.nav.home'), path: "/" },
+    { key: "experts", label: t('header.nav.experts'), path: "/experts" },
+    { key: "publications", label: t('header.nav.publications'), path: "/publications" },
+    { key: "datasets", label: t('header.nav.datasets'), path: "/datasets" },
+    { key: "events", label: t('header.nav.events'), path: "/events" },
+    { key: "contacts", label: t('header.nav.contacts'), path: "/contacts" },
+  ];
 
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Section */}
           <div className="lg:col-span-2">
-            <div 
-            className="flex items-center space-x-3 mb-4 cursor-pointer group" 
-            onClick={() => {
-             if (onNavigate) {
-              onNavigate("home");
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }
-          }}
-        >
-              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-white group-hover:bg-gray-100 transition-colors shadow-lg">
+
+            {/* Footer Logo + Title */}
+            <Link 
+              to="/" 
+              className="flex items-center gap-3 group mb-6"
+              onClick={(e) => {
+                if (location.pathname === "/") {
+                  e.preventDefault(); // зупиняємо стандартну поведінку, бо вже на HomePage 
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              >
+              
+              {/* Logo */}
+              <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center group-hover:bg-gray-100 transition-colors shadow-lg">
                 <img
                   src="/images/Logos/L-100x100.png"
                   alt="Logo"
-                  className="w-8 h-8 object-contain"
+                  className="w-10 h-10 object-contain"
                 />
               </div>
-              <div>
-                <h3 className="text-lg font-medium">{t('footer.about')}</h3>
-              </div>
-            </div>
 
-            <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
-              {t('footer.aboutDescription')}
-            </p>
+              {/* Text: Title + Subtitle */}
+              <div className="text-left font-sans">
+                <h1 className={`text-white text-sm font-medium whitespace-pre-line ${isUk ? "leading-extra-tight" : "leading-super-tight"}`}>
+                  {t('footer.title')}
+                </h1>
+                <p className={`text-gray-300 text-xs whitespace-pre-line ${isUk ? "leading-extra-tight" : "leading-super-tight"} max-w-md`}>
+                  {t('footer.subtitle')}
+                </p>
+              </div>
+            </Link>
 
-            <div className="space-y-3">
-              <div className="flex items-center text-gray-300">
-                <MapPin className="w-4 h-4 mr-3" />
-                <span className="text-sm">{t('footer.address')}</span>
+            {/* Contact info */}
+            <div className="space-y-3 text-gray-300 text-sm">
+              <div className="flex items-center">
+                <MapPin className="w-4 h-4 mr-3" /> {t('footer.address')}
               </div>
-              <div className="flex items-center text-gray-300">
-                <Phone className="w-4 h-4 mr-3" />
-                <span className="text-sm">{t('footer.phone')}</span>
+              <div className="flex items-center">
+                <Phone className="w-4 h-4 mr-3" /> {t('footer.phone')}
               </div>
-              <div className="flex items-center text-gray-300">
-                <Mail className="w-4 h-4 mr-3" />
-                <span className="text-sm">{t('footer.email')}</span>
+              <div className="flex items-center">
+                <Mail className="w-4 h-4 mr-3" /> {t('footer.email')}
               </div>
             </div>
           </div>
-          
+
           {/* Quick Links */}
           <div>
             <h4 className="text-lg font-medium mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2">
-              <li>
-                <button
-                  onClick={() => {
-                    handleNavigation("home");
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className="text-gray-300 hover:text-white transition-colors text-sm"
-                >
-                  {t('header.nav.home')}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    handleNavigation("experts");
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className="text-gray-300 hover:text-white transition-colors text-sm"
-                >
-                  {t('header.nav.experts')}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    handleNavigation("publications");
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className="text-gray-300 hover:text-white transition-colors text-sm"
-                >
-                  {t('header.nav.publications')}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    handleNavigation("datasets");
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className="text-gray-300 hover:text-white transition-colors text-sm"
-                >
-                  {t('header.nav.datasets')}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    handleNavigation("events");
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className="text-gray-300 hover:text-white transition-colors text-sm"
-                >
-                  {t('header.nav.events')}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    handleNavigation("contacts");
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className="text-gray-300 hover:text-white transition-colors text-sm"
-                >
-                  {t('header.nav.contacts')}
-                </button>
-              </li>
+              {navLinks.map(link => (
+                <li key={link.key}>
+                  <Link
+                    to={link.path}
+                    className={`text-sm-base transition-colors hover:text-white block ${
+                      location.pathname === link.path ? "text-white font-medium" : "text-gray-300"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          
           {/* Social Media */}
           <div>
             <h4 className="text-lg font-medium mb-4">{t('footer.followUs')}</h4>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 mt-2 md:mt-0">
               <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
@@ -152,10 +110,10 @@ export function Footer({ currentPage = "home", onNavigate }: FooterProps) {
             </div>
           </div>
         </div>
-        
+
         <div className="border-t border-gray-800 mt-12 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            © 2025 {t('footer.title')}. {t('footer.allRightsReserved')}.
+            {t('footer.caption')}
           </p>
         </div>
       </div>

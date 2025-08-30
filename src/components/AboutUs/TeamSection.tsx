@@ -2,28 +2,23 @@ import { teamMembersData } from "../data/TeamMembersData.js";
 import { useLanguage } from "../../contexts/LanguageContext.js";
 import { TeamMemberCard } from "./TeamMemberCard.js";
 import { DirectorCard } from "./DirectorCard.js";
+import { Link } from "react-router-dom";
 
-interface TeamSectionProps {
-  onTeamMemberClick?: ((teamMemberId: string) => void) | undefined;
-}
 
-export function TeamSection({ onTeamMemberClick }: TeamSectionProps) {
+export function TeamSection() {
   const { t, language } = useLanguage();
   const isUk = language === "uk";
 
   const teamMember = teamMembersData(isUk);
 
-  const handleTeamMemberClick = (teamMemberId: string) => {
-    onTeamMemberClick?.(teamMemberId);
-  };
 
    // Директорка
-  const director = teamMember.find(teamMember => teamMember.id === "ilyash");
+  const director = teamMember.find(teamMember => teamMember.id === "olga_ilyash");
   // Всі інші члени команди
-  const otherMembers = teamMember.filter(teamMember => teamMember.id !== "ilyash");
+  const otherMembers = teamMember.filter(teamMember => teamMember.id !== "olga_ilyash");
 
   return (
-    <section id="team-members-section" className="py-20 px-4 relative overflow-hidden bg-gray-50">
+    <section id="team" className="py-20 px-4 relative overflow-hidden bg-gray-50">
 
       {/* Заголовок */}
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -38,20 +33,21 @@ export function TeamSection({ onTeamMemberClick }: TeamSectionProps) {
       {/* Керівник команди - горизонтальний прямокутний блок */}
         {director && (
           <div className="max-w-6xl mx-auto mb-12">
-            <DirectorCard {...(director as typeof director & { description: string })} 
-              onClick={() => handleTeamMemberClick(director.id)}
-            />
+            <Link to={`/about-us/team/${director.id}`}>
+              <DirectorCard {...(director as typeof director & { description: string })} />
+            </Link>
           </div>
         )}
 
         {/* Інші члени команди - вертикальні квадратні блоки */}
        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-8 mb-4">
-          {otherMembers.map((teamMember, index) => (
-            <TeamMemberCard key={index} {...teamMember} 
-              onClick={() => handleTeamMemberClick(teamMember.id)}
-            />
+          {otherMembers.map((teamMember) => (
+            <Link key={teamMember.id} to={`/about-us/team/${teamMember.id}`}>
+              <TeamMemberCard {...teamMember} />
+            </Link>
           ))}
         </div>
+
     </section>
   );
 }

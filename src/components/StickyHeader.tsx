@@ -87,7 +87,7 @@ export function StickyHeader({ currentPage = "home", onNavigate, onAnnouncementC
               onClick={() => handleNavigation("home")}
             >
               {/* University Logo */}
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-white group-hover:bg-gray-100 transition-colors shadow-lg">
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-white group-hover:bg-gray-100 transition-colors shadow-lg">
               <img
                 src="/images/Logos/L-100x100.png"
                 alt="Logo"
@@ -145,7 +145,6 @@ export function StickyHeader({ currentPage = "home", onNavigate, onAnnouncementC
               <SearchResults
                 searchQuery={searchQuery}
                 results={searchResults}
-                onResultClick={handleSearchResultClick}
                 onClose={() => {
                   setIsSearchOpen(false);
                   setSearchQuery('');
@@ -197,7 +196,7 @@ export function StickyHeader({ currentPage = "home", onNavigate, onAnnouncementC
                   </SheetHeader>
 
                   <div className="flex-1 overflow-y-auto">
-                    <SideMenu currentPage={currentPage} onNavigate={handleNavigation} />
+                    <SideMenu onNavigate={handleNavigation} />
                   </div>
                 </SheetContent>
               </Sheet>

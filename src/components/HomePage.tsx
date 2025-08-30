@@ -4,18 +4,12 @@ import { TasksSection } from "./Homepage/TasksSection.js";
 import { InitiativesSection } from "./Homepage/InitiativesSection.js";
 import { StatsSection } from "./Homepage/StatsSection.js";
 
-interface HomePageProps {
-  onAnnouncementClick?: (articleId: string) => void;
-  onNavigate: (page: string) => void;
-  currentPage: string;   
-}
-
-export function HomePage({ onAnnouncementClick, onNavigate, currentPage }: HomePageProps) {
+export function HomePage() {
   return (
     <main>
-      <AnnouncementsSection onAnnouncementClick={onAnnouncementClick} />
+      <AnnouncementsSection />
       <TasksSection />
-      <HomeHero onNavigate={onNavigate} currentPage={currentPage}/>
+      <HomeHero />
       <InitiativesSection />
       <StatsSection />
     </main>

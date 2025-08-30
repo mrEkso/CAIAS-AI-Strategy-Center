@@ -60,7 +60,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
 const ukrainianTranslations = {
   header: {
-    title: "ЦЕНТР СТРАТЕГІЙ ЗАСТОСУВАННЯ ШТУЧНОГО ІНТЕЛЕКТУ",
+    title: "ЦЕНТР СТРАТЕГІЙ\nЗАСТОСУВАННЯ\nШТУЧНОГО\nІНТЕЛЕКТУ",
     subtitle: "КПІ ім. Ігоря Сікорського",
     topNav: {
       partnership: "Партнерство",
@@ -85,7 +85,7 @@ const ukrainianTranslations = {
       contacts: "Контакти"
     },
     bottomText1: {
-      home: "Штучний інтелект як інструмент майбутнього",
+      home: "Штучний інтелект\n як інструмент майбутнього",
       partnership: "Партнерство",
       contacts: "Наші контакти",
       about: "Про наш центр",
@@ -98,16 +98,15 @@ const ukrainianTranslations = {
       expertDetail: "",
     },
     bottomText2: {
-      home: "Ми працюємо над розвитком штучного інтелекту для науки та суспільства",
+      home: "Ми працюємо над розвитком штучного інтелекту\n для науки та суспільства",
       partnership: "Разом ми будуємо майбутнє технологій",
-      contacts: "Зв'яжіться з нами для співпраці, консультацій та партнерських ініціатив",
-      about: "Наша історія, місія та цінності",
+      contacts: "Зв'яжіться з нами для співпраці, консультацій\n та партнерських ініціатив",
       researchTopics: "Знаходьте наші дописи за темами",
       publications: "Знайомтеся із результатами нашої роботи",
       datasets: "Користуйтеся нашими відкритими даними",
       podcasts: "Слухайте наші подкасти з запрошеними гостями",
       events: "Долучайтеся до наших заходів",
-      experts: "Провідні вчені та дослідники, які формують майбутнє штучного інтелекту в Україні"
+      experts: "Провідні вчені та дослідники, які формують\n майбутнє штучного інтелекту в Україні"
     }
   },
   stickyHeader: {
@@ -147,13 +146,12 @@ const ukrainianTranslations = {
     cancel: "Скасувати",
   },
   footer: {
-    title: "Центр Стратегій Застосування Штучного Інтелекту",
-    about: "Наш Центр",
-    aboutDescription: "Центр Стратегій Застосування штучного інтелекту КПІ ім. Ігоря Сікорського",
+    title: "ЦЕНТР СТРАТЕГІЙ\nЗАСТОСУВАННЯ\nШТУЧНОГО\nІНТЕЛЕКТУ",
+    subtitle: "КПІ ім. Ігоря Сікорського",
     quickLinks: "Швидкі посилання",
     contact: "Контакти",
     followUs: "Слідкуйте за нами",
-    allRightsReserved: "Всі права захищені",
+    caption: "© 2025 Центр Стратегій Застосування Штучного Інтелекту. Всі права захищені",
     address: "пр. Берестейський, 37, Київ, 03056, Україна",
     phone: "+380 44 204 8000",
     email: "info@ai-center.kpi.ua"
@@ -465,7 +463,7 @@ const ukrainianTranslations = {
   },
   teamMembers: {
     backToList: "До списку команди",
-    teamMemberNotFound: "Учасника команди не знайдено",
+    teamMemberNotFound: "Члена команди не знайдено",
     backButton: "Повернутися до списку",
     experience: "Досвід роботи",
     publicationsCount: "Наукових публікацій",
@@ -479,43 +477,43 @@ const ukrainianTranslations = {
     citationsText: "цитувань"
   },
   teamMembersData: {
-    ilyash: {
+    olga_ilyash: {
       name: "Проф. Ольга Іляш",
       position: "Директорка центру",
       specialization: "Економіка",
       education: "Доктор технічних наук, КПІ ім. Ігоря Сікорського",
-      experience: "15+ років у сфері ШІ",
-      achievements: "30+ наукових публікацій у провідних міжнародних журналах,Керівник 5 міжнародних проєктів з розвитку ШІ,Експерт IEEE та член редколегії 3 журналів,Лауреат премії НАН України за видатні досягнення,Організатор 8 міжнародних конференцій",
-      skills: "Python,TensorFlow,PyTorch,Computer Vision,NLP,Deep Learning,Neural Networks,Data Science",
+      experience: "5+ років у сфері ШІ",
+      achievements: "",
+      skills: "Economics,Neural Networks",
       email: "o.petrenko@ai-center.kpi.ua"
     },
-    okaianchenko: {
+    davyd_okaianchenko: {
       name: "Давид Окаянченко",
       position: "Розробник",
       specialization: "Економіка",
-      education: "Бакалафр інформаційних систем та технологій КПІ ім. Ігоря Сікорського",
-      experience: "15+ років у сфері ШІ",
-      achievements: "30+ наукових публікацій у провідних міжнародних журналах,Керівник 5 міжнародних проєктів з розвитку ШІ,Експерт IEEE та член редколегії 3 журналів,Лауреат премії НАН України за видатні досягнення,Організатор 8 міжнародних конференцій",
+      education: "Бакалавр інформаційних систем та технологій КПІ ім. Ігоря Сікорського",
+      experience: "5+ років у сфері ШІ",
+      achievements: "",
       skills: "Python,TensorFlow,PyTorch,Computer Vision,NLP,Deep Learning,Neural Networks,Data Science",
       email: "o.petrenko@ai-center.kpi.ua"
     },
-    kulesh: {
+    kateryna_kulesh: {
       name: "Катерина Кулеш",
       position: "Розробниця",
       specialization: "Обробка природної мови",
-      education: "Бакалавр комп'ютерної інженерії \"КПІ ім. Ігоря Сікорського\"",
+      education: "Бакалавр комп'ютерної інженерії КПІ ім. Ігоря Сікорського",
       experience: "5+ років у сфері ШІ",
-      achievements: "25+ наукових статей з обробки природної мови,Розробник 3 патентів в галузі NLP,Лауреат премії НАН України за молоді вчені,Член наукової ради Європейської асоціації NLP,Ментор 15+ аспірантів та магістрантів",
+      achievements: "",
       skills: "Python,Computer vision,Data analysis,Data Science,Neural Networks,Web-development,GPT",
       email: "m.kovalenko@ai-center.kpi.ua"
     },
-    parkhomenko: {
+    artem_parkhomenko: {
       name: "Артем Пархоменко",
       position: "Розробник",
       specialization: "Економіка",
       education: "Доктор технічних наук, КПІ ім. Ігоря Сікорського",
-      experience: "15+ років у сфері ШІ",
-      achievements: "30+ наукових публікацій у провідних міжнародних журналах,Керівник 5 міжнародних проєктів з розвитку ШІ,Експерт IEEE та член редколегії 3 журналів,Лауреат премії НАН України за видатні досягнення,Організатор 8 міжнародних конференцій",
+      experience: "5+ років у сфері ШІ",
+      achievements: "",
       skills: "Python,TensorFlow,PyTorch,Computer Vision,NLP,Deep Learning,Neural Networks,Data Science",
       email: "o.petrenko@ai-center.kpi.ua"
     },
@@ -524,8 +522,8 @@ const ukrainianTranslations = {
 
 const englishTranslations = {
   header: {
-    title: "CENTER FOR ARTIFICIAL INTELLIGENCE APPLICATION STRATEGIES",
-    subtitle: "Igor Sikorsky Kyiv Polytechnic Institute",
+    title: "CENTER FOR\nARTIFICIAL\nINTELLIGENCE\nAPPLICATION\nSTRATEGIES",
+    subtitle: "Igor Sikorsky Kyiv\nPolytechnic Institute",
     topNav: {
       partnership: "Partnerships",
       contacts: "Contacts",
@@ -549,7 +547,7 @@ const englishTranslations = {
       contacts: "Contacts"
     },
     bottomText1: {
-      home: "Artificial Intelligence as a Tool of the Future",
+      home: "Artificial Intelligence\n as a Tool of the Future",
       partnership: "Partnership",
       contacts: "Our Contacts",
       about: "About Our Center",
@@ -561,16 +559,15 @@ const englishTranslations = {
       experts: "Our Experts"
     },
     bottomText2: {
-      home: "We work on developing artificial intelligence for science and society",
+      home: "We work on developing artificial intelligence\n for science and society",
       partnership: "Together, we are building the future of technology",
-      contacts: "Contact us for collaboration, consultations, and partnership initiatives",
-      about: "Our story, mission, and values",
+      contacts: "Contact us for collaboration, consultations\n and partnership initiatives",
       researchTopics: "Explore our posts by topics",
       publications: "Get acquainted with the results of our work",
       datasets: "Access our open data",
       podcasts: "Listen to our podcasts with invited guests",
       events: "Participate in our events",
-      experts: "Leading scientists and researchers shaping the future of artificial intelligence in Ukraine"
+      experts: "Leading scientists and researchers shaping\n the future of artificial intelligence in Ukraine"
     }
   },
   stickyHeader: {
@@ -610,13 +607,12 @@ const englishTranslations = {
     cancel: "Cancel",
   },
   footer: {
-    title: "Center for Artificial Intelligence Application Strategies",
-    about: "Our Center",
-    aboutDescription: "Center for Strategic Applications of Artificial Intelligence at Igor Sikorsky Kyiv Polytechnic Institute",
+    title: "CENTER FOR\nARTIFICIAL\nINTELLIGENCE\nAPPLICATION\nSTRATEGIES",
+    subtitle: "Igor Sikorsky Kyiv\nPolytechnic Institute",
     quickLinks: "Quick Links",
     contact: "Contact",
     followUs: "Follow Us",
-    allRightsReserved: "All Rights Reserved",
+    caption: "© 2025 Center for Artificial Intelligence Application Strategies. All Rights Reserved",
     address: "37 Beresteiskyi Ave, Kyiv, 03056, Ukraine",
     phone: "+380 44 204 8000",
     email: "info@ai-center.kpi.ua"
@@ -939,43 +935,43 @@ const englishTranslations = {
     citationsText: "citations"
   },
   teamMembersData: {
-    ilyash: {
+    olga_ilyash: {
       name: "Prof. Olga Ilyash",
       position: "Center Director",
       specialization: "Machine Learning, Deep Learning",
       education: "Doctor of Technical Sciences, Igor Sikorsky Kyiv Polytechnic Institute",
-      experience: "15+ years in AI field",
-      achievements: "30+ scientific publications in leading international journals,Leader of 5 international AI development projects,IEEE expert and editorial board member of 3 journals,Winner of the National Academy of Sciences of Ukraine award for outstanding achievements,Organizer of 8 international conferences",
-      skills: "Python,TensorFlow,PyTorch,Computer Vision,NLP,Deep Learning,Neural Networks,Data Science",
+      experience: "5+ years in AI field",
+      achievements: "",
+      skills: "Economics,Neural Networks",
       email: "o.petrenko@ai-center.kpi.ua"
     },
-    okaianchenko: {
+    davyd_okaianchenko: {
       name: "Davyd Okaianchenko",
       position: "Developer",
       specialization: "Machine Learning, Deep Learning",
       education: "Doctor of Technical Sciences, Igor Sikorsky Kyiv Polytechnic Institute",
-      experience: "15+ years in AI field",
-      achievements: "30+ scientific publications in leading international journals,Leader of 5 international AI development projects,IEEE expert and editorial board member of 3 journals,Winner of the National Academy of Sciences of Ukraine award for outstanding achievements,Organizer of 8 international conferences",
+      experience: "5+ years in AI field",
+      achievements: "",
       skills: "Python,TensorFlow,PyTorch,Computer Vision,NLP,Deep Learning,Neural Networks,Data Science",
       email: "o.petrenko@ai-center.kpi.ua"
     },
-    kulesh: {
+    kateryna_kulesh: {
       name: "Kateryna Kulesh",
       position: "Developer",
       specialization: "Natural Language Processing, Cognitive Computing",
       education: "Candidate of Technical Sciences, Lviv Polytechnic National University",
-      experience: "12+ years in NLP field",
-      achievements: "25+ scientific articles on natural language processing,Developer of 3 patents in NLP field,Winner of the National Academy of Sciences of Ukraine award for young scientists,Member of the scientific council of the European NLP Association,Mentor of 15+ PhD and master's students",
+      experience: "5+ years in AI field",
+      achievements: "",
       skills: "Python,Computer vision,Data analysis,Data Science,Neural Networks,Web-development,GPT",
       email: "m.kovalenko@ai-center.kpi.ua"
     },
-    parkhomenko: {
+    artem_parkhomenko: {
       name: "Artem Parkhomenko",
       position: "Developer",
       specialization: "Machine Learning, Deep Learning",
       education: "Doctor of Technical Sciences, Igor Sikorsky Kyiv Polytechnic Institute",
-      experience: "15+ years in AI field",
-      achievements: "30+ scientific publications in leading international journals,Leader of 5 international AI development projects,IEEE expert and editorial board member of 3 journals,Winner of the National Academy of Sciences of Ukraine award for outstanding achievements,Organizer of 8 international conferences",
+      experience: "5+ years in AI field",
+      achievements: "",
       skills: "Python,TensorFlow,PyTorch,Computer Vision,NLP,Deep Learning,Neural Networks,Data Science",
       email: "o.petrenko@ai-center.kpi.ua"
     },

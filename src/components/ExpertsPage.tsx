@@ -3,12 +3,10 @@ import { ImageWithFallback } from "./figma/ImageWithFallback.js";
 import { Users, Mail, Calendar } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext.js";
 import { expertsData } from "./data/ExpertsData.js";
+import { Link } from "react-router-dom";
 
-interface ExpertsPageProps {
-  onExpertClick?: (expertId: string) => void;
-}
 
-export function ExpertsPage({ onExpertClick }: ExpertsPageProps) {
+export function ExpertsPage() {
   const { language } = useLanguage();
   const isUk = language === "uk";
 
@@ -35,9 +33,6 @@ export function ExpertsPage({ onExpertClick }: ExpertsPageProps) {
     }
   ];
 
-  const handleExpertClick = (expertId: string) => {
-    onExpertClick?.(expertId);
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -46,23 +41,24 @@ export function ExpertsPage({ onExpertClick }: ExpertsPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {experts.map((expert) => (
-              <Card
-                key={expert.id}
-                className="group border shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 transition-all duration-500 bg-white cursor-pointer hover:scale-105"
-                onClick={() => handleExpertClick(expert.id)}
-              >
-                <CardContent className="p-6 text-center">
-                  <div className="w-32 h-32 rounded-xl mx-auto overflow-hidden mb-4">
-                    <ImageWithFallback
-                      src={expert.image}
-                      alt={expert.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">{expert.name}</h3>
-                  <p className="text-sm text-gray-600">{expert.position}</p>
-                </CardContent>
-              </Card>
+              <Link key={expert.id} to={`/experts/${expert.id}`}>
+                <Card
+                  key={expert.id}
+                  className="group border shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 transition-all duration-500 bg-white cursor-pointer hover:scale-105"
+                >
+                  <CardContent className="p-6 text-center">
+                    <div className="w-32 h-32 rounded-xl mx-auto overflow-hidden mb-4">
+                      <ImageWithFallback
+                        src={expert.image}
+                        alt={expert.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <h3 className="text-lg font-medium text-gray-900 mb-2">{expert.name}</h3>
+                    <p className="text-sm text-gray-600">{expert.position}</p>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>

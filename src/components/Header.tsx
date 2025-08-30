@@ -4,37 +4,66 @@ import { Input } from "./ui/input.js";
 import { Globe, Search, Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "./ui/sheet.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { HeaderContent } from "./data/HeaderContent.js";
 import { SideMenu } from "./SideMenu.js";
 import { useSearch } from "../hooks/useSearch.js";
 import { SearchResults } from "./SearchResults.js";
 
-interface HeaderProps {
-  currentPage?: string;
-  onNavigate?: (page: string) => void;
-  onAnnouncementClick?: (articleId: string) => void;
-  onPublicationClick?: (publicationId: string) => void;
-  onDatasetClick?: (datasetId: string) => void;
-  onEventClick?: (eventId: string) => void;
-  onExpertClick?: (expertId: string) => void;
-  onTeamMemberClick?: (teamMemberId: string) => void;
-}
 
-export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, onPublicationClick, onDatasetClick, onEventClick, onExpertClick  }: HeaderProps) {
+export function Header() {
   const { language, setLanguage, t } = useLanguage();
+  const isUk = language === "uk";
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { searchQuery, setSearchQuery, searchResults } = useSearch();
+  const location = useLocation();
 
-  const pageData = HeaderContent[currentPage] ?? HeaderContent.home ?? {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
+
+  // Мапимо URL на ключ для HeaderContent основних сторінок
+  const routeToPage: Record<string, string> = {
+    "/": "home",
+    "/research-topics": "researchTopics",
+    "/publications": "publications",
+    "/datasets": "datasets",
+    "/podcasts": "podcasts",
+    "/events": "events",
+    "/experts": "experts",
+    "/partnership": "partnership",
+    "/contacts": "contacts",
+    "/about-us": "about"
+  };
+
+  // Детальні сторінки з окремим ключем
+  const detailRoutes: Record<string, string> = {
+    "/datasets/": "datasetDetail",
+    "/publications/": "publicationDetail",
+    "/events/": "eventDetail",
+    "/experts/": "expertDetail",
+    "/announcements/": "articleDetail",
+    "/about-us/team/": "teamMemberDetail"
+  };
+
+  // Перевіряємо спочатку детальні маршрути
+    const detailPage = Object.entries(detailRoutes).find(([prefix]) =>
+      location.pathname.startsWith(prefix)
+    )?.[1];
+
+  // Якщо це детальна сторінка — використовуємо окремий фон
+  const currentPage = detailPage ?? routeToPage[location.pathname] ?? "home";
+
+  const pageData = HeaderContent[currentPage] ?? HeaderContent.fallback ?? {
     background: "",
     height: ""
   };
 
+  const navigate = useNavigate();
+
   const handleNavigation = (page: string) => {
     setIsMenuOpen(false);
-    if (onNavigate) {
-      onNavigate(page);
-    }
+    navigate("/" + page); // наприклад, navigate("/publications")
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -43,22 +72,6 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
   };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleSearchResultClick = (result: any) => {
-    if (result.type === 'announcement') {
-      onAnnouncementClick?.(result.id);
-    } else if (result.type === 'publication') {
-    onPublicationClick?.(result.id);
-    } else if (result.type === 'dataset') {
-    onDatasetClick?.(result.id);
-    } else if (result.type === 'event') {
-    onEventClick?.(result.id);
-    } else if (result.type === 'expert') {
-      onExpertClick?.(result.id);
-    }
-    setIsSearchOpen(false);
-    setSearchQuery('');
-  };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,12 +96,12 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
       {/* Header Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full pt-12">
         <div className="flex items-start justify-between h-full">
+
           {/* Logo Section */}
-          <div
-            className="flex items-center space-x-6 cursor-pointer group flex-shrink-0"
-            onClick={() => handleNavigation("home")}
-          >
-            {/* University Logo */}
+          <div className="flex-shrink-0 font-sans">
+            <Link to="/" className="flex items-center space-x-4 cursor-pointer group">
+            
+            {/* Center Logo */}
             <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center text-gray-900 group-hover:bg-gray-100 transition-colors shadow-lg">
               <img
                 src="/images/Logos/L-100x100.png"
@@ -98,14 +111,23 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
             </div>
 
             {/* Title - Hidden on mobile */}
-            <div className="hidden sm:block mt-2 max-w-[11rem] overflow-hidden">
-              <h1 className="text-white text-lg font-medium leading-tight">
+            <div
+              className={`hidden sm:block mt-2 max-w-xs overflow-hidden font-sans${
+                isUk ? "leading-tight" : "leading-super-tight"
+              }`}
+            >
+              <h1 className={`text-white text-lg font-medium whitespace-pre-line ${
+                isUk ? "leading-tight" : "leading-super-tight"
+              }`}>
                 {t("header.title")}
               </h1>
-              <p className="text-white/80 text-sm">
+              <p className={`text-white/80 text-sm whitespace-pre-line ${
+                isUk ? "leading-tight" : "leading-super-tight"
+              }`}>
                 {t("header.subtitle")}
               </p>
             </div>
+          </Link>
           </div>
 
           {/* Navigation Section */}
@@ -115,15 +137,39 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
               {/* Top navigation row */}
               <div className={`flex items-center justify-between w-full transition-all duration-300 ${isSearchOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
                 <div className="flex items-center space-x-8 text-lg">
-                  <button 
-                    onClick={() => handleNavigation("partnership")} 
-                    className="text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-full">{t('header.topNav.partnership')}</button>
-                  <button 
-                    onClick={() => handleNavigation("contacts")} 
-                    className="text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-full">{t('header.topNav.contacts')}</button>
-                  <button 
-                    onClick={() => handleNavigation("about")} 
-                    className="text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-full">{t('header.topNav.about')}</button>
+                  <Link 
+                    to="/partnership"
+                    className={`text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-full ${
+                        currentPage === "partnership"
+                          ? "text-white bg-white/20 shadow-lg"
+                          : "text-white/90 hover:text-white hover:bg-white/10"
+                      }`}
+                    >
+                      {t('header.topNav.partnership')}
+                    </Link>
+
+                  <Link 
+                    to="/contacts"
+                    className={`text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-full ${
+                        currentPage === "contacts"
+                          ? "text-white bg-white/20 shadow-lg"
+                          : "text-white/90 hover:text-white hover:bg-white/10"
+                      }`}
+                    >
+                      {t('header.topNav.contacts')}
+                    </Link>
+
+                  <Link 
+                    to="/about-us"
+                    className={`text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-full ${
+                        currentPage === "about"
+                          ? "text-white bg-white/20 shadow-lg"
+                          : "text-white/90 hover:text-white hover:bg-white/10"
+                      }`}
+                    >
+                      {t('header.topNav.about')}
+                    </Link>
+
                   <Button onClick={toggleLanguage} variant="ghost" size="sm" className="text-white/90 hover:text-white hover:bg-white/10 h-10 px-4 rounded-full flex items-center">
                     <Globe className="w-5 h-5 mr-2" />
                     {language === "uk" ? "EN" : "UA"}
@@ -178,7 +224,6 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
               <SearchResults
                 searchQuery={searchQuery}
                 results={searchResults}
-                onResultClick={handleSearchResultClick}
                 onClose={() => {
                   setIsSearchOpen(false);
                   setSearchQuery('');
@@ -190,8 +235,8 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
 
             {/* Bottom Navigation Row */}
             <div className="flex items-center space-x-8 text-lg">
-              <button
-                onClick={() => handleNavigation("researchTopics")}
+              <Link
+                to="/research-topics"
                 className={`font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "researchTopics"
                     ? "text-white bg-white/20 shadow-lg"
@@ -199,9 +244,9 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
                 }`}
               >
                 {t("header.bottomNav.researchTopics")}
-              </button>
-              <button
-                onClick={() => handleNavigation("publications")}
+              </Link>
+              <Link
+                to="/publications"
                 className={`font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "publications"
                     ? "text-white bg-white/20 shadow-lg"
@@ -209,9 +254,9 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
                 }`}
               >
                 {t("header.bottomNav.publications")}
-              </button>
-              <button
-                onClick={() => handleNavigation("datasets")}
+              </Link>
+              <Link
+                to="/datasets"
                 className={`font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "datasets"
                     ? "text-white bg-white/20 shadow-lg"
@@ -219,9 +264,9 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
                 }`}
               >
                 {t("header.bottomNav.datasets")}
-              </button>
-              <button
-                onClick={() => handleNavigation("podcasts")}
+              </Link>
+              <Link
+                to="/podcasts"
                 className={`font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "podcasts"
                     ? "text-white bg-white/20 shadow-lg"
@@ -229,9 +274,9 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
                 }`}
               >
                 {t("header.bottomNav.podcasts")}
-              </button>
-              <button
-                onClick={() => handleNavigation("events")}
+              </Link>
+              <Link
+                to="/events"
                 className={`font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "events"
                     ? "text-white bg-white/20 shadow-lg"
@@ -239,9 +284,9 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
                 }`}
               >
                 {t("header.bottomNav.events")}
-              </button>
-              <button
-                onClick={() => handleNavigation("experts")}
+              </Link>
+              <Link
+                to="/experts"
                 className={`font-bold transition-colors px-3 py-2 rounded-full ${
                   currentPage === "experts"
                     ? "text-white bg-white/20 shadow-lg"
@@ -249,7 +294,7 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
                 }`}
               >
                 {t("header.bottomNav.experts")}
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -283,7 +328,7 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
                   </SheetHeader>
 
                   <div className="flex-1 overflow-y-auto">
-                    <SideMenu currentPage={currentPage} onNavigate={handleNavigation} />
+                    <SideMenu onNavigate={handleNavigation} />
                   </div>
                 </SheetContent>
               </Sheet>
@@ -307,12 +352,12 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
               return (
                 <div className="absolute bottom-12 text-left space-y-4">
                   {bottomText1 && (
-                    <p className="text-white text-4.75xl font-bold max-w-md-lg leading-snug">
+                    <p className="text-white text-4.75xl font-bold max-w-2xl leading-snug whitespace-pre-line">
                       {bottomText1}
                     </p>
                   )}
                   {bottomText2 && (
-                    <p className="text-white text-xl font-medium max-w-sm-md leading-relaxed">
+                    <p className="text-white text-xl font-medium max-w-lg leading-relaxed whitespace-pre-line">
                       {bottomText2}
                     </p>
                   )}
@@ -320,108 +365,7 @@ export function Header({ currentPage = "home", onNavigate, onAnnouncementClick, 
               );
             })()}
           </div>
-
-      {/* Mobile Navigation - Full width dropdown */}
-      <div className="lg:hidden absolute top-full left-0 w-full bg-black/90 backdrop-blur-sm border-t border-white/20 hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          {/* Mobile Title */}
-          <div className="md:hidden mb-6">
-            <h1 className="text-white text-xl font-medium leading-tight mb-2">
-              {t("header.title")}
-            </h1>
-            <p className="text-white/90 text-base">{t("header.subtitle")}</p>
-          </div>
-
-          {/* Top navigation items */}
-          <div className="space-y-3 mb-6">
-            <button className="block w-full text-left text-white/90 hover:text-white text-base py-3 px-10 rounded-full hover:bg-white/10 transition-colors">
-              {t("header.topNav.partnership")}
-            </button>
-            <button className="block w-full text-left text-white/90 hover:text-white text-base py-3 px-4 rounded-lg hover:bg-white/10 transition-colors">
-              {t("header.topNav.contacts")}
-            </button>
-            <button className="block w-full text-left text-white/90 hover:text-white text-base py-3 px-4 rounded-lg hover:bg-white/10 transition-colors">
-              {t("header.topNav.about")}
-            </button>
-          </div>
-
-          {/* Divider */}
-          <div className="border-t border-white/20 my-6"></div>
-
-          {/* Bottom navigation items */}
-          <div className="space-y-3">
-            <button className="block w-full text-left text-white/90 hover:text-white text-base py-3 px-4 rounded-lg hover:bg-white/10 transition-colors">
-              {t("header.bottomNav.researchTopics")}
-            </button>
-            <button
-              onClick={() => handleNavigation("publications")}
-              className={`block w-full text-left text-base py-3 px-4 rounded-lg transition-colors ${
-                currentPage === "publications"
-                  ? "text-white font-medium bg-white/20"
-                  : "text-white/90 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              {t("header.bottomNav.publications")}
-            </button>
-            <button
-              onClick={() => handleNavigation("datasets")}
-              className={`block w-full text-left text-base py-3 px-4 rounded-lg transition-colors ${
-                currentPage === "datasets"
-                  ? "text-white font-medium bg-white/20"
-                  : "text-white/90 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              {t("header.bottomNav.datasets")}
-            </button>
-            <button
-              onClick={() => handleNavigation("podcasts")}
-              className={`block w-full text-left text-base py-3 px-4 rounded-lg transition-colors ${
-                currentPage === "podcasts"
-                  ? "text-white font-medium bg-white/20"
-                  : "text-white/90 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              {t("header.bottomNav.podcasts")}
-            </button>
-            <button
-              onClick={() => handleNavigation("events")}
-              className={`block w-full text-left text-base py-3 px-4 rounded-lg transition-colors ${
-                currentPage === "events"
-                  ? "text-white font-medium bg-white/20"
-                  : "text-white/90 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              {t("header.bottomNav.events")}
-            </button>
-            <button
-              onClick={() => handleNavigation("experts")}
-              className={`block w-full text-left text-base py-3 px-4 rounded-lg transition-colors ${
-                currentPage === "experts"
-                  ? "text-white font-medium bg-white/20"
-                  : "text-white/90 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              {t("header.bottomNav.experts")}
-            </button>
-          </div>
-
-          {/* Language toggle in mobile */}
-          <div className="border-t border-white/20 mt-6 pt-6">
-            <Button
-              onClick={toggleLanguage}
-              variant="ghost"
-              size="sm"
-              className="text-white/90 hover:text-white hover:bg-white/10 text-base py-3 px-4 rounded-full"
-            >
-              <Globe className="w-5 h-5 mr-3" />
-              {language === "uk"
-                ? "Switch to English"
-                : "Перемкнути на українську"}
-            </Button>
-            </div>
-          </div>
         </div>
-      </div>
-    </header>
-  );
-}
+      </header>
+    );
+  }

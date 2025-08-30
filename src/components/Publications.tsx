@@ -5,12 +5,10 @@ import { Calendar, Clock, User, ArrowRight, ArrowDown } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
 import { featuredPublicationsArticle, PublicationsArticles } from "./data/PublicationsData.js";
+import { Link } from "react-router-dom";
 
-interface PublicationsProps {
-  onPublicationClick?: ((publicationId: string) => void) | undefined;
-}
 
-export function Publications({ onPublicationClick }: PublicationsProps) {
+export function Publications() {
   const { t, language } = useLanguage();
   const isUk = language === "uk";
 
@@ -26,69 +24,73 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
             <h2 className="text-2xl font-medium text-gray-900 mb-2">{t('publications.featuredPublications')}</h2>
           </div>
 
-          <Card 
-            onClick={() => onPublicationClick?.(featuredArticle.id)}
-            className="group overflow-hidden border shadow-lg bg-white hover:shadow-xl transition-transform duration-500 transform hover:scale-[1.02] flex flex-col cursor-pointer"
+          <Link 
+            to={`/publications/${featuredArticle.id}`}
+            className="group"
           >
-            <div className="grid lg:grid-cols-2 gap-0 h-full">
-              <div className="relative h-64 lg:h-auto">
-                <ImageWithFallback
-                  src={featuredArticle.image}
-                  alt={featuredArticle.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-4 left-4">
-                  <Badge className="bg-blue-600 text-white">{featuredArticle.category}</Badge>
+            <Card 
+              className="overflow-hidden border shadow-lg bg-white hover:shadow-xl transition-transform duration-500 transform hover:scale-[1.02] flex flex-col cursor-pointer"
+            >
+              <div className="grid lg:grid-cols-2 gap-0 h-full">
+                <div className="relative h-64 lg:h-auto">
+                  <ImageWithFallback
+                    src={featuredArticle.image}
+                    alt={featuredArticle.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <Badge className="bg-blue-600 text-white">{featuredArticle.category}</Badge>
+                  </div>
+                </div>
+                <div className="p-8 flex flex-col justify-between h-full overflow-hidden">
+                  {/* Верхній ряд: дата і час читання */}
+                  <div className="flex justify-between items-center text-sm text-gray-600 mb-4">
+                    <div className="flex items-center">
+                      <Calendar className="w-4 h-4 mr-1" />
+                      {featuredArticle.date}
+                    </div>
+                    <div className="flex items-center">
+                      <Clock className="w-4 h-4 mr-1" />
+                      {featuredArticle.readTime} min
+                    </div>
+                  </div>
+
+                  {/* Середній контент */}
+                  <div className="overflow-hidden">
+                    <h3 className="text-2xl font-medium text-gray-900 mb-4 leading-tight line-clamp-2">
+                      {featuredArticle.title}
+                    </h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed line-clamp-4">
+                      {featuredArticle.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {featuredArticle.tags.map((tag, index) => (
+                        <Badge key={index} variant="secondary" className="text-xs bg-gray-100 text-gray-700">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Нижній ряд: автор і кнопка */}
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center text-sm text-gray-500">
+                      <User className="w-4 h-4 mr-1" />
+                      {featuredArticle.author}
+                    </div>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="text-blue-600 hover:text-blue-800 px-2 py-1 text-base"
+                    >
+                      {t('publications.readMore')}
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </div>
                 </div>
               </div>
-              <div className="p-8 flex flex-col justify-between h-full overflow-hidden">
-                {/* Верхній ряд: дата і час читання */}
-                <div className="flex justify-between items-center text-sm text-gray-600 mb-4">
-                  <div className="flex items-center">
-                    <Calendar className="w-4 h-4 mr-1" />
-                    {featuredArticle.date}
-                  </div>
-                  <div className="flex items-center">
-                    <Clock className="w-4 h-4 mr-1" />
-                    {featuredArticle.readTime} min
-                  </div>
-                </div>
-
-                {/* Середній контент */}
-                <div className="overflow-hidden">
-                  <h3 className="text-2xl font-medium text-gray-900 mb-4 leading-tight line-clamp-2">
-                    {featuredArticle.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed line-clamp-4">
-                    {featuredArticle.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {featuredArticle.tags.map((tag, index) => (
-                      <Badge key={index} variant="secondary" className="text-xs bg-gray-100 text-gray-700">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Нижній ряд: автор і кнопка */}
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center text-sm text-gray-500">
-                    <User className="w-4 h-4 mr-1" />
-                    {featuredArticle.author}
-                  </div>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    className="text-blue-600 hover:text-blue-800 px-2 py-1 text-base"
-                  >
-                    {t('publications.readMore')}
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </Card>
+            </Card>
+          </Link>
         </div>
       </section>
 
@@ -101,10 +103,13 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {Articles.map((publication, index) => (
+            <Link 
+              to={`/publications/${publication.id}`}
+              className="group block h-full"
+            >
               <Card
                 key={index}
-                onClick={() => onPublicationClick?.(publication.id)}
-                className="group overflow-hidden border shadow-lg bg-white hover:shadow-xl hover:shadow-primary/5 transition-transform duration-500 transform hover:scale-[1.02] flex flex-col cursor-pointer"
+                className="group overflow-hidden border shadow-lg bg-white hover:shadow-xl hover:shadow-primary/5 transition-transform duration-500 transform hover:scale-[1.02] flex flex-col h-full cursor-pointer"
               >
                 <div className="relative h-56">
                   <ImageWithFallback
@@ -171,6 +176,7 @@ export function Publications({ onPublicationClick }: PublicationsProps) {
                   </div>
                 </CardContent>
               </Card>
+            </Link>
             ))}
             </div>
 

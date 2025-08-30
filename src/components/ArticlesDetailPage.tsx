@@ -4,13 +4,13 @@ import { Card } from "./ui/card.js";
 import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen, Tag } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
+import { Link } from "react-router-dom";
 
 interface ArticlesDetailPageProps {
-  articleId: string;
-  onBack: () => void;
+  articleId?: string;
 }
 
-export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProps) {
+export function ArticlesDetailPage({ articleId }: ArticlesDetailPageProps) {
   const { t, language } = useLanguage();
   const isUk = language === "uk";
 
@@ -151,21 +151,22 @@ export function ArticlesDetailPage({ articleId, onBack }: ArticlesDetailPageProp
     return allArticles[id as keyof typeof allArticles] || allArticles.featured;
   };
 
-  const article = getArticleData(articleId);
+  const article = getArticleData(articleId || "featured");
 
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <div className="bg-gray-50 py-4">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Button 
-            variant="ghost" 
-            onClick={onBack}
-            className=" text-primary hover:text-primary-dark"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {isUk ? 'Назад до анонсів' : 'Back to Announcements'}
-          </Button>
+          <Link to="/">
+            <Button 
+              variant="ghost" 
+              className=" text-primary hover:text-primary-dark"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              {isUk ? 'Назад до анонсів' : 'Back to Announcements'}
+            </Button>
+          </Link>
         </div>
       </div>
 

@@ -4,13 +4,13 @@ import { Card } from "./ui/card.js";
 import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen, Tag } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
+import { Link } from "react-router-dom";
 
 interface EventsDetailPageProps {
-  eventId: string;
-  onBack: () => void;
+  eventId?: string;
 }
 
-export function EventsDetailPage({  eventId, onBack }: EventsDetailPageProps) {
+export function EventsDetailPage({  eventId }: EventsDetailPageProps) {
   const { t, language } = useLanguage();
   const isUk = language === "uk";
 
@@ -151,24 +151,22 @@ export function EventsDetailPage({  eventId, onBack }: EventsDetailPageProps) {
     return allEvents[id as keyof typeof allEvents] || allEvents.featured;
   };
 
-  const event = getEventData(eventId);
+  const event = getEventData(eventId || "featured");
 
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <div className="bg-gray-50 py-4">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Button 
-            variant="ghost" 
-            onClick={() => {
-              onBack();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            className="text-primary hover:text-primary-dark"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {isUk ? 'Назад до подій' : 'Back to Events'}
-          </Button>
+          <Link to="/events" >
+            <Button 
+              variant="ghost" 
+              className="text-primary hover:text-primary-dark"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              {isUk ? 'Назад до подій' : 'Back to Events'}
+            </Button>
+          </Link>
         </div>
       </div>
 

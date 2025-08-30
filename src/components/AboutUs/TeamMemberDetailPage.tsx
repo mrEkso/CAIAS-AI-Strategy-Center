@@ -5,111 +5,43 @@ import { ArrowLeft, Mail, Linkedin, Award, BookOpen, Users, Calendar, ExternalLi
 import { ImageWithFallback } from "../figma/ImageWithFallback.js";
 import { useLanguage } from "../../contexts/LanguageContext.js";
 import { teamMembersData } from "../data/TeamMembersData.js";
+import { Link, useParams } from "react-router-dom";
 
-interface TeamMemberDetailPageProps {
-  teamMemberId: string;
-  onBack?: () => void;
-}
 
-export function TeamMemberDetailPage({ teamMemberId, onBack }: TeamMemberDetailPageProps) {
+export function TeamMemberDetailPage() {
   const { t, language } = useLanguage();
   const isUk = language === "uk";
+  const { id } = useParams();  // <-- отримуємо id з URL
+  const teamMemberId = id; 
 
   const teamMembers = teamMembersData(isUk);
 
   const teamImages: Record<string, string> = {
-    ilyash: "/images/TeamPhotos/Olga_Ilyash.jpg",
-    okaianchenko: "/images/TeamPhotos/Davyd_Okaianchenko.jpg",
-    kulesh: "/images/TeamPhotos/Kateryna_Kulesh.jpg",
-    parkhomenko: "/images/TeamPhotos/Artem_Parkhomenko.jpg",
+    olga_ilyash: "/images/TeamPhotos/Olga_Ilyash.jpg",
+    davyd_okaianchenko: "/images/TeamPhotos/Davyd_Okaianchenko.jpg",
+    kateryna_kulesh: "/images/TeamPhotos/Kateryna_Kulesh.jpg",
+    artem_parkhomenko: "/images/TeamPhotos/Artem_Parkhomenko.jpg",
   };
 
 
   const researchPapers: Record<string, any[]> = {
-    ilyash: [
-      {
-        title: isUk
-          ? "Advanced Neural Network Architectures for Computer Vision"
-          : "Розвинені архітектури нейронних мереж для комп'ютерного зору",
-        journal: "IEEE Transactions on Pattern Analysis",
-        year: "2024",
-        citations: 142
-      },
-      {
-        title: isUk
-          ? "Machine Learning Applications in Ukrainian Industry"
-          : "Застосування машинного навчання в українській промисловості",
-        journal: "Journal of AI Research",
-        year: "2023",
-        citations: 89
-      },
-      {
-        title: isUk
-          ? "Ethical AI Framework for Government Applications"
-          : "Етична структура ШІ для державних застосувань",
-        journal: "AI Ethics Quarterly",
-        year: "2023",
-        citations: 67
-      }
+    olga_ilyash: [
+      
     ],
-    okaianchenko: [
-      {
-        title: isUk
-          ? "Transformer Models for Ukrainian Language Processing"
-          : "Трансформерні моделі для обробки української мови",
-        journal: "Computational Linguistics",
-        year: "2024",
-        citations: 98
-      },
-      {
-        title: isUk
-          ? "Sentiment Analysis in Social Media: Ukrainian Context"
-          : "Аналіз настроїв у соціальних мережах: український контекст",
-        journal: "Language Resources and Evaluation",
-        year: "2023",
-        citations: 76
-      }
+    davyd_okaianchenko: [
+      
     ],
-    kulesh: [
-      {
-        title: isUk
-          ? "Real-time Object Detection for Autonomous Vehicles"
-          : "Виявлення об'єктів у реальному часі для автономних транспортних засобів",
-        journal: "Computer Vision and Image Understanding",
-        year: "2024",
-        citations: 123
-      },
-      {
-        title: isUk
-          ? "Robotic Vision Systems in Industrial Applications"
-          : "Роботичні системи зору в промислових застосуваннях",
-        journal: "Robotics and Autonomous Systems",
-        year: "2023",
-        citations: 87
-      }
+    kateryna_kulesh: [
+      
     ],
-    parkhomenko: [
-      {
-        title: isUk
-          ? "Ethical Guidelines for AI Implementation in Ukraine"
-          : "Етичні керівні принципи для впровадження ШІ в Україні",
-        journal: "AI & Society",
-        year: "2024",
-        citations: 45
-      },
-      {
-        title: isUk
-          ? "Bias Detection in Machine Learning Models"
-          : "Виявлення упередженості в моделях машинного навчання",
-        journal: "Ethics in Information Technology",
-        year: "2023",
-        citations: 32
-      }
+    artem_parkhomenko: [
+      
     ]
   };
 
 
   // Safely get team member data with fallbacks
+  const getId = () => t(`teamMembersData.${teamMemberId}.id`);
   const getName = () => t(`teamMembersData.${teamMemberId}.name`);
   const getPosition = () => t(`teamMembersData.${teamMemberId}.position`);
   const getSpecialization = () => t(`teamMembersData.${teamMemberId}.specialization`);
@@ -133,7 +65,10 @@ export function TeamMemberDetailPage({ teamMemberId, onBack }: TeamMemberDetailP
     return [];
   };
 
+  const memberId = teamMemberId!;
+
   const teamMember = {
+    id: getId(),
     name: getName(),
     position: getPosition(),
     specialization: getSpecialization(),
@@ -142,8 +77,8 @@ export function TeamMemberDetailPage({ teamMemberId, onBack }: TeamMemberDetailP
     achievements: getAchievements(),
     skills: getSkills(),
     email: getEmail(),
-    image: teamImages[teamMemberId],
-    researchPapers: researchPapers[teamMemberId] || []
+    image: teamMemberId ? teamImages[teamMemberId] : undefined,
+    researchPapers: teamMemberId ? researchPapers[teamMemberId] || [] : []
   };
 
   // Check if team member exists (if translation contains the key, it means team member doesn't exist)
@@ -152,10 +87,12 @@ export function TeamMemberDetailPage({ teamMemberId, onBack }: TeamMemberDetailP
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-medium text-gray-900 mb-4">{t('teamMembers.teamMemberNotFound')}</h2>
-          <Button onClick={onBack} variant="outline">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {t('teamMembers.backButton')}
-          </Button>
+          <Link to="/about-us" state={{ scrollTo: "team" }}>
+            <Button variant="outline" >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              {t('teamMembers.backButton')}
+            </Button>
+          </Link>
         </div>
       </div>
     );
@@ -166,19 +103,20 @@ export function TeamMemberDetailPage({ teamMemberId, onBack }: TeamMemberDetailP
       {/* Header with Back Button */}
       <section className="bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <Button 
-            onClick={onBack} 
-            variant="outline" 
-            className="mb-8 bg-gray-600 text-white hover:bg-gray-400 hover:text-gray-900"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {t('teamMembers.backToList')}
-          </Button>
+          <Link to="/about-us" state={{ scrollTo: "team" }}>
+            <Button 
+              variant="outline" 
+              className="mb-8 bg-primary-light4 text-white hover:bg-gray-500 hover:text-gray-900"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              {t('teamMembers.backToList')}
+            </Button>
+          </Link>
           
           {/* Photo, name and position of the team member */}
           <div className="grid lg:grid-cols-3 gap-8 items-start">
             <div className="lg:col-span-1">
-              <div className="bg-gradient-to-br from-gray-700 to-primary-medium2 rounded-2xl p-8 text-center">
+              <div className="bg-gradient-to-br from-primary-light4 to-primary-medium2/90 rounded-2xl p-8 text-center">
                 <div className="w-48 h-48 rounded-xl mx-auto overflow-hidden mb-4">
                   <ImageWithFallback
                     src={teamMember.image}

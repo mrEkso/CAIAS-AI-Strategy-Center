@@ -4,13 +4,13 @@ import { Card } from "./ui/card.js";
 import { ArrowLeft, Calendar, Clock, User, Share2, BookOpen, Tag } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback.js";
 import { useLanguage } from "../contexts/LanguageContext.js";
+import { Link } from "react-router-dom";
 
 interface DatasetsDetailPageProps {
-  datasetId: string;
-  onBack: () => void;
+  datasetId?: string;
 }
 
-export function DatasetsDetailPage({ datasetId, onBack }: DatasetsDetailPageProps) {
+export function DatasetsDetailPage({ datasetId }: DatasetsDetailPageProps) {
   const { t, language } = useLanguage();
   const isUk = language === "uk";
 
@@ -191,24 +191,22 @@ export function DatasetsDetailPage({ datasetId, onBack }: DatasetsDetailPageProp
     return allDatasets[id as keyof typeof allDatasets] || allDatasets.featured;
   };
 
-  const dataset = getDatasetData(datasetId);
+  const dataset = getDatasetData(datasetId || "featured");
 
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <div className="bg-gray-50 py-4">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Button 
-            variant="ghost" 
-            onClick={() => {
-              onBack();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            className="text-primary hover:text-primary-dark"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {isUk ? 'Назад до наборів даних' : 'Back to Datasets'}
-          </Button>
+          <Link to="/datasets" >
+            <Button 
+              variant="ghost" 
+              className="text-primary hover:text-primary-dark"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              {isUk ? 'Назад до наборів даних' : 'Back to Datasets'}
+            </Button>
+          </Link>
         </div>
       </div>
 

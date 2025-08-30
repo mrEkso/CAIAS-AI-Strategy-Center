@@ -3,7 +3,7 @@ import { useLanguage } from "../contexts/LanguageContext.js";
 
 interface SearchResult {
   id: string;
-  type: 'announcement' | 'publication' | 'dataset' | 'event' | 'expert' ;
+  type: 'announcement' | 'publication' | 'dataset' | 'event' | 'expert' | 'team';
   title: string;
   description?: string;
   category?: string;
@@ -159,18 +159,29 @@ export function useSearch() {
           ? "Директор центру, спеціаліст з етики ШІ та політики в сфері технологій"
           : "Center Director, specialist in AI ethics and technology policy",
         category: isUk ? "Експерт" : "Expert",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face"
       },
       {
-        id: "expert-3",
+        id: "shevchenko",
         type: "expert",
-        title: isUk ? "Д-р Марія Шевченко" : "Dr. Maria Shevchenko",
+        title: isUk ? "Катерина Шевченко" : "Kateryna Shevchenko",
         description: isUk 
-          ? "Старший науковий співробітник, спеціаліст з комп'ютерного зору та розпізнавання образів"
-          : "Senior Research Fellow, specialist in computer vision and pattern recognition",
+          ? "Молодший науковий співробітник, спеціаліст з комп'ютерного зору та розпізнавання образів"
+          : "Junior Research Fellow, specialist in computer vision and pattern recognition",
         category: isUk ? "Експерт" : "Expert",
         image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop"
-      }
+      },
+      // Team members
+      {
+        id: "olga_ilyash",
+        type: "team",
+        title: isUk ? "Ольга Іляш" : "Olga Ilyash",
+        description: isUk 
+          ? "Директорка центру, професор кафедри економіки"
+          : "Center Director, professor of economics",
+        category: isUk ? "Член команди" : "Team member",
+        image: "/images/TeamPhotos/Olga_Ilyash.jpg"
+      },
     ];
   }, [t]);
 

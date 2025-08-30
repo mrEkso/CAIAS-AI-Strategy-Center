@@ -25,7 +25,6 @@ export const HeaderContent: Record<string, {
   about: {
     background: "/images/HeaderBackgrounds/background1.jpg",
     bottomText1: "Про наш центр",
-    bottomText2: "Історія, місія та цінності",
     height: "400px",
   },
   researchTopics: {
@@ -77,7 +76,7 @@ export const HeaderContent: Record<string, {
     height: "200px",
   },
   eventDetail: {
-    background: "/images/HeaderBackgrounds/89.png",
+    background: "/images/HeaderBackgrounds/234.jpg",
     height: "200px",
   },
   expertDetail: {
@@ -86,6 +85,10 @@ export const HeaderContent: Record<string, {
   },
   teamMemberDetail: {
     background: "/images/HeaderBackgrounds/background18.jpg",
+    height: "200px",
+  },
+  fallback: {
+    background: "/images/HeaderBackgrounds/background4.jpg",
     height: "200px",
   },
 };

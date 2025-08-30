@@ -1,15 +1,15 @@
 import React from "react";
-import { Button } from "./ui/button.js";
 import { Home, Users, BookOpen, FileText, Database, Mic, Calendar, Handshake, Phone, Info } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext.js";
+import { Link, useLocation } from "react-router-dom";
 
 interface SideMenuProps {
-  currentPage: string;
   onNavigate: (page: string) => void;
 }
 
-export function SideMenu({ currentPage, onNavigate }: SideMenuProps) {
+export function SideMenu({ onNavigate }: SideMenuProps) {
   const { t } = useLanguage();
+  const location = useLocation();
 
   const handleNavigation = (page: string) => {
     if (onNavigate) {
@@ -17,152 +17,52 @@ export function SideMenu({ currentPage, onNavigate }: SideMenuProps) {
     }
   };
 
+  // Меню розбите на секції
+  const sections = [
+    [
+      { label: t("header.nav.home"), icon: <Home className="w-4 h-4 mr-3" />, to: "/", page: "home" },
+      { label: t("header.bottomNav.experts"), icon: <Users className="w-4 h-4 mr-3" />, to: "/experts", page: "experts" },
+      { label: t("header.bottomNav.researchTopics"), icon: <BookOpen className="w-4 h-4 mr-3" />, to: "/research-topics", page: "researchTopics" },
+    ],
+    [
+      { label: t("header.bottomNav.publications"), icon: <FileText className="w-4 h-4 mr-3" />, to: "/publications", page: "publications" },
+      { label: t("header.bottomNav.datasets"), icon: <Database className="w-4 h-4 mr-3" />, to: "/datasets", page: "datasets" },
+      { label: t("header.bottomNav.podcasts"), icon: <Mic className="w-4 h-4 mr-3" />, to: "/podcasts", page: "podcasts" },
+      { label: t("header.bottomNav.events"), icon: <Calendar className="w-4 h-4 mr-3" />, to: "/events", page: "events" },
+    ],
+    [
+      { label: t("header.topNav.partnership"), icon: <Handshake className="w-4 h-4 mr-3" />, to: "/partnership", page: "partnership" },
+      { label: t("header.topNav.contacts"), icon: <Phone className="w-4 h-4 mr-3" />, to: "/contacts", page: "contacts" },
+      { label: t("header.topNav.about"), icon: <Info className="w-4 h-4 mr-3" />, to: "/about-us", page: "about" },
+    ]
+  ];
+
   return (
     <div className="flex-1 overflow-y-auto">
-      <div className="space-y-1">
-        {/* Main Pages */}
-        <Button
-          variant="ghost"
-          className={`w-full justify-start text-left h-11 px-4 ${
-            currentPage === "home"
-              ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full" // text-white/90 hover:text-gray-900 hover:bg-white/80 rounded-full
-          }`}
-          onClick={() => handleNavigation("home")}
-        >
-          <Home className="w-4 h-4 mr-3" />
-          {t("header.nav.home")}
-        </Button>
+      {sections.map((section, secIdx) => (
+        <div key={secIdx} className="space-y-1">
+          {section.map((item, idx) => (
+            <Link
+              key={idx}
+              to={item.to}
+              onClick={() => handleNavigation(item.page)}
+              className={`w-full flex items-center justify-start text-left text-[15px] h-11 px-4 rounded-full ${
+                location.pathname === item.to // currentPage === item.page
+                  ? "bg-white text-gray-900 font-medium"
+                  : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent"
+              }`}
+            >
+              {item.icon}
+              {item.label}
+            </Link>
+          ))}
 
-        <Button
-          variant="ghost"
-          className={`w-full justify-start text-left h-11 px-4 ${
-            currentPage === "experts"
-              ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
-          }`}
-          onClick={() => handleNavigation("experts")}
-        >
-          <Users className="w-4 h-4 mr-3" />
-          {t("header.bottomNav.experts")}
-        </Button>
-
-        <Button
-          variant="ghost"
-          className={`w-full justify-start text-left h-11 px-4 ${
-            currentPage === "researchTopics"
-              ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
-          }`}
-          onClick={() => handleNavigation("researchTopics")}
-        >
-          <BookOpen className="w-4 h-4 mr-3" />
-          {t("header.bottomNav.researchTopics")}
-        </Button>
-      </div>
-
-      {/* Divider */}
-      <div className="border-t border-gray-300 my-4"></div>
-
-      {/* Additional Navigation */}
-      <div className="space-y-1">
-        <Button
-          variant="ghost"
-          className={`w-full justify-start text-left h-11 px-4 ${
-            currentPage === "publications"
-              ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
-          }`}
-          onClick={() => handleNavigation("publications")}
-        >
-          <FileText className="w-4 h-4 mr-3" />
-          {t("header.bottomNav.publications")}
-        </Button>
-
-        <Button
-          variant="ghost"
-          className={`w-full justify-start text-left h-11 px-4 ${
-            currentPage === "datasets"
-              ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
-          }`}
-          onClick={() => handleNavigation("datasets")}
-        >
-          <Database className="w-4 h-4 mr-3" />
-          {t("header.bottomNav.datasets")}
-        </Button>
-
-        <Button
-          variant="ghost"
-          className={`w-full justify-start text-left h-11 px-4 ${
-            currentPage === "podcasts"
-              ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
-          }`}
-          onClick={() => handleNavigation("podcasts")}
-        >
-          <Mic className="w-4 h-4 mr-3" />
-          {t("header.bottomNav.podcasts")}
-        </Button>
-
-        <Button
-          variant="ghost"
-          className={`w-full justify-start text-left h-11 px-4 ${
-            currentPage === "events"
-              ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
-          }`}
-          onClick={() => handleNavigation("events")}
-        >
-          <Calendar className="w-4 h-4 mr-3" />
-          {t("header.bottomNav.events")}
-        </Button>
-      </div>
-
-      {/* Divider */}
-      <div className="border-t border-gray-300 my-4"></div>
-
-      {/* Other Navigation */}
-      <div className="space-y-1">
-        <Button
-          variant="ghost"
-          className={`w-full justify-start text-left h-11 px-4 ${
-            currentPage === "partnership"
-              ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
-          }`}
-          onClick={() => handleNavigation("partnership")}
-        >
-          <Handshake className="w-4 h-4 mr-3" />
-          {t("header.topNav.partnership")}
-        </Button>
-
-        <Button
-          variant="ghost"
-          className={`w-full justify-start text-left h-11 px-4 ${
-            currentPage === "contacts"
-              ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
-          }`}
-          onClick={() => handleNavigation("contacts")}
-        >
-          <Phone className="w-4 h-4 mr-3" />
-          {t("header.topNav.contacts")}
-        </Button>
-
-        <Button
-          variant="ghost"
-          className={`w-full justify-start text-left h-11 px-4 ${
-            currentPage === "about"
-              ? "bg-white text-gray-900 font-medium rounded-full"
-              : "text-white/90 hover:text-gray-900 hover:bg-gradient-to-r from-white to-transparent rounded-full"
-          }`}
-          onClick={() => handleNavigation("about")}
-        >
-          <Info className="w-4 h-4 mr-3" />
-          {t("header.topNav.about")}
-        </Button>
-      </div>
+          {/* Divider після секції, крім останньої */}
+          {secIdx < sections.length - 1 && (
+            <div className="border-t border-gray-300 pb-2 my-4"></div>
+          )}
+        </div>
+      ))}
     </div>
   );
 }

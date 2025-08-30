@@ -1,20 +1,11 @@
 import { Button } from "../ui/button.js";
 import { useLanguage } from "../../contexts/LanguageContext.js";
+import { Link } from "react-router-dom";
+
 const CampusImage = "/images/campus.jpg";
 
-interface HomeHeroProps {
-  currentPage: string;
-  onNavigate: (page: string) => void;
-}
-
-export function HomeHero({ currentPage, onNavigate }: HomeHeroProps) {
+export function HomeHero() {
   const { t } = useLanguage();
-
-  const handleNavigation = (page: string) => {
-    if (onNavigate) {
-      onNavigate(page);
-    }
-  };
 
   return (
     <section className="relative text-white overflow-hidden min-h-[50vh]  flex items-center">
@@ -40,26 +31,25 @@ export function HomeHero({ currentPage, onNavigate }: HomeHeroProps) {
               {t('homeHero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
-                variant="outline" 
-                onClick={() => {
-                  handleNavigation("about");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-                className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
-                {t('homeHero.learnMore')}
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                onClick={() => {
-                  handleNavigation("events");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-                className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm">
-                {t('homeHero.ourEvents')}
-              </Button>
+              <Link to="/about-us">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm"
+                >
+                  {t("homeHero.learnMore")}
+                </Button>
+              </Link>
+
+              <Link to="/events">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-gray-900 hover:bg-gray-200 hover:text-gray-900 shadow-lg backdrop-blur-sm"
+                >
+                  {t("homeHero.ourEvents")}
+                </Button>
+              </Link>
             </div>
           </div>
           
